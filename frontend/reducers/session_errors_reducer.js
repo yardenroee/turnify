@@ -4,7 +4,6 @@ import merge from 'lodash/merge';
 
 export default (oldState={}, action) => {
     Object.freeze(oldState);
-    debugger
     switch (action.type) {
         case RECEIVE_ERRORS:
             return merge({}, oldState, {errors: action.errors});
