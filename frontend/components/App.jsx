@@ -1,17 +1,16 @@
 import React from 'react';
-import GreetingContainer from './greeting/greeting_component';
 import {Route} from 'react-router-dom';
+import GreetingContainer from './greeting/greeting_component';
 import LogInFormContainer from './session/log_in_form_container';
 import SignUpFormContainer from './session/sign_up_form_container';
+import { AuthRoute } from '../util/route_util';
 const App = () => (
     <div>
-        <div className='background-overall'>
             <header>
             </header>
             <Route exact path='/' component={GreetingContainer}/>
-            <Route path='/login' component={LogInFormContainer}/>
-            <Route path='/signup' component={SignUpFormContainer} />
-        </div>
+            <AuthRoute exact path='/login' component={LogInFormContainer}/>
+            <AuthRoute exact path='/signup' component={SignUpFormContainer} />
     </div>
 )
 

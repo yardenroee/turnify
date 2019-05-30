@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 class SessionForm extends React.Component{
     constructor(props){
         super(props);
@@ -20,13 +21,30 @@ class SessionForm extends React.Component{
         e.preventDefault();
         this.props.action(this.state).then(()=> this.props.history.push('/'));
     }
+
+    renderErrors(){
+        if(this.props.errors.length > 0){
+        return (
+            <ul>
+                {this.props.errors.map(error=>(
+                   <li key={'error'}>
+                       {error}
+                   </li> ))}
+            </ul>
+        )} else { return null}
+    }
     render() {
         return (
             <div>
-                <div className="session-header"></div>
+                <div className="session-header">
+                    <Link className="logo" to='/'></Link>
+                    <Link className="link-to-home" to='/'>Turnify</Link>
+                </div>
                 <form className="session-form" onSubmit={this.handleSubmit}>
                         &nbsp;
                     <h3>{this.props.directionMessage}</h3>
+                        &nbsp;
+                        {this.renderErrors()}
                         &nbsp;
                     <label>
                         <input type="text" 

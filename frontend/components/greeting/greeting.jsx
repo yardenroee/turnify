@@ -15,11 +15,19 @@ const Greeting = ({user, logOutUser}) => {
 
     const ifLoggedOut = () => {
         return (
+            <div className='background-overall'>
             <div className='main-content'>
             <div className='main-nav'>
-                <Link to={'/signup'}>Sign Up</Link>
-                &nbsp;
-                <Link to={'/login'}>Log In</Link>
+                <div className="left-nav">
+                    <Link className="nav-logo" to='/'></Link>
+                    <Link className="nav-link-to-home" to='/'>Turnify</Link>
+                </div>
+                <div className="right-nav">
+                    <Link className='session' to={'/signup'}>Sign Up</Link>
+                    &nbsp;
+                    <Link className='session' to={'/login'}>Log In</Link>
+                </div>
+            </div>
             </div>
             </div>
         )

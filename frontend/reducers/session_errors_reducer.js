@@ -2,7 +2,7 @@ import { RECEIVE_CURRENT_USER, RECEIVE_ERRORS } from "../actions/session_actions
 import merge from 'lodash/merge';
 
 
-export default (oldState={}, action) => {
+export default (oldState={errors: []}, action) => {
     Object.freeze(oldState);
     switch (action.type) {
         case RECEIVE_ERRORS:

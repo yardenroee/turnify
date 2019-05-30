@@ -8,7 +8,7 @@ const msp = ({errors}) => {
     return {
         directionMessage: 'To continue, log in to Turnify.',
         formType: 'LOG IN',
-        errors: errors.session,
+        errors: errors.session.errors,
         navLink: <Link to={'/signup'}>Sign up!</Link>,
         switchMessage: "Not a user?"
     }

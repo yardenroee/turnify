@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 const msp = ({errors}) => {
     return {
         directionMessage: 'Sign up with desired username and password.',
-        errors: errors.session,
+        errors: errors.session.errors,
         formType: 'SIGN UP',
         navLink: <Link to={'/login'}>Log in!</Link>,
         switchMessage: "Already have an account?"
