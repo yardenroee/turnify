@@ -1,0 +1,8 @@
+.background-overall{
+    background-image: linear-gradient(to bottom, #f45f81, #f79260);
+}
+.main-content {
+    background: image-url("background-main.svg") no-repeat center;
+    height: -webkit-fill-available;
+    width: -webkit-fill-available;
+}

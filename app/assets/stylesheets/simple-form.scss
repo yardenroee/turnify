@@ -1,0 +1,78 @@
+.session-form {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    align-items: center;
+    margin-top: 100px;
+    justify-content: space-between;
+} 
+
+.session-form, h3 {
+    font-family: inherit;
+    font-size: 18px;
+    color: black; 
+    font-weight: bold;
+}
+
+.session-form input[type=text], input[type=password]{
+    border-radius: 2px;
+    border: 1px solid #dfe0e6;
+    font-size: 15px;
+    width: 426px;
+    height: 48px;
+    text-indent: 10px;
+    &:focus{
+        box-shadow: none;
+        outline: -webkit-focus-ring-color auto 5px;
+    }
+}
+
+.session-form input[type=submit]{
+    font-family: Circular, Helvetica, Arial, sans-serif;
+    background-color:#1DB954;
+    border-radius: 500px;
+    font-size: 14px;
+    letter-spacing: 2px;
+    padding: 16px 108px 16px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.5s ease-out;
+
+    &:hover{
+        background-color: #1ED760;;
+    }
+
+    &:focus {
+        background-color: #1aa34a;
+    }
+
+    &:active{
+        background-color: #1aa34a;
+    }
+}
+
+.session-form a{
+    font-family: Circular, Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    font-size:15px;
+    color:#1DB954;
+
+    &:hover{
+        color:rgb(30, 215, 96);;
+    }
+
+    &:focus {
+        background-color: rgb(29, 184, 84);
+    }
+
+    &:active{
+        background-color: #1aa34a;
+    }
+}
+
+.session-form p{
+    font-family: Circular, Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    font-size:15px;
+}
