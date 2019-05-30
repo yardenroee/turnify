@@ -62,11 +62,11 @@
     }
 
     &:focus {
-        background-color: rgb(29, 184, 84);
+        color: rgb(29, 184, 84);
     }
 
     &:active{
-        background-color: #1aa34a;
+        color: #1aa34a;
     }
 }
 
@@ -78,6 +78,7 @@
 .session-form ul{
     display: flex;
     justify-content: center;
+    flex-direction: column;
     height: 38px;
     background-color: #f59b23;
     align-items: center;

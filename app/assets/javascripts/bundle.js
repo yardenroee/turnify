@@ -90,7 +90,7 @@
 /*!*********************************************!*\
   !*** ./frontend/actions/session_actions.js ***!
   \*********************************************/
-/*! exports provided: RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_ERRORS, signUpUser, logInUser, logOutUser */
+/*! exports provided: RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_ERRORS, CLEAR_SESSION_ERRORS, clearErrors, signUpUser, logInUser, logOutUser */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -98,6 +98,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_CURRENT_USER", function() { return RECEIVE_CURRENT_USER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOGOUT_CURRENT_USER", function() { return LOGOUT_CURRENT_USER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ERRORS", function() { return RECEIVE_ERRORS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAR_SESSION_ERRORS", function() { return CLEAR_SESSION_ERRORS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearErrors", function() { return clearErrors; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "signUpUser", function() { return signUpUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logInUser", function() { return logInUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logOutUser", function() { return logOutUser; });
@@ -106,6 +108,7 @@ __webpack_require__.r(__webpack_exports__);
 var RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 var LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 var RECEIVE_ERRORS = 'RECEIVE_ERRORS';
+var CLEAR_SESSION_ERRORS = 'CLEAR_SESSION_ERRORS';
 
 var receiveCurrentUser = function receiveCurrentUser(user) {
   return {
@@ -127,6 +130,11 @@ var receiveErrors = function receiveErrors(errors) {
   };
 };
 
+var clearErrors = function clearErrors() {
+  return {
+    type: CLEAR_SESSION_ERRORS
+  };
+};
 var signUpUser = function signUpUser(formUser) {
   return function (dispatch) {
     return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__["signUpUser"](formUser).then(function (user) {
@@ -219,13 +227,25 @@ var Greeting = function Greeting(_ref) {
 
   var ifLoggedIn = function ifLoggedIn() {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "background-overall"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "main-content"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "main-nav"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Hello, ", user.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "left-nav"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      className: "nav-logo",
+      to: "/"
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      className: "nav-link-to-home",
+      to: "/"
+    }, "Turnify")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "right-nav"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Hello, ", user.username), "\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       className: "logout-button",
       onClick: logOutUser
-    }, "Logout")));
+    }, "Logout")))));
   };
 
   var ifLoggedOut = function ifLoggedOut() {
@@ -349,6 +369,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var msp = function msp(_ref) {
   var errors = _ref.errors;
   return {
@@ -366,6 +387,9 @@ var mdp = function mdp(dispatch) {
   return {
     action: function action(formUser) {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["logInUser"])(formUser));
+    },
+    clearErrors: function clearErrors() {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["clearErrors"])());
     }
   };
 };
@@ -430,6 +454,11 @@ function (_React$Component) {
   }
 
   _createClass(SessionForm, [{
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.props.clearErrors();
+    }
+  }, {
     key: "update",
     value: function update(field) {
       var _this2 = this;
@@ -520,6 +549,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var msp = function msp(_ref) {
   var errors = _ref.errors;
   return {
@@ -537,6 +567,9 @@ var mdp = function mdp(dispatch) {
   return {
     action: function action(formUser) {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["signUpUser"])(formUser));
+    },
+    clearErrors: function clearErrors() {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["clearErrors"])());
     }
   };
 };
@@ -631,11 +664,12 @@ __webpack_require__.r(__webpack_exports__);
 
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ERRORS"]:
-      return lodash_merge__WEBPACK_IMPORTED_MODULE_1___default()({}, oldState, {
+      return {
         errors: action.errors
-      });
+      };
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["CLEAR_SESSION_ERRORS"]:
       return {
         errors: {}
       };

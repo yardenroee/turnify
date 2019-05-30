@@ -4,11 +4,20 @@ import { Link } from 'react-router-dom';
 const Greeting = ({user, logOutUser}) => {
     const ifLoggedIn = () => {
         return (
+            <div className='background-overall'>
             <div className="main-content">
                 <div className='main-nav'>
+                    <div className="left-nav">
+                        <Link className="nav-logo" to='/'></Link>
+                        <Link className="nav-link-to-home" to='/'>Turnify</Link>
+                    </div>
+                    <div className="right-nav">
                     <h2>Hello, {user.username}</h2>
-                <button className="logout-button" onClick={logOutUser}>Logout</button>
+                        &nbsp;
+                    <button className="logout-button" onClick={logOutUser}>Logout</button>
+                    </div>
                 </div>
+            </div>
             </div>
         )
     };

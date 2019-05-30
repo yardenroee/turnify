@@ -3,7 +3,7 @@ import SessionForm from './session_form';
 import { Link } from 'react-router-dom';
 import { signUpUser } from '../../actions/session_actions';
 import { connect } from 'react-redux';
-
+import { clearErrors } from '../../actions/session_actions';
 const msp = ({errors}) => {
     return {
         directionMessage: 'Sign up with desired username and password.',
@@ -16,7 +16,8 @@ const msp = ({errors}) => {
 
 const mdp = dispatch => {
     return {
-        action: (formUser) => dispatch(signUpUser(formUser))
+        action: (formUser) => dispatch(signUpUser(formUser)),
+        clearErrors : ()=> dispatch(clearErrors())
     };
 };
 
