@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Greeting from './greeting';
+import Greeting from './splash_page';
 import {logOutUser} from '../../actions/session_actions';
 
 const msp = ({session, entities: {users}}) => {

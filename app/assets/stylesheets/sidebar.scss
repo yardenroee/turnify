@@ -1,0 +1,91 @@
+.sidebar-container {
+    height: 100vh;
+    width: 230px;
+    background-color: rgb(26, 25, 25);
+    position: absolute;
+}
+.sidebar-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-items: center
+}
+
+.sidebar-logo-img {
+    font-size: 35px;
+    color: white;
+}
+
+.sidebar-link-to-home {
+    font-family: Cabin;
+    color: white;
+    font-size: 30px;
+    font-weight: 550;
+    margin-top: 27px;
+    margin-left: 7px;
+    margin-bottom: 30px;
+}
+
+.sidebar-home {
+    margin-top:  7px;
+    margin-left: 45px;
+    font-size: 17px;
+    color: rgb(179,179,179);
+    &:hover {
+        color: #fff;
+    }
+    
+}
+.sidebar-search {
+    margin-top:  20px;
+    margin-left: 46px;
+    font-size: 17px;
+     color: rgb(179,179,179);
+    &:hover {
+        color: #fff;
+    }
+
+}
+.sidebar-playlists {
+    margin-top:  20px;
+    margin-left: 50px;
+    font-size: 17px;
+    color: rgb(179,179,179);
+     &:hover {
+        color: #fff;
+    }
+
+}
+
+.home-link{
+    font-family: Circular, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+        margin-left: 10px;
+        margin-bottom: 4px;
+     color: rgb(179,179,179);
+    &:hover {
+        color: #fff;
+    }
+}
+
+.search-link{
+    font-family: Circular, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+        margin-left: 10px;
+        margin-bottom: 4px;
+    color: rgb(179,179,179);
+    &:hover {
+        color: #fff;
+    }
+}
+
+.library-link{
+    font-family: Circular, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+        margin-left: 10px;
+        margin-bottom: 4px;
+    color: rgb(179,179,179);
+    &:hover {
+        color: #fff;
+    }
+}

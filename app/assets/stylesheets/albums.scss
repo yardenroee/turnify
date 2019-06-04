@@ -1,0 +1,37 @@
+// Place all the styles related to the api/albums controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.all-albums {
+     background-image: linear-gradient(to bottom, #130835, #1c1b1a);
+     height: 100vh;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     align-content: center;
+}
+
+.individual-album {
+     max-width: 177px;
+     max-height: 177px;
+     box-shadow: 0px 0px 9px 3px #00000066;
+}
+.album-title {
+     font-family: Circular, Helvetica, Arial, sans-serif;
+     font-size: 15px;
+     color: white;
+     text-align: center;
+}
+
+a {
+     color: white;
+}
+
+.album-artist {
+     font-family: Circular, Helvetica, Arial, sans-serif;
+     font-size: 13px;
+     color: #d2d2d273;
+     text-align: center;
+     margin-top: 10px;
+}
