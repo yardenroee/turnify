@@ -17,7 +17,7 @@ class Sidebar extends React.Component{
                 <div className="sidebar-home">
                     <Link to='/'><i className="fas fa-home"></i></Link>
                     &nbsp;
-                    <Link className="home-link" to='/'>Home</Link>
+                    <Link className="home-link" to='/albums'>Home</Link>
                 </div>
 
                 <div className="sidebar-search">
@@ -38,5 +38,4 @@ class Sidebar extends React.Component{
 
 
 //TODO : get all the links going and make sure that they redirect to their appropriate place
-//TODO : put the home as /albums or /artists and turnify logo as the way to go back to splas page
 export default Sidebar;

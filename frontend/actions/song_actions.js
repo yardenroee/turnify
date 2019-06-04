@@ -19,10 +19,12 @@ const receiveSong = (song) => {
     }
 }
 
-const receiveAlbum = (album) => {
+const receiveAlbum = (payload) => {
+    const { album, artist} = payload
     return {
         type: RECEIVE_ALBUM,
-        album
+        album,
+        artist
     }
 }
 

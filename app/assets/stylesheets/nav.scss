@@ -23,6 +23,8 @@
     color: white;
     font-weight: bold;
     cursor: pointer;
+    transition: background-color 0.5s ease-out;
+
 
     &:hover{
         background-color: rgb(29, 185, 84);
@@ -42,10 +44,9 @@
 .session {
     padding: 13px;
     color:rgba(255, 255, 255, 1);
-}
-
-.main-nav > a:hover{
+    &:hover{
     color: #1ed760;
+    }
 }
 
 .left-nav{

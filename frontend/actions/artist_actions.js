@@ -10,10 +10,12 @@ const receiveAllArtists = (artists) => {
     }
 }
 
-const receiveArtist = (artist) => {
+const receiveArtist = (payload) => {
+    const {artist, albums} = payload;
     return {
         type: RECEIVE_ARTIST,
-        artist
+        artist,
+        albums
     }
 }
 

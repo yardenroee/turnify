@@ -4,8 +4,10 @@ import AlbumShow from './album_show';
 
 const msp = (state, ownProps) => {
     const album = state.entities.albums[parseInt(ownProps.match.params.albumId)];
+    const artist = state.entities.artists;
     return {
-        album
+        album,
+        artist
     }
 }
 
@@ -16,3 +18,4 @@ const mdp = dispatch => {
 }
 
 export default connect(msp,mdp)(AlbumShow);
+

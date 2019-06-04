@@ -9,24 +9,25 @@ class ArtistIndex extends React.Component{
     componentDidMount() {
         this.props.fetchAllArtists();
     }
+    componentWillUnmount(){
+        
+    }
     render() {
         let artistList;
         const { artists } = this.props
         if (artists.length > 0) {
                 artistList = artists.map((artist, index) => {
                     return (
-                        <>
                             <li className="individual-artist" key={`${index}`}>
                                 <ArtistIndexItem artist={artist} />
                             </li>
-                        </>
                     )
                 })
             return (
                 <>
                     <SidebarContainer />
-                    <div className="all-artists">
-                        <ul>
+                    <div className="artist-index-master">
+                        <ul className="all-artists">
                             {artistList}
                         </ul>
                     </div>

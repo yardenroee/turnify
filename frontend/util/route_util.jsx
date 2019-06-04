@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Redirect, withRouter } from 'react-router-dom';
-//TODO : finish protected Routes
 const msp = (state) => {
     return {
         loggedIn: Boolean(state.session.currentUserId)

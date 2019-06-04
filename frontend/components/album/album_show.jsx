@@ -17,18 +17,23 @@ class AlbumShow extends React.Component{
         this.props.fetchAlbum(this.props.match.params.albumId)
     }
     componentDidUpdate(prevProps){
-        this.props.fetchAlbum(this.props.match.params.albumId)
+        if (prevProps.match.params.albumId != this.props.match.params.albumId){
+            this.props.fetchAlbum(this.props.match.params.albumId)
+
+        }
     }
 
     render(){
         let album = {id:'_', photo:'_', title:'_'};
+        let artist = {id:'_', name:'_'};
+        if (this.props.artist) {artist = this.props.artist;}
         if  (this.props.album) {album = this.props.album;}
         return (
             <>
                 <div className="album-show-master">
                     <SidebarContainer />
                     <div className="album-show">
-                        <AlbumIndexItem album={album}/>
+                        <AlbumIndexItem album={album} artist={artist}/>
                     </div>
                 <SongContainer props={this.props} />
                 </div>

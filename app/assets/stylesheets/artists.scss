@@ -1,0 +1,28 @@
+// Place all the styles related to the api/artists controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.artist-index-master {
+    background-image: linear-gradient(to bottom, #0d483d, #1c1b1a);
+    height: 100vh;
+}
+
+.artist-unit{
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 275px;
+    padding-top: 100px;
+}
+
+.artist-photo{
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 9px 3px #00000066;
+}
+
+.artist-name{
+    text-align: center;
+    font-size: 18px;
+    margin-top: 10px;
+}

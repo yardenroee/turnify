@@ -6,11 +6,15 @@ import SignUpFormContainer from './session/sign_up_form_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import AlbumContainer from './album/album_container';
 import AlbumShowContainer from './album/album_show_container';
+import ArtistShowContainer from './artist/artist_show_container';
+import ArtistIndexContainer from './artist/artist_index_container'
 const App = () => (
     <div>
         <Switch>
         <ProtectedRoute path='/albums/:albumId' component={AlbumShowContainer} />
         <ProtectedRoute path='/albums' component={AlbumContainer} />
+        <ProtectedRoute path='/artists/:artistId' component={ArtistShowContainer} />
+        <ProtectedRoute path='/artists' component={ArtistIndexContainer} />
         </Switch>
 
         <Route exact path='/' component={SplashPageContainer} />
@@ -23,5 +27,3 @@ const App = () => (
 )
 
 export default App
-
-//TODO : finish protected routes, comment greeting container back in

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-// TODO : ADD LINK TO ARTIST LINE 17
-const AlbumIndexItem = ({album}) => {
+
+const AlbumIndexItem = ({album, artist}) => {
     return (
         <div>
             <div>
@@ -15,7 +15,7 @@ const AlbumIndexItem = ({album}) => {
                 <Link to={`/albums/${album.id}`}>{album.title}</Link>
             </div>
             <div className="album-artist-show">
-                Artist
+                <Link to={`/artists/${artist.id}`}>{artist.name}</Link>
             </div>
         </div>
     )

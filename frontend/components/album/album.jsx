@@ -1,5 +1,4 @@
 import React from 'react';
-import AlbumIndexItem from './album_index_item';
 import { Link } from 'react-router-dom';
 import SidebarContainer from '../../components/sidebar/sidebar_container';
 class Album extends React.Component{
@@ -24,10 +23,6 @@ class Album extends React.Component{
                         <div className="album-title">
                             <Link to={`/albums/${album.id}`}>{album.title}</Link>
                         </div>
-
-                        <div className="album-artist">
-                            Artist
-                        </div>
                     </li>
                 )
             })
@@ -47,5 +42,4 @@ class Album extends React.Component{
         }
     }
 }
-//TODO : get artist into album-artist to have a link to them 
 export default Album;

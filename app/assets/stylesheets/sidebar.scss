@@ -24,13 +24,16 @@
     margin-top: 27px;
     margin-left: 7px;
     margin-bottom: 30px;
+
 }
 
 .sidebar-home {
     margin-top:  7px;
     margin-left: 45px;
     font-size: 17px;
-    color: rgb(179,179,179);
+    text-decoration-color: rgb(179,179,179);
+    transition: text-decoration-color 0.5s ease-out;
+
     &:hover {
         color: #fff;
     }
@@ -40,7 +43,8 @@
     margin-top:  20px;
     margin-left: 46px;
     font-size: 17px;
-     color: rgb(179,179,179);
+    text-decoration-color: rgb(179,179,179);
+     transition: text-decoration-color 0.5s ease-out;
     &:hover {
         color: #fff;
     }
@@ -50,7 +54,9 @@
     margin-top:  20px;
     margin-left: 50px;
     font-size: 17px;
-    color: rgb(179,179,179);
+    text-decoration-color: rgb(179,179,179);
+    transition: text-decoration-color 0.5s ease-out;
+
      &:hover {
         color: #fff;
     }
@@ -63,6 +69,7 @@
         margin-left: 10px;
         margin-bottom: 4px;
      color: rgb(179,179,179);
+    transition: color 0.5s ease-out;
     &:hover {
         color: #fff;
     }
@@ -74,6 +81,7 @@
         margin-left: 10px;
         margin-bottom: 4px;
     color: rgb(179,179,179);
+    transition: color 0.5s ease-out;
     &:hover {
         color: #fff;
     }
@@ -85,6 +93,7 @@
         margin-left: 10px;
         margin-bottom: 4px;
     color: rgb(179,179,179);
+    transition: color 0.5s ease-out;
     &:hover {
         color: #fff;
     }
