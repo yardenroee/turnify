@@ -27,10 +27,8 @@
     padding: 16px 108px 16px;
     color: white;
     font-weight: bold;
+    margin-top: 30px;
     cursor: pointer;
-        position: absolute;
-    margin-top: 100px;
-    margin-left: 700px;
     transition: background-color 0.5s ease-out;
 
     &:hover{
@@ -44,4 +42,11 @@
     &:active{
         background-color: #1aa34a;
     }
+}
+
+.body {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }

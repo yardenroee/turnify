@@ -4,6 +4,7 @@ import {fetchArtist} from '../../actions/artist_actions'
 const msp = (state, ownProps) => {
     const artist = state.entities.artists[ownProps.match.params.artistId]
     const albums = Object.values(state.entities.albums)
+    
     return {
         artist,
         albums

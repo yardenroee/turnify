@@ -1,7 +1,7 @@
 json.artist do
     json.extract! @artist, :id, :name
     if @artist.header.attached? 
-        json.photo url_for(@artist.header)
+        json.header url_for(@artist.header)
     end
 end
 

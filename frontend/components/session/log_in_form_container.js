@@ -1,10 +1,9 @@
 import React from 'react';
 import SessionForm from './session_form';
 import { Link } from 'react-router-dom';
-import { logInUser } from '../../actions/session_actions';
+import { logInUser, logInDemoUser } from '../../actions/session_actions';
 import { connect } from 'react-redux';
 import { clearErrors } from '../../actions/session_actions';
-
 const msp = ({errors}) => {
     return {
         directionMessage: 'To continue, log in to Turnify.',
@@ -18,7 +17,8 @@ const msp = ({errors}) => {
 const mdp = dispatch => {
     return {
         action: (formUser) => dispatch(logInUser(formUser)),
-        clearErrors: () => dispatch(clearErrors())
+        clearErrors: () => dispatch(clearErrors()),
+        logInDemoUser: () => dispatch(logInDemoUser())
     };
 };
 

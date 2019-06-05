@@ -17,7 +17,7 @@ class Sidebar extends React.Component{
                 <div className="sidebar-home">
                     <Link to='/'><i className="fas fa-home"></i></Link>
                     &nbsp;
-                    <Link className="home-link" to='/albums'>Home</Link>
+                    <Link className="home-link" to='/artists'>Home</Link>
                 </div>
 
                 <div className="sidebar-search">

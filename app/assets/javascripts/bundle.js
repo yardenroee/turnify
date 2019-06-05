@@ -142,7 +142,7 @@ var fetchArtist = function fetchArtist(artistId) {
 /*!*********************************************!*\
   !*** ./frontend/actions/session_actions.js ***!
   \*********************************************/
-/*! exports provided: RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_ERRORS, CLEAR_SESSION_ERRORS, clearErrors, signUpUser, logInUser, logOutUser */
+/*! exports provided: RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_ERRORS, CLEAR_SESSION_ERRORS, clearErrors, signUpUser, logInUser, logOutUser, logInDemoUser */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -155,6 +155,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "signUpUser", function() { return signUpUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logInUser", function() { return logInUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logOutUser", function() { return logOutUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logInDemoUser", function() { return logInDemoUser; });
 /* harmony import */ var _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/session_api_util */ "./frontend/util/session_api_util.js");
 
 var RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
@@ -207,8 +208,15 @@ var logInUser = function logInUser(formUser) {
 };
 var logOutUser = function logOutUser() {
   return function (dispatch) {
-    return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__["logOutUser"]().then(function (user) {
+    return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__["logOutUser"]().then(function () {
       return dispatch(logoutCurrentUser());
+    });
+  };
+};
+var logInDemoUser = function logInDemoUser() {
+  return function (dispatch) {
+    return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__["logInDemoUser"]().then(function (user) {
+      return dispatch(receiveCurrentUser(user));
     });
   };
 };
@@ -907,19 +915,29 @@ function (_React$Component) {
           artist: artist
         }));
       });
+      var artistHeader;
 
       if (this.props.artist) {
         artist = this.props.artist;
+        artistHeader = {
+          backgroundImage: "url(".concat(artist.header, ")")
+        };
       }
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_sidebar_sidebar_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "artist-show-master"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_sidebar_sidebar_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "artist-show-parent"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/artists/".concat(artist.id)
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "artist-show-header",
-        src: artist.header
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, artist.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, albumList)));
+        style: artistHeader
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "gradient-layer"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "artist-show-name"
+      }, artist.name)), "\xA0"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, albumList)));
     }
   }]);
 
@@ -1039,6 +1057,9 @@ var mdp = function mdp(dispatch) {
     },
     clearErrors: function clearErrors() {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["clearErrors"])());
+    },
+    logInDemoUser: function logInDemoUser() {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["logInDemoUser"])());
     }
   };
 };
@@ -1150,7 +1171,12 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "link-to-home",
         to: "/"
-      }, "Turnify")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      }, "Turnify")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "demo-flex"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "demo-user-login",
+        onClick: this.props.logInDemoUser
+      }, "SIGN IN AS DEMO")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "session-form",
         onSubmit: this.handleSubmit
       }, "\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, this.props.directionMessage), "\xA0", this.renderErrors(), "\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -1219,6 +1245,9 @@ var mdp = function mdp(dispatch) {
     },
     clearErrors: function clearErrors() {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["clearErrors"])());
+    },
+    logInDemoUser: function logInDemoUser() {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["logInDemoUser"])());
     }
   };
 };
@@ -1294,7 +1323,7 @@ function (_React$Component) {
         className: "fas fa-home"
       })), "\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "home-link",
-        to: "/albums"
+        to: "/artists"
       }, "Home")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sidebar-search"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
@@ -1418,7 +1447,15 @@ var SongIndexItem = function SongIndexItem(_ref) {
   var song = _ref.song;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "song-unit"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "music-note"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    "class": "fab fa-itunes-note"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "play-icon"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    "class": "fas fa-play"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "song-title",
     to: "/songs/".concat(song.id)
   }, song.title), "\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
@@ -1559,12 +1596,14 @@ var SplashPage = function SplashPage(_ref) {
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Hello, ", user.username), "\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       className: "logout-button",
       onClick: logOutUser
-    }, "Logout"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    }, "Logout"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "body"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
       className: "direction-message"
     }, "You're wasting your time here... go listen to some music!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       to: "/albums",
       className: "web-player-link"
-    }, "GO TO WEB PLAYER")));
+    }, "GO TO WEB PLAYER"))));
   };
 
   var ifLoggedOut = function ifLoggedOut() {
@@ -1594,7 +1633,9 @@ var SplashPage = function SplashPage(_ref) {
       to: '/login'
     }, "Log In"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
       className: "music-for-all"
-    }, "Music for everyone."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Millions of songs no credit card needed.")));
+    }, "Music for everyone."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      className: "garbagio"
+    }, "Millions of songs no credit card needed.")));
   };
 
   return user ? ifLoggedIn() : ifLoggedOut();
@@ -2105,7 +2146,7 @@ var ProtectedRoute = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["withR
 /*!*******************************************!*\
   !*** ./frontend/util/session_api_util.js ***!
   \*******************************************/
-/*! exports provided: signUpUser, logInUser, logOutUser */
+/*! exports provided: signUpUser, logInUser, logOutUser, logInDemoUser */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2113,6 +2154,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "signUpUser", function() { return signUpUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logInUser", function() { return logInUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logOutUser", function() { return logOutUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logInDemoUser", function() { return logInDemoUser; });
 var signUpUser = function signUpUser(user) {
   return $.ajax({
     method: 'post',
@@ -2135,6 +2177,19 @@ var logOutUser = function logOutUser() {
   return $.ajax({
     method: 'delete',
     url: 'api/session'
+  });
+};
+var logInDemoUser = function logInDemoUser() {
+  var data = {
+    "user": {
+      "username": "demo",
+      "password": "123456"
+    }
+  };
+  return $.ajax({
+    method: 'post',
+    url: 'api/session',
+    data: data
   });
 };
 

@@ -20,6 +20,8 @@ class SessionForm extends React.Component{
         };
     }
 
+    
+
     handleSubmit(e){
         e.preventDefault();
         this.props.action(this.state).then(()=> this.props.history.push('/'));
@@ -42,6 +44,9 @@ class SessionForm extends React.Component{
                 <div className="session-header">
                     <Link className="logo" to='/'></Link>
                     <Link className="link-to-home" to='/'>Turnify</Link>
+                </div>
+                <div className="demo-flex">
+                    <button className="demo-user-login" onClick={this.props.logInDemoUser}>SIGN IN AS DEMO</button>
                 </div>
                 <form className="session-form" onSubmit={this.handleSubmit}>
                         &nbsp;

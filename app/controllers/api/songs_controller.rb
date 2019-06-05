@@ -1,6 +1,6 @@
 class Api::SongsController < ApplicationController
     def show
-        @song = Song.find_by(id: params[:id])
+        @song = Song.find(params[:id])
         if @song
             render "api/songs/show"
         else
@@ -9,7 +9,7 @@ class Api::SongsController < ApplicationController
     end
 
     def index
-        @album = Album.find_by(id: params[:album_id])
+        @album = Album.find(params[:album_id])
         @songs = @album.songs
         if @songs
             render "api/songs/index"

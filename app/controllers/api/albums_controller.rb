@@ -5,7 +5,11 @@ class Api::AlbumsController < ApplicationController
     end
 
     def show
-        @album = Album.find_by(id: params[:id])
-        render "api/albums/show"
+        @album = Album.find(params[:id])
+        if @album
+            render "api/albums/show"
+        else
+
+        end
     end
 end

@@ -119,3 +119,34 @@
     margin-bottom: 20px;
     margin-top: 20px;
 }
+
+.demo-user-login {
+    margin: 0 auto;
+    font-family: Circular, Helvetica, Arial, sans-serif;
+    background-color:#3B5998;
+    border-radius: 500px;
+    font-size: 14px;
+    letter-spacing: 2px;
+    padding: 16px 108px 16px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.5s ease-out;
+
+    &:hover{
+        background-color: #3a61b3;
+    }
+
+    &:focus {
+        background-color: #3B5998;
+    }
+
+    &:active{
+        background-color: #3B5998;
+        // color: #1DB954;
+    }
+}
+
+.demo-flex {
+    display: flex;
+}

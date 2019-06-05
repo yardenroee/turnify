@@ -17,8 +17,10 @@ const SplashPage= ({user, logOutUser}) => {
                     <button className="logout-button" onClick={logOutUser}>Logout</button>
                     </div>
                 </div>
+                <div className="body">
                 <p className="direction-message">You're wasting your time here... go listen to some music!</p>
                 <Link to="/albums" className="web-player-link">GO TO WEB PLAYER</Link>
+                </div>
             </div>
             </div>
         )
@@ -40,7 +42,7 @@ const SplashPage= ({user, logOutUser}) => {
                 </div>
             </div>
                     <p className="music-for-all">Music for everyone.</p>
-                    <p>Millions of songs no credit card needed.</p>
+                    <p className="garbagio">Millions of songs no credit card needed.</p>
             </div>
             </div>
         )

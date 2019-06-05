@@ -41,5 +41,9 @@ export const logInUser = (formUser) => dispatch => (
 );
 
 export const logOutUser = () => dispatch => (
-    SessionApiUtil.logOutUser().then(user => dispatch(logoutCurrentUser()))
+    SessionApiUtil.logOutUser().then(() => dispatch(logoutCurrentUser()))
 );
+
+export const logInDemoUser = () => dispatch => (
+    SessionApiUtil.logInDemoUser().then(user => dispatch(receiveCurrentUser(user)))
+)

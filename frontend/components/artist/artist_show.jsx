@@ -8,6 +8,7 @@ class ArtistShow extends React.Component{
     }
 
     componentDidMount(){
+        
         this.props.fetchArtist(this.props.match.params.artistId);
     }
 
@@ -26,16 +27,26 @@ class ArtistShow extends React.Component{
                 </li>
             )
         })
-        if (this.props.artist) {artist = this.props.artist;}
+        let artistHeader;
+        if (this.props.artist) {
+            artist = this.props.artist
+            artistHeader = {
+                backgroundImage: `url(${artist.header})`
+            }
+        }
         return(
             <>
-            <div className="artist-show-master">
                 <SidebarContainer />
-                <div>
+            <div className="artist-show-master">
+                <div className="artist-show-parent">
                     <Link to={`/artists/${artist.id}`}>
-                        <img className="artist-show-header" src={artist.header} />
+                        <div className="artist-show-header" style={artistHeader}></div>
                     </Link>
-                    <h1>{artist.title}</h1>
+                        <div className="gradient-layer">
+                        <p className="artist-show-name">{artist.name}</p>
+                        </div>
+                        &nbsp;
+                   
                 </div>
                 <ul>
                     {albumList}
