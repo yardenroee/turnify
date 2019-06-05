@@ -8,7 +8,6 @@ class ArtistShow extends React.Component{
     }
 
     componentDidMount(){
-        
         this.props.fetchArtist(this.props.match.params.artistId);
     }
 
@@ -20,20 +19,21 @@ class ArtistShow extends React.Component{
 
     render() {
         let artist = {id:'_', name:'_'};
-        let albumList = this.props.albums.map((album,index) => {
-            return (
-                <li key={`album-${index}`}>
-                    <AlbumIndexItem album={album} artist={artist} />
-                </li>
-            )
-        })
         let artistHeader;
         if (this.props.artist) {
-            artist = this.props.artist
+            artist = this.props.artist;
             artistHeader = {
                 backgroundImage: `url(${artist.header})`
             }
         }
+
+        let albumList = this.props.albums.map((album,index) => {
+            return (
+                <li key={`album-${index}`} className="artist-show-individual-album">
+                    <AlbumIndexItem album={album} artist={artist} />
+                </li>
+            )
+        })
         return(
             <>
                 <SidebarContainer />
@@ -48,9 +48,10 @@ class ArtistShow extends React.Component{
                         &nbsp;
                    
                 </div>
-                <ul>
+                <strong className="artist-show-albums-title">Albums</strong>
+                <div className="artist-show-all-albums">
                     {albumList}
-                </ul>
+                </div>
             </div>
             </>
         )
@@ -58,5 +59,3 @@ class ArtistShow extends React.Component{
 }
 
 export default ArtistShow;
-
-//TODO: CSS STYLING V IMPORTANT LOL

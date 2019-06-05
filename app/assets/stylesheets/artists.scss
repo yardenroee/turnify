@@ -7,11 +7,16 @@
     height: 100vh;
 }
 
-.artist-unit{
+.all-artists {
     display: flex;
     justify-content: flex-start;
+    list-style-type: none;
     margin-left: 275px;
+}
+
+.artist-unit{
     padding-top: 100px;
+    margin-right: 25px;
 }
 
 .artist-photo{

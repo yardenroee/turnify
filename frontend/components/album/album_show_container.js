@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {fetchAlbum} from '../../actions/song_actions';
+import { fetchAlbum } from '../../actions/song_actions';
 import AlbumShow from './album_show';
 
 const msp = (state, ownProps) => {
@@ -13,7 +13,7 @@ const msp = (state, ownProps) => {
 
 const mdp = dispatch => {
     return {
-        fetchAlbum: (albumId)=> dispatch(fetchAlbum(albumId))
+        fetchAlbum: (albumId)=> dispatch(fetchAlbum(albumId)),
     }
 }
 

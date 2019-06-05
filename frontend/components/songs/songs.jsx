@@ -6,25 +6,17 @@ class Songs extends React.Component{
     }
 
     componentDidMount() {
-        debugger
         this.props.fetchSongs(this.props.albumId);
     }
 
     componentDidUpdate(prevProps) {
-        debugger
-        if(prevProps.album.id != this.props.albumId){
+        if(prevProps.albumId != this.props.albumId){
             this.props.fetchSongs(this.props.albumId);
         }
     }
 
-    componentWillUnmount(){
-        debugger
-    }
-
-
     render () {
         const { songs } = this.props;
-        debugger
         if(songs.length > 0) {
             const songList = songs.map((song,index) =>{
                 return (

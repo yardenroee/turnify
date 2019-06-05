@@ -4,6 +4,7 @@ export const RECEIVE_ALL_SONGS = "RECEIVE_ALL_SONGS";
 export const RECEIVE_SONG = "RECEIVE_SONG";
 export const RECEIVE_ALBUM = "RECEIVE_ALBUM";
 export const RECEIVE_ALL_ALBUMS = "RECEIVE_ALL_ALBUMS";
+export const CLEAR_ALBUM_SONGS = "CLEAR_ALBUM_SONGS";
 const receiveAllSongs = (songs) => {
     return {
         type: RECEIVE_ALL_SONGS,
@@ -35,6 +36,8 @@ const receiveAllAlbums = (albums) => {
         albums
     }
 }
+
+
 export const fetchSong = (songId) => dispatch => (
  SongApiUtil.fetchSong(songId).then(song=> dispatch(receiveSong(song)))
 )

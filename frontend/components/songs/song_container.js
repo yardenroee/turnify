@@ -15,7 +15,7 @@ const msp = (state, {props}) => {
 
 const mdp = dispatch => {
     return {
-        fetchSongs: (albumId) => dispatch(fetchSongs(albumId))
+        fetchSongs: (albumId) => dispatch(fetchSongs(albumId)),
     }
 }
 
