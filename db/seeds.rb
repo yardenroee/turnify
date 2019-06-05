@@ -23,9 +23,9 @@ song4 = Song.create(album_id: album1.id, artist_id: artist1.id, title: "H8rs Wan
 
 song5 = Song.create(album_id: album1.id, artist_id: artist1.id, title: "Dumpster Divin", length: "2:22")
 
-artist1.photo.attach(io: File.open("/Users/yardennegri/Desktop/turnifyapp/active_storage_media/trashisha.jpg"), filename:"garbagiana.jpg")
-album1.photo.attach(io: File.open("/Users/yardennegri/Desktop/turnifyapp/active_storage_media/s-l300.jpg"), filename:"trashy-cover.jpg")
-artist1.hover.attach(io: File.open("/Users/yardennegri/Desktop/turnifyapp/active_storage_media/seattle-trash-crisis.jpg"), filename:"garbagiana-hover.jpg")
+artist1.photo.attach(io: File.open("/Users/yardennegri/Desktop/turnifyapp/active_storage_media/garbagiana.jpg"), filename:"garbagiana.jpg")
+album1.photo.attach(io: File.open("/Users/yardennegri/Desktop/turnifyapp/active_storage_media/garbagiana-cover.jpg"), filename:"trashy-cover.jpg")
+artist1.header.attach(io: File.open("/Users/yardennegri/Desktop/turnifyapp/active_storage_media/garbagiana-header.jpg"), filename:"garbagiana-hover.jpg")
 
 artist2 = Artist.create(name:"Cisgusting")
 
@@ -43,7 +43,7 @@ song10 = Song.create(album_id: album2.id, artist_id: artist2.id, title: "Paris H
 
 artist2.photo.attach(io: File.open("/Users/yardennegri/Desktop/turnifyapp/active_storage_media/cisgusting.jpg"), filename:"cisgusting.jpg")
 album2.photo.attach(io: File.open("/Users/yardennegri/Desktop/turnifyapp/active_storage_media/cisgusting-cover.jpg"), filename:"cisgusting-cover.jpg")
-artist2.hover.attach(io: File.open("/Users/yardennegri/Desktop/turnifyapp/active_storage_media/cisgusting-hover.jpg"), filename:"cisgusting-hover.jpg")
+artist2.header.attach(io: File.open("/Users/yardennegri/Desktop/turnifyapp/active_storage_media/cisgusting-hover.jpg"), filename:"cisgusting-hover.jpg")
 
 
 artist3 = Artist.create(name:"Renta Karr")
@@ -62,4 +62,4 @@ song15 = Song.create(album_id: album3.id, artist_id: artist3.id, title: "TBH Ur 
 
 artist3.photo.attach(io: File.open("/Users/yardennegri/Desktop/turnifyapp/active_storage_media/alaska.jpg"), filename:"renta.jpg")
 album3.photo.attach(io: File.open("/Users/yardennegri/Desktop/turnifyapp/active_storage_media/alaska-cover.jpg"), filename:"renta-cover.jpg")
-artist3.hover.attach(io: File.open("/Users/yardennegri/Desktop/turnifyapp/active_storage_media/rentakarr-hover.jpg"), filename:"renta-hover.jpg")
+artist3.header.attach(io: File.open("/Users/yardennegri/Desktop/turnifyapp/active_storage_media/rentakarr-hover.jpg"), filename:"renta-hover.jpg")

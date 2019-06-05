@@ -29,11 +29,14 @@ class Album extends React.Component{
             return (
                 <>
                  <SidebarContainer />
-                <div className='all-albums'>
-                    <ul>
-                        {albumList}
-                    </ul>
+                <div className="album-index-master">
+                    <div>
+                        <ul className='all-albums'>
+                            {albumList}
+                        </ul>
+                    </div>
                 </div>
+
                 </>
             
             )

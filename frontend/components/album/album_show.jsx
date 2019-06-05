@@ -14,14 +14,17 @@ class AlbumShow extends React.Component{
     }
 
     componentDidMount(){
-        this.props.fetchAlbum(this.props.match.params.albumId)
+        this.props.fetchAlbum(this.props.match.params.albumId);
     }
     componentDidUpdate(prevProps){
         if (prevProps.match.params.albumId != this.props.match.params.albumId){
-            this.props.fetchAlbum(this.props.match.params.albumId)
+            this.props.fetchAlbum(this.props.match.params.albumId);
 
         }
     }
+    // componentWillUnmount(){
+
+    // }
 
     render(){
         let album = {id:'_', photo:'_', title:'_'};
@@ -35,7 +38,7 @@ class AlbumShow extends React.Component{
                     <div className="album-show">
                         <AlbumIndexItem album={album} artist={artist}/>
                     </div>
-                <SongContainer props={this.props} />
+                <SongContainer  />
                 </div>
             </>
         )
