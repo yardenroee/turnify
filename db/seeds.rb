@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
+####### ALBUM 1 #######
 demo_user = User.create(username:"demo", password:"123456")
 
 artist1 = Artist.create(name:"Garbagiana")
@@ -26,7 +26,9 @@ song5 = Song.create(album_id: album1.id, artist_id: artist1.id, title: "Dumpster
 artist1.photo.attach(io: File.open("/Users/yardennegri/Desktop/turnifyapp/active_storage_media/garbagiana.jpg"), filename:"garbagiana.jpg")
 album1.photo.attach(io: File.open("/Users/yardennegri/Desktop/turnifyapp/active_storage_media/garbagiana-cover.jpg"), filename:"trashy-cover.jpg")
 artist1.header.attach(io: File.open("/Users/yardennegri/Desktop/turnifyapp/active_storage_media/garbagiana-header.jpg"), filename:"garbagiana-hover.jpg")
-
+song1.mp3.attach(io: File.open("/Users/yardennegri/Desktop/LSDXOXO - Fuck Marry Kill/02. Death Grip Ft. Bbymutha.mp3"), filename:"song1.mp3")
+song2.mp3.attach(io: File.open("/Users/yardennegri/Desktop/LSDXOXO - Fuck Marry Kill/01. Lady Vengeance.mp3"), filename:"song2.mp3")
+####### ALBUM 2 #######
 artist2 = Artist.create(name:"Cisgusting")
 
 album2= Album.create(title:"Flawless Victory", release_year: 2016, artist_id: artist2.id)
@@ -45,7 +47,7 @@ artist2.photo.attach(io: File.open("/Users/yardennegri/Desktop/turnifyapp/active
 album2.photo.attach(io: File.open("/Users/yardennegri/Desktop/turnifyapp/active_storage_media/cisgusting-cover.jpg"), filename:"cisgusting-cover.jpg")
 artist2.header.attach(io: File.open("/Users/yardennegri/Desktop/turnifyapp/active_storage_media/cisgusting-hover.jpg"), filename:"cisgusting-hover.jpg")
 
-
+####### ALBUM 3 #######
 artist3 = Artist.create(name:"Renta Karr")
 
 album3= Album.create(title:"Cher In The 70's", release_year: 2017, artist_id: artist3.id)

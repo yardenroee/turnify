@@ -56,3 +56,4 @@ export const fetchAlbum = (albumId) => dispatch => {
     return SongApiUtil.fetchAlbum(albumId).then(album=>{
         return dispatch(receiveAlbum(album))})
 }
+

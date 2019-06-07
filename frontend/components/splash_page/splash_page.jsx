@@ -19,7 +19,7 @@ const SplashPage= ({user, logOutUser}) => {
                 </div>
                 <div className="body">
                 <p className="direction-message">You're wasting your time here... go listen to some music!</p>
-                <Link to="/albums" className="web-player-link">GO TO WEB PLAYER</Link>
+                <Link to="/artists" className="web-player-link">GO TO WEB PLAYER</Link>
                 </div>
             </div>
             </div>

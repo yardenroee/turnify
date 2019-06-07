@@ -1,0 +1,111 @@
+.now-playing-bar {
+    height: 65px;
+    padding: 25px;
+    background-color: #272727;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 100vh;
+}
+
+.now-playing {
+    align-items: center;
+    display: flex;
+    width: 450px;
+}
+
+.playbar-cover {
+    max-width: 66px;
+    max-height: 66px;
+    box-shadow: 0px 0px 9px 1px #00000066;
+    margin-right: 35px;
+
+}
+
+.song-album-titles {
+    flex-direction: column;
+    display: flex;
+}
+
+.artist-link {
+    color:#8d8d8d;
+    font-size: 14px;
+    letter-spacing: 1px;
+    border-bottom: 1px solid transparent;
+        &:hover {
+        border-bottom-color: #8d8d8d;
+    }
+}
+
+.playbar-song-title {
+    color: white;
+    border-bottom: 1px solid transparent;
+    &:hover {
+    border-bottom-color: currentcolor;
+    }
+}
+
+.playbar-controls {
+    display: flex;    
+    width: 550px;
+    justify-content: center;
+}
+
+.playbar-buttons {
+    width: 245px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.playbar-play {
+    background-color: Transparent;
+    font-size: 35px;
+    color: hsl(0, 0%, 70%);
+    border-color: transparent;
+    transition-duration: 50ms;
+    
+        &:focus{
+        outline: none;
+    }
+        &:hover{
+        transform: scale(1.1);
+        transition-duration: 66ms;
+        color: #fff;
+    }
+}
+
+.playbar-pause {
+    background-color: Transparent;
+    font-size: 35px;
+    color: hsl(0, 0%, 70%);
+    border-color: transparent;
+    transition-duration: 50ms;
+    display: none;
+
+        &:focus{
+        outline:  none;
+    }
+        &:hover{
+        transform: scale(1.1);
+        transition-duration: 66ms;
+        color: #fff;
+    }
+}
+.playbar-shuffle,
+.playbar-previous,
+.playbar-next,
+.playbar-repaet {
+    background-color: Transparent;
+    font-size: 15px;
+    color: hsl(0, 0%, 70%);
+    border-color: transparent;
+    transition-duration: 50ms;
+        &:focus{
+        outline:  none;
+    }
+        &:hover{
+        transform: scale(1.1);
+        transition-duration: 66ms;
+        color: #fff;
+    }
+}

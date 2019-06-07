@@ -27,6 +27,7 @@ class ArtistIndex extends React.Component{
                 <>
                     <SidebarContainer />
                     <div className="artist-index-master">
+                    <strong className="artist-index-title">Featured Artists</strong>
                         <div className="all-artists">
                             {artistList}
                         </div>

@@ -19,7 +19,7 @@
     text-align: center;
     color: white;
     font-family: Circular, Helvetica, Arial, sans-serif;
-
+    margin-top: 10px;
 }
 
 .album-artist-show {
@@ -27,7 +27,7 @@
     color: #b3b3b3;
     font-size: 18px;
     font-family: Circular, Helvetica, Arial, sans-serif;
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
 .all-songs{
@@ -74,18 +74,26 @@
 .music-note{ 
     margin-right: 20px;
     color: #8d8d8d;
+    display: inline;
 }
 
 .play-icon{
     margin-right: 18px;
     color: #f2f1f1;
-    // display: none;
-}
-
-.song-unit:hover .music-note,
-.song-unit .play-icon {
     display: none;
 }
-.song-unit:hover .play-icon {
-    display: inline;
+
+.pause-icon {
+    margin-right: 24px;
+    color: #f2f1f1;
+    display: none;
 }
+
+
+// .song-unit:hover .music-note,
+// .song-unit .play-icon {
+//     display: none;
+// }
+// .song-unit:hover .play-icon {
+//     display: inline;
+// }
