@@ -1,3 +1,4 @@
+require 'open-uri'
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -23,15 +24,15 @@ song4 = Song.create(album_id: album1.id, artist_id: artist1.id, title: "H8rs Wan
 
 song5 = Song.create(album_id: album1.id, artist_id: artist1.id, title: "Dumpster Divin", length: "2:22")
 
-artist1.photo.attach(io: File.open("https://turnifyappprod.s3.amazonaws.com/garbagiana.jpg"), filename:"garbagiana.jpg")
-album1.photo.attach(io: File.open("https://turnifyappprod.s3.amazonaws.com/garbagiana-cover.jpg"), filename:"trashy-cover.jpg")
-artist1.header.attach(io: File.open("https://turnifyappprod.s3.amazonaws.com/garbagiana.jpg"), filename:"garbagiana-hover.jpg")
+artist1.photo.attach(io: open("https://turnifyappprod.s3.amazonaws.com/garbagiana.jpg"), filename:"garbagiana.jpg")
+album1.photo.attach(io: open("https://turnifyappprod.s3.amazonaws.com/garbagiana-cover.jpg"), filename:"trashy-cover.jpg")
+artist1.header.attach(io: open("https://turnifyappprod.s3.amazonaws.com/garbagiana.jpg"), filename:"garbagiana-hover.jpg")
 
-song1.mp3.attach(io: File.open("https://turnifyappprod.s3.amazonaws.com/01.+Lady+Vengeance.mp3"), filename:"song1.mp3")
-song2.mp3.attach(io: File.open("https://turnifyappprod.s3.amazonaws.com/02.+Death+Grip+Ft.+Bbymutha.mp3"), filename:"song2.mp3")
-song3.mp3.attach(io: File.open("https://turnifyappprod.s3.amazonaws.com/03.+Sugarfalls.mp3"), filename:"song3.mp3")
-song4.mp3.attach(io: File.open("https://turnifyappprod.s3.amazonaws.com/04.+Learning+Ft.+Miss+Prada.mp3"), filename:"song4.mp3")
-song5.mp3.attach(io: File.open("https://turnifyappprod.s3.amazonaws.com/05.+Frozen+Over+Ft.+Cakes+Da+Killa.mp3"), filename:"song5.mp3")
+song1.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/01.+Lady+Vengeance.mp3"), filename:"song1.mp3")
+song2.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/02.+Death+Grip+Ft.+Bbymutha.mp3"), filename:"song2.mp3")
+song3.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/03.+Sugarfalls.mp3"), filename:"song3.mp3")
+song4.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/04.+Learning+Ft.+Miss+Prada.mp3"), filename:"song4.mp3")
+song5.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/05.+Frozen+Over+Ft.+Cakes+Da+Killa.mp3"), filename:"song5.mp3")
 
 ####### ALBUM 2 #######
 artist2 = Artist.create(name:"Cisgusting")
@@ -47,16 +48,16 @@ song8 = Song.create(album_id: album2.id, artist_id: artist2.id, title: "Positive
 song9 = Song.create(album_id: album2.id, artist_id: artist2.id, title: "Leave Britney Alone", length: "3:33")
 
 song10 = Song.create(album_id: album2.id, artist_id: artist2.id, title: "Paris Hilton Is My Mom", length: "2:22")
-file = File.open("https://turnifyappprod.s3.amazonaws.com/cisgusting.jpg")
+file = open("https://turnifyappprod.s3.amazonaws.com/cisgusting.jpg")
 artist2.photo.attach(io: file, filename:"cisgusting.jpg")
-album2.photo.attach(io: File.open("https://turnifyappprod.s3.amazonaws.com/cisgusting-cover.jpg"), filename:"cisgusting-cover.jpg")
-artist2.header.attach(io: File.open("https://turnifyappprod.s3.amazonaws.com/cisgusting-hover.jpg"), filename:"cisgusting-hover.jpg")
+album2.photo.attach(io: open("https://turnifyappprod.s3.amazonaws.com/cisgusting-cover.jpg"), filename:"cisgusting-cover.jpg")
+artist2.header.attach(io: open("https://turnifyappprod.s3.amazonaws.com/cisgusting-hover.jpg"), filename:"cisgusting-hover.jpg")
 
-song6.mp3.attach(io: File.open("https://turnifyappprod.s3.amazonaws.com/06.+Love+Taps.mp3"), filename:"song6.mp3")
-song7.mp3.attach(io: File.open("https://turnifyappprod.s3.amazonaws.com/07.+Freestyle+4+(Remix).mp3"), filename:"song7.mp3")
-song8.mp3.attach(io: File.open("https://turnifyappprod.s3.amazonaws.com/08.+Angel+Dust.mp3"), filename:"song8.mp3")
-song9.mp3.attach(io: File.open("https://turnifyappprod.s3.amazonaws.com/09.+On+Fire+Ft.+Beek.mp3"), filename:"song9.mp3")
-song10.mp3.attach(io: File.open("https://turnifyappprod.s3.amazonaws.com/02.+Death+Grip+Ft.+Bbymutha.mp3"), filename:"song1.mp3")
+song6.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/06.+Love+Taps.mp3"), filename:"song6.mp3")
+song7.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/07.+Freestyle+4+(Remix).mp3"), filename:"song7.mp3")
+song8.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/08.+Angel+Dust.mp3"), filename:"song8.mp3")
+song9.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/09.+On+Fire+Ft.+Beek.mp3"), filename:"song9.mp3")
+song10.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/02.+Death+Grip+Ft.+Bbymutha.mp3"), filename:"song1.mp3")
 ####### ALBUM 3 #######
 artist3 = Artist.create(name:"Renta Karr")
 
@@ -72,12 +73,12 @@ song14 = Song.create(album_id: album3.id, artist_id: artist3.id, title: "I FEEL 
 
 song15 = Song.create(album_id: album3.id, artist_id: artist3.id, title: "TBH Ur Cancelled...", length: "2:22")
 
-artist3.photo.attach(io: File.open("https://turnifyappprod.s3.amazonaws.com/large.jpg"), filename:"renta.jpg")
-album3.photo.attach(io: File.open("https://turnifyappprod.s3.amazonaws.com/alaska-cover.jpg"), filename:"renta-cover.jpg")
-artist3.header.attach(io: File.open("https://turnifyappprod.s3.amazonaws.com/rentakarr-hover.jpg"), filename:"renta-hover.jpg")
+artist3.photo.attach(io: open("https://turnifyappprod.s3.amazonaws.com/large.jpg"), filename:"renta.jpg")
+album3.photo.attach(io: open("https://turnifyappprod.s3.amazonaws.com/alaska-cover.jpg"), filename:"renta-cover.jpg")
+artist3.header.attach(io: open("https://turnifyappprod.s3.amazonaws.com/rentakarr-hover.jpg"), filename:"renta-hover.jpg")
 
-song11.mp3.attach(io: File.open("https://turnifyappprod.s3.amazonaws.com/01.+Lady+Vengeance.mp3"), filename:"song1.mp3")
-song12.mp3.attach(io: File.open("https://turnifyappprod.s3.amazonaws.com/02.+Death+Grip+Ft.+Bbymutha.mp3"), filename:"song2.mp3")
-song13.mp3.attach(io: File.open("https://turnifyappprod.s3.amazonaws.com/03.+Sugarfalls.mp3"), filename:"song3.mp3")
-song14.mp3.attach(io: File.open("https://turnifyappprod.s3.amazonaws.com/04.+Learning+Ft.+Miss+Prada.mp3"), filename:"song4.mp3")
-song15.mp3.attach(io: File.open("https://turnifyappprod.s3.amazonaws.com/05.+Frozen+Over+Ft.+Cakes+Da+Killa.mp3"), filename:"song5.mp3")
+song11.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/01.+Lady+Vengeance.mp3"), filename:"song1.mp3")
+song12.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/02.+Death+Grip+Ft.+Bbymutha.mp3"), filename:"song2.mp3")
+song13.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/03.+Sugarfalls.mp3"), filename:"song3.mp3")
+song14.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/04.+Learning+Ft.+Miss+Prada.mp3"), filename:"song4.mp3")
+song15.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/05.+Frozen+Over+Ft.+Cakes+Da+Killa.mp3"), filename:"song5.mp3")
