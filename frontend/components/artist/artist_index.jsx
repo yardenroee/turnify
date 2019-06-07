@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import SidebarContainer from '../sidebar/sidebar_container';
 import ArtistIndexItem from './artist_index_item';
+import TopNav from '../top_nav/top_nav'
 class ArtistIndex extends React.Component{
     constructor(props){
         super(props)
@@ -27,7 +28,7 @@ class ArtistIndex extends React.Component{
                 <>
                     <SidebarContainer />
                     <div className="artist-index-master">
-                    <strong className="artist-index-title">Featured Artists</strong>
+                        <TopNav />
                         <div className="all-artists">
                             {artistList}
                         </div>

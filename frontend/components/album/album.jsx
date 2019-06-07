@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SidebarContainer from '../../components/sidebar/sidebar_container';
+import TopNav from '../top_nav/top_nav'
 class Album extends React.Component{
     constructor(props) {
         super(props);
@@ -30,6 +31,7 @@ class Album extends React.Component{
                 <>
                  <SidebarContainer />
                 <div className="album-index-master">
+                    <TopNav />
                     <div>
                         <ul className='all-albums'>
                             {albumList}
