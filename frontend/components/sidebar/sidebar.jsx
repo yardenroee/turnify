@@ -23,7 +23,7 @@ class Sidebar extends React.Component{
                 <div className="sidebar-search">
                     <Link to='/'><i className="fas fa-search"></i></Link>
                     &nbsp;
-                    <Link className="search-link"to='/'>Search</Link>
+                    <Link className="search-link" to='/artists'>Search</Link>
                 </div>
 
                 <div className="sidebar-playlists">
