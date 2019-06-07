@@ -4,15 +4,29 @@ import {Link} from 'react-router-dom';
 class PlayBar extends React.Component {
     constructor(props){
         super(props);
-        this.state = {
-            playStatus: "play",
+        this.state= {
+            playStatus : "play",
         }
-        this.handlePlay = this.handlePlay.bind(this)
-        this.handlePause = this.handlePause.bind(this)
+        this.handlePlay = this.handlePlay.bind(this);
+        this.handlePause = this.handlePause.bind(this);
     }
     componentDidMount(){
         this.mp3 = document.getElementById(this.props.currentPlayingSong.id)
     }
+    componentDidUpdate(){
+        if (this.props.isPlaying === true) {
+            let playButton = document.getElementById("play-button");
+            let pauseButton = document.getElementById("pause-button");
+            pauseButton.style.display = "none";
+            playButton.style.display = "inline";
+        } else {
+            let playButton = document.getElementById("play-button");
+            let pauseButton = document.getElementById("pause-button");
+            playButton.style.display = "none";
+            pauseButton.style.display = "inline";
+        }
+    }
+
     handlePlay() {
         let status = this.state.playStatus;
         if (status=== "play"){
@@ -46,7 +60,7 @@ class PlayBar extends React.Component {
     render() {
         const {currentPlayingSong} = this.props;
         const {album} = this.props;
-        const {artist} = this.props
+        const {artist} = this.props;
         return (
             <div className="now-playing-bar">
                 <div className="now-playing">
@@ -63,15 +77,15 @@ class PlayBar extends React.Component {
                 <div className="playbar-controls">
                    <div className="playbar-buttons">
                         <button className="playbar-shuffle">
-                            <i class="fas fa-random"></i>
+                            <i className="fas fa-random"></i>
                         </button>
 
                         <button className="playbar-previous">
-                            <i class="fas fa-step-backward"></i>
+                            <i className="fas fa-step-backward"></i>
                         </button>
 
                         <button id="play-button" className="playbar-play" onClick={this.handlePlay}>
-                            <i class="far fa-play-circle"></i>
+                            <i className="far fa-play-circle"></i>
                         </button>
 
                         <button id="pause-button" className="playbar-pause" onClick={this.handlePause}>
@@ -79,11 +93,11 @@ class PlayBar extends React.Component {
                         </button>
 
                         <button className="playbar-next">
-                            <i class="fas fa-step-forward"></i>
+                            <i className="fas fa-step-forward"></i>
                         </button>
 
                         <button className="playbar-repaet">
-                            <i class="fas fa-redo-alt"></i>
+                            <i className="fas fa-redo-alt"></i>
                         </button>
                         <audio className="audio-tag" id={currentPlayingSong.id} src={currentPlayingSong.mp3}></audio>
                    </div>

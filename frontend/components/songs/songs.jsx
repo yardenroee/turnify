@@ -6,6 +6,7 @@ class Songs extends React.Component{
         super(props)
         this.state = {
             playStatus: "play",
+            isPlaying : false,
         }
         this.togglePlay = this.togglePlay.bind(this)
     }
@@ -15,11 +16,15 @@ class Songs extends React.Component{
             if (status === "play" && mp3) {
                 status = "pause";
                 mp3.play();
+                this.setState({ playStatus: status });
+                this.setState({ isPlaying : true})
             } else if (status === "pause"){
                 status = "play";
                 mp3.pause();
-            }            
-            this.setState({ playStatus: status });
+                this.setState({ playStatus: status });
+                this.setState({ isPlaying: false })
+
+            } 
     }
 
     componentDidMount() {
@@ -52,7 +57,7 @@ class Songs extends React.Component{
                             {songList}
                         </ul>
                     </div>
-                        <PlayBarContainer currentPlayingSong={this.props.currentPlayingSong} album={this.props.album}/>
+                        <PlayBarContainer isPlaying={this.state.isPlaying} currentPlayingSong={this.props.currentPlayingSong} album={this.props.album}/>
                 </>
             )
         } else {

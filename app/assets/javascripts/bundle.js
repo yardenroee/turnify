@@ -1128,6 +1128,23 @@ function (_React$Component) {
       this.mp3 = document.getElementById(this.props.currentPlayingSong.id);
     }
   }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      if (this.props.isPlaying === true) {
+        var playButton = document.getElementById("play-button");
+        var pauseButton = document.getElementById("pause-button");
+        pauseButton.style.display = "none";
+        playButton.style.display = "inline";
+      } else {
+        var _playButton = document.getElementById("play-button");
+
+        var _pauseButton = document.getElementById("pause-button");
+
+        _playButton.style.display = "none";
+        _pauseButton.style.display = "inline";
+      }
+    }
+  }, {
     key: "handlePlay",
     value: function handlePlay() {
       var status = this.state.playStatus;
@@ -1194,17 +1211,17 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "playbar-shuffle"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "fas fa-random"
+        className: "fas fa-random"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "playbar-previous"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "fas fa-step-backward"
+        className: "fas fa-step-backward"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         id: "play-button",
         className: "playbar-play",
         onClick: this.handlePlay
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "far fa-play-circle"
+        className: "far fa-play-circle"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         id: "pause-button",
         className: "playbar-pause",
@@ -1214,11 +1231,11 @@ function (_React$Component) {
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "playbar-next"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "fas fa-step-forward"
+        className: "fas fa-step-forward"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "playbar-repaet"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "fas fa-redo-alt"
+        className: "fas fa-redo-alt"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("audio", {
         className: "audio-tag",
         id: currentPlayingSong.id,
@@ -1251,7 +1268,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var msp = function msp(state) {
-  // const currentPlayingSong = state.ui.currentPlayingSong
   var artist = state.entities.artists;
   return {
     artist: artist
@@ -1766,8 +1782,11 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(SongIndexItem).call(this, props));
     _this.currentPlayingSong = _this.currentPlayingSong.bind(_assertThisInitialized(_this));
     _this.mouseEnter = _this.mouseEnter.bind(_assertThisInitialized(_this));
-    _this.mouseLeave = _this.mouseLeave.bind(_assertThisInitialized(_this)); // this.togglePause = this.togglePause.bind(this)
-
+    _this.mouseLeave = _this.mouseLeave.bind(_assertThisInitialized(_this));
+    _this.onClick = _this.onClick.bind(_assertThisInitialized(_this));
+    _this.state = {
+      currentSong: null
+    };
     return _this;
   }
 
@@ -1775,50 +1794,46 @@ function (_React$Component) {
     key: "mouseEnter",
     value: function mouseEnter() {
       var song = this.props.song;
-
-      if (song) {
-        var unit = document.getElementById("unit-".concat(song.id));
-        var playIcon = document.getElementById("play-".concat(song.id));
-        var noteIcon = document.getElementById("note-".concat(song.id));
-        var pauseIcon = document.getElementById("pause-".concat(song.id));
-        unit.addEventListener("mouseenter", function () {
+      var unit = document.getElementById("unit-".concat(song.id));
+      var playIcon = document.getElementById("play-".concat(song.id));
+      var noteIcon = document.getElementById("note-".concat(song.id));
+      var pauseIcon = document.getElementById("pause-".concat(song.id));
+      unit.addEventListener("mouseenter", function () {
+        if (pauseIcon.style.display === "") {
           noteIcon.style.display = "none";
           playIcon.style.display = "inline";
-        });
-      }
+          return;
+        }
+      });
     }
   }, {
     key: "mouseLeave",
     value: function mouseLeave() {
       var song = this.props.song;
-
-      if (song) {
-        var unit = document.getElementById("unit-".concat(song.id));
-        var playIcon = document.getElementById("play-".concat(song.id));
-        var noteIcon = document.getElementById("note-".concat(song.id));
-        unit.addEventListener("mouseleave", function () {
+      var unit = document.getElementById("unit-".concat(song.id));
+      var playIcon = document.getElementById("play-".concat(song.id));
+      var noteIcon = document.getElementById("note-".concat(song.id));
+      var pauseIcon = document.getElementById("pause-".concat(song.id));
+      unit.addEventListener("mouseleave", function () {
+        if (pauseIcon.style.display === "") {
           noteIcon.style.display = "inline";
           playIcon.style.display = "none";
-        });
-      }
-    } // togglePause() {
-    //     const { song } = this.props;
-    //     if (song) {
-    //         let unit = document.getElementById(`unit-${song.id}`)
-    //         let playIcon = document.getElementById(`play-${song.id}`);
-    //         let pauseIcon = document.getElementById(`pause-${song.id}`);
-    //         unit.addEventListener("click", () => {
-    //             playIcon.style.display = "none";
-    //             pauseIcon.style.display = "inline";
-    //         })
-    //     }
-    // }
-
+        }
+      });
+    }
+  }, {
+    key: "onClick",
+    value: function onClick() {
+      this.currentPlayingSong();
+    }
   }, {
     key: "currentPlayingSong",
     value: function currentPlayingSong() {
       var song = this.props.song;
       this.props.fetchSong(song.id);
+      this.setState({
+        currentSong: song
+      });
     }
   }, {
     key: "render",
@@ -1829,7 +1844,7 @@ function (_React$Component) {
         onMouseLeave: this.mouseLeave,
         id: "unit-".concat(song.id),
         className: "song-unit",
-        onClick: this.currentPlayingSong
+        onClick: this.onClick
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "note-".concat(song.id),
         className: "music-note"
@@ -1909,7 +1924,8 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Songs).call(this, props));
     _this.state = {
-      playStatus: "play"
+      playStatus: "play",
+      isPlaying: false
     };
     _this.togglePlay = _this.togglePlay.bind(_assertThisInitialized(_this));
     return _this;
@@ -1924,14 +1940,22 @@ function (_React$Component) {
       if (status === "play" && mp3) {
         status = "pause";
         mp3.play();
+        this.setState({
+          playStatus: status
+        });
+        this.setState({
+          isPlaying: true
+        });
       } else if (status === "pause") {
         status = "play";
         mp3.pause();
+        this.setState({
+          playStatus: status
+        });
+        this.setState({
+          isPlaying: false
+        });
       }
-
-      this.setState({
-        playStatus: status
-      });
     }
   }, {
     key: "componentDidMount",
@@ -1969,6 +1993,7 @@ function (_React$Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "all-songs"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, songList)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_play_bar_play_bar_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          isPlaying: this.state.isPlaying,
           currentPlayingSong: this.props.currentPlayingSong,
           album: this.props.album
         }));
