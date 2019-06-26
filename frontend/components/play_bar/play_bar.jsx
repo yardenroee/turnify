@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import DurationBar from './duration_bar';
 class PlayBar extends React.Component {
     constructor(props) {
+        debugger
         super(props);
         this.handlePlay = this.handlePlay.bind(this);
         this.playStatus = this.props.playStatus;
@@ -14,20 +15,23 @@ class PlayBar extends React.Component {
     }
 
     handlePlay() {
+        debugger
         let mp3 = document.getElementById(this.props.currentPlayingSong.id);
+        debugger
         if (mp3.paused) {
             this.icon = "pause";
             this.props.togglePlay(true);
-            mp3.play();
         } else {
+            debugger
             this.icon = "play";
             this.props.togglePlay(false);
-            mp3.pause();
+            debugger
         }
     }
 
 
     render() {
+        debugger
         const { currentPlayingSong } = this.props;
         const { album } = this.props;
         const { artist } = this.props;
@@ -37,6 +41,7 @@ class PlayBar extends React.Component {
             this.icon = "play";
         }
         return (
+            <>
             <div className="now-playing-bar">
                 <div className="now-playing">
                     <div>
@@ -70,14 +75,16 @@ class PlayBar extends React.Component {
                         <button className="playbar-repaet">
                             <i className="fas fa-redo-alt"></i>
                         </button>
-                        <audio className="audio-tag" id={currentPlayingSong.id} src={currentPlayingSong.mp3}></audio>
                     </div>
-                </div>
-
-                <div className="volume-control">
-
-                </div>
+            <div>
+                <DurationBar song={this.props.currentPlayingSong} />
             </div>
+                </div>
+                <div className="volume-control">
+                </div>
+
+            </div>
+            </>
         )
     }
 }

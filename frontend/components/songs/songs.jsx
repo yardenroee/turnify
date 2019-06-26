@@ -20,11 +20,9 @@ class Songs extends React.Component {
         if (status === "play" && mp3) {
             status = "pause";
             this.props.togglePlay(true);
-            mp3.play();
         } else if (status === "pause") {
             status = "play";
             this.props.togglePlay(false);
-            mp3.pause();
         }
         this.playStatus = status;
     }

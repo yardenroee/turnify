@@ -1005,6 +1005,179 @@ var mdp = function mdp(dispatch) {
 
 /***/ }),
 
+/***/ "./frontend/components/play_bar/duration_bar.jsx":
+/*!*******************************************************!*\
+  !*** ./frontend/components/play_bar/duration_bar.jsx ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var DurationBar =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(DurationBar, _React$Component);
+
+  function DurationBar(props) {
+    var _this;
+
+    _classCallCheck(this, DurationBar);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(DurationBar).call(this, props));
+    _this.state = {
+      currentTime: 0
+    };
+    _this.audioRef = react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
+    _this.handleMusicBarUpdate = _this.handleMusicBarUpdate.bind(_assertThisInitialized(_this));
+    _this.calculateTimeInSeconds = _this.calculateTimeInSeconds.bind(_assertThisInitialized(_this));
+    _this.convertSecondsToMinutes = _this.convertSecondsToMinutes.bind(_assertThisInitialized(_this));
+    _this.setPlaybackTime = _this.setPlaybackTime.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(DurationBar, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      debugger;
+
+      if (this.props.song.playing) {
+        debugger;
+        this.audioRef.current.play();
+      } else {
+        this.audioRef.current.pause();
+      }
+
+      this.timeInterval = setInterval(this.handleMusicBarUpdate, 400);
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      debugger;
+
+      if (this.props.song.playing) {
+        debugger;
+        this.audioRef.current.play();
+      } else {
+        this.audioRef.current.pause();
+      }
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      clearInterval(this.timeInterval);
+    }
+  }, {
+    key: "handleMusicBarUpdate",
+    value: function handleMusicBarUpdate() {
+      debugger;
+      this.setState({
+        currentTime: this.audioRef.current.currentTime
+      });
+    }
+  }, {
+    key: "calculateTimeInSeconds",
+    value: function calculateTimeInSeconds() {
+      debugger;
+      var time = this.props.song.length.split(":");
+      var minutes = parseInt(time[0]);
+      var seconds = parseInt(time[1]);
+      var timeInSeconds = minutes * 60 + seconds;
+      debugger;
+      return timeInSeconds;
+    }
+  }, {
+    key: "convertSecondsToMinutes",
+    value: function convertSecondsToMinutes(sec) {
+      var minutes = Math.floor(sec / 60);
+      var finalMinutes = minutes < 60 ? minutes : 0;
+      var seconds = Math.floor(sec) % 60;
+      var finalSeconds = seconds < 10 ? ":0".concat(seconds) : ":".concat(seconds);
+      if (finalMinutes < 10) finalMinutes = "0".concat(finalMinutes);else finalMinutes = "".concat(finalMinutes);
+      var finalTime = finalMinutes + finalSeconds;
+      debugger;
+      return finalTime;
+    }
+  }, {
+    key: "setPlaybackTime",
+    value: function setPlaybackTime(e) {
+      debugger;
+      this.audioRef.current.currentTime = e.target.value;
+      this.setState({
+        currentTime: e.target.value
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var length = this.calculateTimeInSeconds();
+      var maxLength = this.convertSecondsToMinutes(length);
+      var currentTime = this.state.currentTime;
+      debugger;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "music-time"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "music-bar-time-left"
+      }, this.convertSecondsToMinutes(this.state.currentTime)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "progress-bar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "range",
+        className: "music-progress-bar",
+        min: "0",
+        max: length,
+        step: "1",
+        onChange: this.setPlaybackTime
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "outer-music-bar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "inner-music-bar",
+        style: {
+          width: "".concat(100 * (currentTime / length) || 0, "%")
+        }
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "progress-ball",
+        style: {
+          marginLeft: "".concat(100 * (currentTime / length) || 0, "%")
+        }
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "music-bar-time-right"
+      }, this.props.song.length), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("audio", {
+        src: this.props.song.mp3,
+        ref: this.audioRef,
+        id: this.props.song.id
+      }));
+    }
+  }]);
+
+  return DurationBar;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (DurationBar);
+
+/***/ }),
+
 /***/ "./frontend/components/play_bar/play_bar.jsx":
 /*!***************************************************!*\
   !*** ./frontend/components/play_bar/play_bar.jsx ***!
@@ -1017,6 +1190,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _duration_bar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./duration_bar */ "./frontend/components/play_bar/duration_bar.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1038,6 +1212,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var PlayBar =
 /*#__PURE__*/
 function (_React$Component) {
@@ -1048,6 +1223,7 @@ function (_React$Component) {
 
     _classCallCheck(this, PlayBar);
 
+    debugger;
     _this = _possibleConstructorReturn(this, _getPrototypeOf(PlayBar).call(this, props));
     _this.handlePlay = _this.handlePlay.bind(_assertThisInitialized(_this));
     _this.playStatus = _this.props.playStatus;
@@ -1063,21 +1239,24 @@ function (_React$Component) {
   }, {
     key: "handlePlay",
     value: function handlePlay() {
+      debugger;
       var mp3 = document.getElementById(this.props.currentPlayingSong.id);
+      debugger;
 
       if (mp3.paused) {
         this.icon = "pause";
         this.props.togglePlay(true);
-        mp3.play();
       } else {
+        debugger;
         this.icon = "play";
         this.props.togglePlay(false);
-        mp3.pause();
+        debugger;
       }
     }
   }, {
     key: "render",
     value: function render() {
+      debugger;
       var currentPlayingSong = this.props.currentPlayingSong;
       var album = this.props.album;
       var artist = this.props.artist;
@@ -1088,7 +1267,7 @@ function (_React$Component) {
         this.icon = "play";
       }
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "now-playing-bar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "now-playing"
@@ -1128,13 +1307,11 @@ function (_React$Component) {
         className: "playbar-repaet"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-redo-alt"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("audio", {
-        className: "audio-tag",
-        id: currentPlayingSong.id,
-        src: currentPlayingSong.mp3
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_duration_bar__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        song: this.props.currentPlayingSong
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "volume-control"
-      }));
+      })));
     }
   }]);
 
@@ -1933,11 +2110,9 @@ function (_React$Component) {
       if (status === "play" && mp3) {
         status = "pause";
         this.props.togglePlay(true);
-        mp3.play();
       } else if (status === "pause") {
         status = "play";
         this.props.togglePlay(false);
-        mp3.pause();
       }
 
       this.playStatus = status;
