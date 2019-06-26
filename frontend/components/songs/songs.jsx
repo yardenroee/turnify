@@ -1,51 +1,54 @@
 import React from 'react';
 import SongIndexItem from './song_index_item';
 import PlayBarContainer from '../../components/play_bar/play_bar_container';
-class Songs extends React.Component{
-    constructor(props){
-        super(props)
-        this.state = {
-            playStatus: "play",
-            isPlaying : false,
-        }
-        this.togglePlay = this.togglePlay.bind(this)
+class Songs extends React.Component {
+    constructor(props) {
+        super(props);
+        this.playStatus = "play";
+        this.togglePlay = this.togglePlay.bind(this);
+        this.fetchCurrentPlayingSong = this.fetchCurrentPlayingSong.bind(this);
+        this.onClick = this.onClick.bind(this);
     }
-    togglePlay() {
-            let status = this.state.playStatus;
-            let mp3 = document.getElementById(this.props.currentPlayingSong.id);
-            if (status === "play" && mp3) {
-                status = "pause";
-                mp3.play();
-                this.setState({ playStatus: status });
-                this.setState({ isPlaying : true})
-            } else if (status === "pause"){
-                status = "play";
-                mp3.pause();
-                this.setState({ playStatus: status });
-                this.setState({ isPlaying: false })
 
-            } 
+    onClick() {
+        setTimeout(this.togglePlay, 100);
+    }
+
+    togglePlay() {
+        let status = this.playStatus;
+        let mp3 = document.getElementById(this.props.currentPlayingSong.id);
+        if (status === "play" && mp3) {
+            status = "pause";
+            this.props.togglePlay(true);
+            mp3.play();
+        } else if (status === "pause") {
+            status = "play";
+            this.props.togglePlay(false);
+            mp3.pause();
+        }
+        this.playStatus = status;
     }
 
     componentDidMount() {
         this.props.fetchSongs(this.props.albumId);
     }
 
+    fetchCurrentPlayingSong() {
+        this.props.fetchSong(this.props.currentPlayingSong.id);
+    }
+
     componentDidUpdate(prevProps) {
-        if(prevProps.albumId != this.props.albumId){
+        if (prevProps.albumId != this.props.albumId) {
             this.props.fetchSongs(this.props.albumId);
-        }
-        if(prevProps.currentPlayingSong !== this.props.currentPlayingSong && this.props.currentPlayingSong !== undefined) {
-            this.togglePlay();
         }
     }
 
-    render () {
+    render() {
         const { songs } = this.props;
-        if(songs.length > 0) {
-            const songList = songs.map((song,index) =>{
+        if (songs.length > 0) {
+            const songList = songs.map((song, index) => {
                 return (
-                    <li onClick={this.togglePlay} className="individual-song" key={index}>
+                    <li className="individual-song" key={index} onClick={this.onClick}>
                         <SongIndexItem song={song} />
                     </li>
                 )
@@ -57,7 +60,7 @@ class Songs extends React.Component{
                             {songList}
                         </ul>
                     </div>
-                        <PlayBarContainer isPlaying={this.state.isPlaying} currentPlayingSong={this.props.currentPlayingSong} album={this.props.album}/>
+                    <PlayBarContainer playStatus={this.playStatus} currentPlayingSong={this.props.currentPlayingSong} album={this.props.album} />
                 </>
             )
         } else {

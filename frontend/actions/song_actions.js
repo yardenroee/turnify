@@ -1,10 +1,10 @@
 import * as SongApiUtil from '../util/song_api_util';
-
 export const RECEIVE_ALL_SONGS = "RECEIVE_ALL_SONGS";
 export const RECEIVE_SONG = "RECEIVE_SONG";
 export const RECEIVE_ALBUM = "RECEIVE_ALBUM";
 export const RECEIVE_ALL_ALBUMS = "RECEIVE_ALL_ALBUMS";
 export const CLEAR_ALBUM_SONGS = "CLEAR_ALBUM_SONGS";
+export const TOGGLE_PLAY = "TOGGLE_PLAY";
 const receiveAllSongs = (songs) => {
     return {
         type: RECEIVE_ALL_SONGS,
@@ -38,8 +38,15 @@ const receiveAllAlbums = (albums) => {
 }
 
 
+export const togglePlay = (boolean) => {
+    return{
+        type: TOGGLE_PLAY,
+        boolean
+    }
+}
+
 export const fetchSong = (songId) => dispatch => (
- SongApiUtil.fetchSong(songId).then(song=> dispatch(receiveSong(song)))
+ SongApiUtil.fetchSong(songId).then(song => dispatch(receiveSong(song)))
 )
 
 export const fetchSongs = (albumId) => dispatch => {

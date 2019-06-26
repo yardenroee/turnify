@@ -83,17 +83,31 @@
     display: none;
 }
 
-.pause-icon {
+.green-pause-icon {
     margin-right: 24px;
-    color: #f2f1f1;
+    color: #1ed760;
     display: none;
 }
+.green-playing-icon {
+    margin-right: 22px;
+    color: #1ed760;
+    display: inline;
+}
+.green-song-title{
+    font-family: Circular, Helvetica, Arial, sans-serif;
+    color: #1ed760;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    height: 100%;
+    width: 100%;
+    margin-top: 25px;
+}
 
+.green-song-length {
+    font-family: Circular, Helvetica, Arial, sans-serif;
+    color: #1ed760;
+    font-size: 16px;
+    letter-spacing: 1px;
+    font-weight: 200;
+}
 
-// .song-unit:hover .music-note,
-// .song-unit .play-icon {
-//     display: none;
-// }
-// .song-unit:hover .play-icon {
-//     display: inline;
-// }

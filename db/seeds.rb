@@ -14,15 +14,15 @@ artist1 = Artist.create(name:"Garbagiana")
 
 album1= Album.create(title:"Trashy", release_year: 2015, artist_id: artist1.id)
 
-song1 = Song.create(album_id: album1.id, artist_id: artist1.id, title: "Sis U Slay Moi", length: "6:66")
+song1 = Song.create(album_id: album1.id, artist_id: artist1.id, title: "Sis U Slay Moi", length: "4:27")
 
-song2 = Song.create(album_id: album1.id, artist_id: artist1.id, title: "GIT INNIT MAN", length: "5:55")
+song2 = Song.create(album_id: album1.id, artist_id: artist1.id, title: "GIT INNIT MAN", length: "3:15")
 
-song3 = Song.create(album_id: album1.id, artist_id: artist1.id, title: "U R Garbage", length: "4:44")
+song3 = Song.create(album_id: album1.id, artist_id: artist1.id, title: "U R Garbage", length: "3:05")
 
-song4 = Song.create(album_id: album1.id, artist_id: artist1.id, title: "H8rs Wanna Fight Me", length: "3:33")
+song4 = Song.create(album_id: album1.id, artist_id: artist1.id, title: "H8rs Wanna Fight Me", length: "3:41")
 
-song5 = Song.create(album_id: album1.id, artist_id: artist1.id, title: "Dumpster Divin", length: "2:22")
+song5 = Song.create(album_id: album1.id, artist_id: artist1.id, title: "Dumpster Divin", length: "3:54")
 
 artist1.photo.attach(io: open("https://turnifyappprod.s3.amazonaws.com/garbagiana.jpg"), filename:"garbagiana.jpg")
 album1.photo.attach(io: open("https://turnifyappprod.s3.amazonaws.com/garbagiana-cover.jpg"), filename:"trashy-cover.jpg")
@@ -39,15 +39,15 @@ artist2 = Artist.create(name:"Cisgusting")
 
 album2= Album.create(title:"Flawless Victory", release_year: 2016, artist_id: artist2.id)
 
-song6 = Song.create(album_id: album2.id, artist_id: artist2.id, title: "U Cisgust Me!", length: "6:66")
+song6 = Song.create(album_id: album2.id, artist_id: artist2.id, title: "U Cisgust Me!", length: "3:16")
 
-song7 = Song.create(album_id: album2.id, artist_id: artist2.id, title: "White Guilt", length: "5:55")
+song7 = Song.create(album_id: album2.id, artist_id: artist2.id, title: "White Guilt", length: "3:42")
 
-song8 = Song.create(album_id: album2.id, artist_id: artist2.id, title: "Positive Healing", length: "4:44")
+song8 = Song.create(album_id: album2.id, artist_id: artist2.id, title: "Positive Healing", length: "4:54")
 
-song9 = Song.create(album_id: album2.id, artist_id: artist2.id, title: "Leave Britney Alone", length: "3:33")
+song9 = Song.create(album_id: album2.id, artist_id: artist2.id, title: "Leave Britney Alone", length: "3:37")
 
-song10 = Song.create(album_id: album2.id, artist_id: artist2.id, title: "Paris Hilton Is My Mom", length: "2:22")
+song10 = Song.create(album_id: album2.id, artist_id: artist2.id, title: "Paris Hilton Is My Mom", length: "3:15")
 file = open("https://turnifyappprod.s3.amazonaws.com/cisgusting.jpg")
 artist2.photo.attach(io: file, filename:"cisgusting.jpg")
 album2.photo.attach(io: open("https://turnifyappprod.s3.amazonaws.com/cisgusting-cover.jpg"), filename:"cisgusting-cover.jpg")
@@ -63,15 +63,15 @@ artist3 = Artist.create(name:"Renta Karr")
 
 album3= Album.create(title:"Cher In The 70's", release_year: 2017, artist_id: artist3.id)
 
-song11 = Song.create(album_id: album3.id, artist_id: artist3.id, title: "Drag Her", length: "6:66")
+song11 = Song.create(album_id: album3.id, artist_id: artist3.id, title: "Drag Her", length: "4:27")
 
-song12 = Song.create(album_id: album3.id, artist_id: artist3.id, title: "I'm Feeling Jujed", length: "5:55")
+song12 = Song.create(album_id: album3.id, artist_id: artist3.id, title: "I'm Feeling Jujed", length: "3:15")
 
-song13 = Song.create(album_id: album3.id, artist_id: artist3.id, title: "Miss Vanjie!!!", length: "4:44")
+song13 = Song.create(album_id: album3.id, artist_id: artist3.id, title: "Miss Vanjie!!!", length: "3:05")
 
-song14 = Song.create(album_id: album3.id, artist_id: artist3.id, title: "I FEEL VERY ATTACKED", length: "3:33")
+song14 = Song.create(album_id: album3.id, artist_id: artist3.id, title: "I FEEL VERY ATTACKED", length: "3:41")
 
-song15 = Song.create(album_id: album3.id, artist_id: artist3.id, title: "TBH Ur Cancelled...", length: "2:22")
+song15 = Song.create(album_id: album3.id, artist_id: artist3.id, title: "TBH Ur Cancelled...", length: "3:54")
 
 artist3.photo.attach(io: open("https://turnifyappprod.s3.amazonaws.com/large.jpg"), filename:"renta.jpg")
 album3.photo.attach(io: open("https://turnifyappprod.s3.amazonaws.com/alaska-cover.jpg"), filename:"renta-cover.jpg")

@@ -1,81 +1,56 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class PlayBar extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state= {
-            playStatus : "play",
-        }
         this.handlePlay = this.handlePlay.bind(this);
-        this.handlePause = this.handlePause.bind(this);
+        this.playStatus = this.props.playStatus;
+        this.icon = "play";
     }
-    componentDidMount(){
-        this.mp3 = document.getElementById(this.props.currentPlayingSong.id)
-    }
-    componentDidUpdate(){
-        if (this.props.isPlaying === true) {
-            let playButton = document.getElementById("play-button");
-            let pauseButton = document.getElementById("pause-button");
-            pauseButton.style.display = "none";
-            playButton.style.display = "inline";
-        } else {
-            let playButton = document.getElementById("play-button");
-            let pauseButton = document.getElementById("pause-button");
-            playButton.style.display = "none";
-            pauseButton.style.display = "inline";
-        }
+
+    componentDidMount() {
+        this.props.fetchSong(this.props.currentPlayingSong.id);
     }
 
     handlePlay() {
-        let status = this.state.playStatus;
-        if (status=== "play"){
-            status = "pause";
-            this.mp3.play();
-            this.setState({ playStatus: status });
+        let mp3 = document.getElementById(this.props.currentPlayingSong.id);
+        if (mp3.paused) {
+            this.icon = "pause";
+            this.props.togglePlay(true);
+            mp3.play();
+        } else {
+            this.icon = "play";
+            this.props.togglePlay(false);
+            mp3.pause();
         }
-        let playButton = document.getElementById("play-button");
-        let pauseButton = document.getElementById("pause-button");
-        playButton.addEventListener("click", () => {
-            playButton.style.display = "none";
-            pauseButton.style.display = "inline";
-        })
     }
 
-    handlePause() {
-        let status = this.state.playStatus;
-        if (status === "pause") {
-            status = "play";
-            this.mp3.pause();
-            this.setState({ playStatus: status });
-        }
-        let playButton = document.getElementById("play-button");
-        let pauseButton = document.getElementById("pause-button");
-        pauseButton.addEventListener("click", () => {
-            pauseButton.style.display = "none";
-            playButton.style.display = "inline";
-        })
-    }
-    
+
     render() {
-        const {currentPlayingSong} = this.props;
-        const {album} = this.props;
-        const {artist} = this.props;
+        const { currentPlayingSong } = this.props;
+        const { album } = this.props;
+        const { artist } = this.props;
+        if (this.props.playing === true) {
+            this.icon = "pause";
+        } else {
+            this.icon = "play";
+        }
         return (
             <div className="now-playing-bar">
                 <div className="now-playing">
-                <div>
-                    <img className="playbar-cover" src={album.photo} />
-                </div>
+                    <div>
+                        <img className="playbar-cover" src={album.photo} />
+                    </div>
 
-                <div className="song-album-titles">
-                    <p className="playbar-song-title">{currentPlayingSong.title}</p>
-                    <Link className="artist-link" to={`/artists/${artist.id}`}>{artist.name}</Link>
-                </div>
+                    <div className="song-album-titles">
+                        <p className="playbar-song-title">{currentPlayingSong.title}</p>
+                        <Link className="artist-link" to={`/artists/${artist.id}`}>{artist.name}</Link>
+                    </div>
                 </div>
 
                 <div className="playbar-controls">
-                   <div className="playbar-buttons">
+                    <div className="playbar-buttons">
                         <button className="playbar-shuffle">
                             <i className="fas fa-random"></i>
                         </button>
@@ -85,11 +60,7 @@ class PlayBar extends React.Component {
                         </button>
 
                         <button id="play-button" className="playbar-play" onClick={this.handlePlay}>
-                            <i className="far fa-play-circle"></i>
-                        </button>
-
-                        <button id="pause-button" className="playbar-pause" onClick={this.handlePause}>
-                            <i className="far fa-pause-circle"></i>
+                            <i className={`far fa-${this.icon}-circle`}></i>
                         </button>
 
                         <button className="playbar-next">
@@ -100,9 +71,9 @@ class PlayBar extends React.Component {
                             <i className="fas fa-redo-alt"></i>
                         </button>
                         <audio className="audio-tag" id={currentPlayingSong.id} src={currentPlayingSong.mp3}></audio>
-                   </div>
+                    </div>
                 </div>
-                
+
                 <div className="volume-control">
 
                 </div>
