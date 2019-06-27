@@ -41,8 +41,13 @@ const SplashPage= ({user, logOutUser}) => {
                     <Link className='session' to={'/login'}>Log In</Link>
                 </div>
             </div>
+
+            <div className="home-greeting">
                     <p className="music-for-all">Music for everyone.</p>
-                    <p className="garbagio">Millions of songs no credit card needed.</p>
+                    <p className="millions">Millions of songs no credit card needed.</p>
+                    <Link to="/signup" className="get-started">GET STARTED</Link>
+            </div>
+
             </div>
             </div>
         )
