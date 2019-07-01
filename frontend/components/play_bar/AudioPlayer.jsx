@@ -1,6 +1,32 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { togglePlay } from '../../actions/song_actions';
 
-class DurationBar extends React.Component{
+const msp = state => {
+    const artist = state.entities.artists;
+    const songs = state.entities.songs;
+    if (state.ui.currentPlayingSong) {
+        const playing = state.ui.currentPlayingSong.playing || null;
+        return {
+            artist,
+            playing,
+            songs
+        };
+    } else {
+        return {
+            artist,
+            songs
+        }
+    }
+};
+
+const mdp = dispatch => {
+    debugger
+    return {
+        togglePlay: (boolean) => dispatch(togglePlay(boolean))
+    }
+}
+class AudioPlayer extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
@@ -10,13 +36,14 @@ class DurationBar extends React.Component{
         this.handleMusicBarUpdate = this.handleMusicBarUpdate.bind(this);
         this.calculateTimeInSeconds = this.calculateTimeInSeconds.bind(this);
         this.convertSecondsToMinutes = this.convertSecondsToMinutes.bind(this);
-        this.setPlaybackTime = this.setPlaybackTime.bind(this)
+        this.setPlaybackTime = this.setPlaybackTime.bind(this);
+        this.icon = "play";
+        this.handlePlay = this.handlePlay.bind(this);
+
     }
 
     componentDidMount() {
-        debugger
         if (this.props.song.playing) {
-            debugger
             this.audioRef.current.play();
         }
         else {
@@ -26,9 +53,7 @@ class DurationBar extends React.Component{
     }
 
     componentDidUpdate() {
-        debugger
         if (this.props.song.playing) {
-            debugger
             this.audioRef.current.play();
         }
         else {
@@ -41,19 +66,15 @@ class DurationBar extends React.Component{
     }
 
     handleMusicBarUpdate() {
-        debugger
-
         this.setState({
             currentTime: this.audioRef.current.currentTime,
         });
     }
     calculateTimeInSeconds() {
-        debugger
         let time = this.props.song.length.split(":");
         let minutes = parseInt(time[0]);
         let seconds = parseInt(time[1]);
         let timeInSeconds = minutes * 60 + seconds;
-        debugger
         return timeInSeconds;
     }
 
@@ -67,21 +88,64 @@ class DurationBar extends React.Component{
         else finalMinutes = `${finalMinutes}`;
 
         let finalTime = finalMinutes + finalSeconds;
-        debugger
-        return finalTime
+        return finalTime;
     }
 
     setPlaybackTime(e) {
-        debugger
             this.audioRef.current.currentTime = e.target.value;
             this.setState({ currentTime: e.target.value });
     }
+
+
+    handlePlay() {
+        debugger
+        let mp3 = document.getElementById(this.props.song.id);
+        debugger
+        if (mp3.paused) {
+            this.icon = "pause";
+            this.props.togglePlay(true);
+        } else {
+            debugger
+            this.icon = "play";
+            this.props.togglePlay(false);
+            debugger
+        }
+    }
+
     render(){
         const length = this.calculateTimeInSeconds();
-        const maxLength = this.convertSecondsToMinutes(length);
+        // const maxLength = this.convertSecondsToMinutes(length);
         let { currentTime } = this.state;
-        debugger
+        if (this.props.playing === true) {
+            this.icon = "pause";
+        } else {
+            this.icon = "play";
+        }
         return(
+            <>
+                <div className="playbar-controls">
+                    <div className="playbar-buttons">
+                        <button className="playbar-shuffle">
+                            <i className="fas fa-random"></i>
+                        </button>
+
+                        <button className="playbar-previous">
+                            <i className="fas fa-step-backward"></i>
+                        </button>
+
+                        <button id="play-button" className="playbar-play" onClick={this.handlePlay}>
+                            <i className={`far fa-${this.icon}-circle`}></i>
+                        </button>
+
+                        <button className="playbar-next">
+                            <i className="fas fa-step-forward"></i>
+                        </button>
+
+                        <button className="playbar-repaet">
+                            <i className="fas fa-redo-alt"></i>
+                        </button>
+                    </div>
+
                 <div className="music-time">
                     <p className="music-bar-time-left">{this.convertSecondsToMinutes(this.state.currentTime)}</p>
 
@@ -105,7 +169,9 @@ class DurationBar extends React.Component{
                     <audio src={this.props.song.mp3} ref={this.audioRef} id={this.props.song.id}></audio>
 
                 </div>
+                </div>
+            </>
         )}
 }
 
-export default DurationBar;
+export default connect(msp, mdp)(AudioPlayer);

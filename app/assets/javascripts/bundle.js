@@ -1005,10 +1005,10 @@ var mdp = function mdp(dispatch) {
 
 /***/ }),
 
-/***/ "./frontend/components/play_bar/duration_bar.jsx":
-/*!*******************************************************!*\
-  !*** ./frontend/components/play_bar/duration_bar.jsx ***!
-  \*******************************************************/
+/***/ "./frontend/components/play_bar/AudioPlayer.jsx":
+/*!******************************************************!*\
+  !*** ./frontend/components/play_bar/AudioPlayer.jsx ***!
+  \******************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1016,6 +1016,8 @@ var mdp = function mdp(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_song_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/song_actions */ "./frontend/actions/song_actions.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1036,17 +1038,47 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var DurationBar =
+
+
+var msp = function msp(state) {
+  var artist = state.entities.artists;
+  var songs = state.entities.songs;
+
+  if (state.ui.currentPlayingSong) {
+    var playing = state.ui.currentPlayingSong.playing || null;
+    return {
+      artist: artist,
+      playing: playing,
+      songs: songs
+    };
+  } else {
+    return {
+      artist: artist,
+      songs: songs
+    };
+  }
+};
+
+var mdp = function mdp(dispatch) {
+  debugger;
+  return {
+    togglePlay: function togglePlay(_boolean) {
+      return dispatch(Object(_actions_song_actions__WEBPACK_IMPORTED_MODULE_2__["togglePlay"])(_boolean));
+    }
+  };
+};
+
+var AudioPlayer =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits(DurationBar, _React$Component);
+  _inherits(AudioPlayer, _React$Component);
 
-  function DurationBar(props) {
+  function AudioPlayer(props) {
     var _this;
 
-    _classCallCheck(this, DurationBar);
+    _classCallCheck(this, AudioPlayer);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(DurationBar).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(AudioPlayer).call(this, props));
     _this.state = {
       currentTime: 0
     };
@@ -1055,16 +1087,15 @@ function (_React$Component) {
     _this.calculateTimeInSeconds = _this.calculateTimeInSeconds.bind(_assertThisInitialized(_this));
     _this.convertSecondsToMinutes = _this.convertSecondsToMinutes.bind(_assertThisInitialized(_this));
     _this.setPlaybackTime = _this.setPlaybackTime.bind(_assertThisInitialized(_this));
+    _this.icon = "play";
+    _this.handlePlay = _this.handlePlay.bind(_assertThisInitialized(_this));
     return _this;
   }
 
-  _createClass(DurationBar, [{
+  _createClass(AudioPlayer, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      debugger;
-
       if (this.props.song.playing) {
-        debugger;
         this.audioRef.current.play();
       } else {
         this.audioRef.current.pause();
@@ -1075,10 +1106,7 @@ function (_React$Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate() {
-      debugger;
-
       if (this.props.song.playing) {
-        debugger;
         this.audioRef.current.play();
       } else {
         this.audioRef.current.pause();
@@ -1092,7 +1120,6 @@ function (_React$Component) {
   }, {
     key: "handleMusicBarUpdate",
     value: function handleMusicBarUpdate() {
-      debugger;
       this.setState({
         currentTime: this.audioRef.current.currentTime
       });
@@ -1100,12 +1127,10 @@ function (_React$Component) {
   }, {
     key: "calculateTimeInSeconds",
     value: function calculateTimeInSeconds() {
-      debugger;
       var time = this.props.song.length.split(":");
       var minutes = parseInt(time[0]);
       var seconds = parseInt(time[1]);
       var timeInSeconds = minutes * 60 + seconds;
-      debugger;
       return timeInSeconds;
     }
   }, {
@@ -1117,26 +1142,73 @@ function (_React$Component) {
       var finalSeconds = seconds < 10 ? ":0".concat(seconds) : ":".concat(seconds);
       if (finalMinutes < 10) finalMinutes = "0".concat(finalMinutes);else finalMinutes = "".concat(finalMinutes);
       var finalTime = finalMinutes + finalSeconds;
-      debugger;
       return finalTime;
     }
   }, {
     key: "setPlaybackTime",
     value: function setPlaybackTime(e) {
-      debugger;
       this.audioRef.current.currentTime = e.target.value;
       this.setState({
         currentTime: e.target.value
       });
     }
   }, {
+    key: "handlePlay",
+    value: function handlePlay() {
+      debugger;
+      var mp3 = document.getElementById(this.props.song.id);
+      debugger;
+
+      if (mp3.paused) {
+        this.icon = "pause";
+        this.props.togglePlay(true);
+      } else {
+        debugger;
+        this.icon = "play";
+        this.props.togglePlay(false);
+        debugger;
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
-      var length = this.calculateTimeInSeconds();
-      var maxLength = this.convertSecondsToMinutes(length);
+      var length = this.calculateTimeInSeconds(); // const maxLength = this.convertSecondsToMinutes(length);
+
       var currentTime = this.state.currentTime;
-      debugger;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+
+      if (this.props.playing === true) {
+        this.icon = "pause";
+      } else {
+        this.icon = "play";
+      }
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "playbar-controls"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "playbar-buttons"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "playbar-shuffle"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-random"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "playbar-previous"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-step-backward"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        id: "play-button",
+        className: "playbar-play",
+        onClick: this.handlePlay
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "far fa-".concat(this.icon, "-circle")
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "playbar-next"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-step-forward"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "playbar-repaet"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-redo-alt"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "music-time"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "music-bar-time-left"
@@ -1167,14 +1239,14 @@ function (_React$Component) {
         src: this.props.song.mp3,
         ref: this.audioRef,
         id: this.props.song.id
-      }));
+      }))));
     }
   }]);
 
-  return DurationBar;
+  return AudioPlayer;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (DurationBar);
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(msp, mdp)(AudioPlayer));
 
 /***/ }),
 
@@ -1190,7 +1262,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _duration_bar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./duration_bar */ "./frontend/components/play_bar/duration_bar.jsx");
+/* harmony import */ var _AudioPlayer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AudioPlayer */ "./frontend/components/play_bar/AudioPlayer.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1201,9 +1273,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -1224,10 +1296,10 @@ function (_React$Component) {
     _classCallCheck(this, PlayBar);
 
     debugger;
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(PlayBar).call(this, props));
-    _this.handlePlay = _this.handlePlay.bind(_assertThisInitialized(_this));
-    _this.playStatus = _this.props.playStatus;
-    _this.icon = "play";
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(PlayBar).call(this, props)); // this.handlePlay = this.handlePlay.bind(this);
+
+    _this.playStatus = _this.props.playStatus; // this.icon = "play";
+
     return _this;
   }
 
@@ -1259,13 +1331,11 @@ function (_React$Component) {
       debugger;
       var currentPlayingSong = this.props.currentPlayingSong;
       var album = this.props.album;
-      var artist = this.props.artist;
-
-      if (this.props.playing === true) {
-        this.icon = "pause";
-      } else {
-        this.icon = "play";
-      }
+      var artist = this.props.artist; // if (this.props.playing === true) {
+      //     this.icon = "pause";
+      // } else {
+      //     this.icon = "play";
+      // }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "now-playing-bar"
@@ -1281,35 +1351,9 @@ function (_React$Component) {
       }, currentPlayingSong.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "artist-link",
         to: "/artists/".concat(artist.id)
-      }, artist.name))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "playbar-controls"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "playbar-buttons"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "playbar-shuffle"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-random"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "playbar-previous"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-step-backward"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        id: "play-button",
-        className: "playbar-play",
-        onClick: this.handlePlay
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "far fa-".concat(this.icon, "-circle")
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "playbar-next"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-step-forward"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "playbar-repaet"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-redo-alt"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_duration_bar__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }, artist.name))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AudioPlayer__WEBPACK_IMPORTED_MODULE_2__["default"], {
         song: this.props.currentPlayingSong
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "volume-control"
       })));
     }
@@ -1340,16 +1384,19 @@ __webpack_require__.r(__webpack_exports__);
 
 var msp = function msp(state) {
   var artist = state.entities.artists;
+  var songs = state.entities.songs;
 
   if (state.ui.currentPlayingSong) {
     var playing = state.ui.currentPlayingSong.playing || null;
     return {
       artist: artist,
-      playing: playing
+      playing: playing,
+      songs: songs
     };
   } else {
     return {
-      artist: artist
+      artist: artist,
+      songs: songs
     };
   }
 };
@@ -1358,9 +1405,6 @@ var mdp = function mdp(dispatch) {
   return {
     fetchSong: function fetchSong(songId) {
       return dispatch(Object(_actions_song_actions__WEBPACK_IMPORTED_MODULE_2__["fetchSong"])(songId));
-    },
-    togglePlay: function togglePlay(_boolean) {
-      return dispatch(Object(_actions_song_actions__WEBPACK_IMPORTED_MODULE_2__["togglePlay"])(_boolean));
     }
   };
 };
@@ -2695,7 +2739,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var configureStore = function configureStore() {
   var preloadedState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_1__["default"], preloadedState, Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_3__["default"]));
+  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_1__["default"], preloadedState, Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_3__["default"], redux_logger__WEBPACK_IMPORTED_MODULE_2___default.a));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (configureStore);
