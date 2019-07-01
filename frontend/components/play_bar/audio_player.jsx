@@ -1,31 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { togglePlay } from '../../actions/song_actions';
 
-const msp = state => {
-    const artist = state.entities.artists;
-    const songs = state.entities.songs;
-    if (state.ui.currentPlayingSong) {
-        const playing = state.ui.currentPlayingSong.playing || null;
-        return {
-            artist,
-            playing,
-            songs
-        };
-    } else {
-        return {
-            artist,
-            songs
-        }
-    }
-};
-
-const mdp = dispatch => {
-    debugger
-    return {
-        togglePlay: (boolean) => dispatch(togglePlay(boolean))
-    }
-}
 class AudioPlayer extends React.Component{
     constructor(props) {
         super(props);
@@ -96,25 +70,19 @@ class AudioPlayer extends React.Component{
             this.setState({ currentTime: e.target.value });
     }
 
-
     handlePlay() {
-        debugger
         let mp3 = document.getElementById(this.props.song.id);
-        debugger
         if (mp3.paused) {
             this.icon = "pause";
             this.props.togglePlay(true);
         } else {
-            debugger
             this.icon = "play";
             this.props.togglePlay(false);
-            debugger
         }
     }
 
     render(){
         const length = this.calculateTimeInSeconds();
-        // const maxLength = this.convertSecondsToMinutes(length);
         let { currentTime } = this.state;
         if (this.props.playing === true) {
             this.icon = "pause";
@@ -174,4 +142,4 @@ class AudioPlayer extends React.Component{
         )}
 }
 
-export default connect(msp, mdp)(AudioPlayer);
+export default AudioPlayer;
