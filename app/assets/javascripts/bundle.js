@@ -1097,6 +1097,7 @@ function (_React$Component) {
     _this.shuffle = _this.shuffle.bind(_assertThisInitialized(_this));
     _this.handlePlay = _this.handlePlay.bind(_assertThisInitialized(_this));
     _this.toggleShuffle = _this.toggleShuffle.bind(_assertThisInitialized(_this));
+    _this.toggleReplay = _this.toggleReplay.bind(_assertThisInitialized(_this));
     _this.songs = _this.props.songs;
     return _this;
   }
@@ -1157,6 +1158,23 @@ function (_React$Component) {
           shuffled: true
         });
         shuffleButton.style.color = '#1db954';
+      }
+    }
+  }, {
+    key: "toggleReplay",
+    value: function toggleReplay() {
+      var replayButton = document.getElementById("replay-button");
+
+      if (this.state.replay === true) {
+        this.setState({
+          replay: false
+        });
+        replayButton.style.color = "#b3b3b3";
+      } else {
+        this.setState({
+          replay: true
+        });
+        replayButton.style.color = '#1db954';
       }
     }
   }, {
@@ -1248,6 +1266,7 @@ function (_React$Component) {
         this.icon = "play";
       }
 
+      var replay = this.state.replay === false ? this.nextSong : this.prevSong;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "playbar-controls"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1275,7 +1294,9 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-step-forward"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "playbar-repaet"
+        id: "replay-button",
+        className: "playbar-repaet",
+        onClick: this.toggleReplay
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-redo-alt"
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1309,7 +1330,7 @@ function (_React$Component) {
         src: this.props.song.mp3,
         ref: this.audioRef,
         id: this.props.song.id,
-        onEnded: this.nextSong
+        onEnded: replay
       }))));
     }
   }]);

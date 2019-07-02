@@ -19,6 +19,7 @@ class AudioPlayer extends React.Component{
         this.shuffle = this.shuffle.bind(this)
         this.handlePlay = this.handlePlay.bind(this);
         this.toggleShuffle= this.toggleShuffle.bind(this);
+        this.toggleReplay = this.toggleReplay.bind(this);
         this.songs = this.props.songs;
     }
 
@@ -61,6 +62,17 @@ class AudioPlayer extends React.Component{
         }
     }
 
+    toggleReplay() {
+        let replayButton = document.getElementById("replay-button");
+        if (this.state.replay === true) {
+            this.setState({ replay: false });
+            replayButton.style.color = "#b3b3b3";
+        } else {
+            this.setState({ replay: true });
+            replayButton.style.color = '#1db954';
+
+        }
+    }
     convertSecondsToMinutes(sec){
         let minutes = Math.floor(sec / 60);
         let finalMinutes = minutes < 60 ? minutes : 0;
@@ -135,6 +147,7 @@ class AudioPlayer extends React.Component{
             this.icon = "play";
         }
         
+        const replay = (this.state.replay === false) ? this.nextSong : this.prevSong;
         return(
             <>
                 <div className="playbar-controls">
@@ -155,7 +168,7 @@ class AudioPlayer extends React.Component{
                             <i className="fas fa-step-forward"></i>
                         </button>
 
-                        <button className="playbar-repaet">
+                        <button id="replay-button" className="playbar-repaet" onClick={this.toggleReplay}>
                             <i className="fas fa-redo-alt"></i>
                         </button>
                     </div>
@@ -180,7 +193,7 @@ class AudioPlayer extends React.Component{
 
                     <p className="music-bar-time-right">{this.props.song.length}</p>
 
-                    <audio src={this.props.song.mp3} ref={this.audioRef} id={this.props.song.id} onEnded={this.nextSong}></audio>
+                    <audio src={this.props.song.mp3} ref={this.audioRef} id={this.props.song.id} onEnded={replay}></audio>
 
                 </div>
                 </div>
