@@ -4,35 +4,33 @@ class AudioPlayer extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            currentTime:0,
+            currentTime: 0,
+            shuffled: false,
+            replay: false,
         };
         this.audioRef = React.createRef();
         this.handleMusicBarUpdate = this.handleMusicBarUpdate.bind(this);
         this.calculateTimeInSeconds = this.calculateTimeInSeconds.bind(this);
         this.convertSecondsToMinutes = this.convertSecondsToMinutes.bind(this);
         this.setPlaybackTime = this.setPlaybackTime.bind(this);
+        this.prevSong = this.prevSong.bind(this);
+        this.nextSong = this.nextSong.bind(this);
         this.icon = "play";
+        this.shuffle = this.shuffle.bind(this)
         this.handlePlay = this.handlePlay.bind(this);
-
+        this.toggleShuffle= this.toggleShuffle.bind(this);
+        this.songs = this.props.songs;
     }
 
     componentDidMount() {
-        if (this.props.song.playing) {
-            this.audioRef.current.play();
-        }
-        else {
-            this.audioRef.current.pause();
-        }
+        if (this.props.song.playing) {this.audioRef.current.play();}
+        else {this.audioRef.current.pause();}
         this.timeInterval = setInterval(this.handleMusicBarUpdate, 400);
     }
 
     componentDidUpdate() {
-        if (this.props.song.playing) {
-            this.audioRef.current.play();
-        }
-        else {
-            this.audioRef.current.pause();
-        }
+        if (this.props.song.playing) {this.audioRef.current.play();}
+        else {this.audioRef.current.pause();}
     }
 
     componentWillUnmount() {
@@ -40,16 +38,27 @@ class AudioPlayer extends React.Component{
     }
 
     handleMusicBarUpdate() {
-        this.setState({
-            currentTime: this.audioRef.current.currentTime,
-        });
+        this.setState({currentTime: this.audioRef.current.currentTime});
     }
+
     calculateTimeInSeconds() {
         let time = this.props.song.length.split(":");
         let minutes = parseInt(time[0]);
         let seconds = parseInt(time[1]);
         let timeInSeconds = minutes * 60 + seconds;
         return timeInSeconds;
+    }
+
+    toggleShuffle() {
+        let shuffleButton = document.getElementById("shuffle-button");
+        if(this.state.shuffled === true) {
+            this.setState({shuffled : false});
+            shuffleButton.style.color = "#b3b3b3";
+        } else {
+            this.setState({shuffled : true});
+            shuffleButton.style.color = '#1db954';
+
+        }
     }
 
     convertSecondsToMinutes(sec){
@@ -81,23 +90,60 @@ class AudioPlayer extends React.Component{
         }
     }
 
+    shuffle(array){
+        for (let i = array.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+    prevSong() {
+        let songs = this.songs
+        const { song } = this.props;
+        debugger
+        if(this.state.currentTime > 3 && this.props.song.playing) {
+            this.props.fetchPrevSong(song.id).then(this.audioRef.current.currentTime = 0);
+            return
+        }
+        for (let i = songs.length-1; i >= 0; i--) {
+            if(songs[i].id === song.id) {
+                const prevSongId = (i === 0) ? songs[songs.length-1].id : songs[i-1].id;
+                this.props.fetchPrevSong(prevSongId);
+            }
+        }
+    }
+
+    nextSong() {
+        let songs = this.songs;
+        const {song} = this.props;
+        for (let i = 0; i < songs.length; i++) {
+            if(songs[i].id === song.id) {
+                const nextSongId = (i === songs.length -1) ? songs[0].id : songs[i+1].id;
+                this.props.fetchNextSong(nextSongId);
+            }
+        }
+    }
+
     render(){
+        this.songs = (this.state.shuffled === true) ? this.shuffle(this.props.songs) : this.props.songs;
         const length = this.calculateTimeInSeconds();
         let { currentTime } = this.state;
+      
         if (this.props.playing === true) {
             this.icon = "pause";
         } else {
             this.icon = "play";
         }
+        
         return(
             <>
                 <div className="playbar-controls">
                     <div className="playbar-buttons">
-                        <button className="playbar-shuffle">
+                        <button id="shuffle-button" className="playbar-shuffle" onClick={this.toggleShuffle}>
                             <i className="fas fa-random"></i>
                         </button>
 
-                        <button className="playbar-previous">
+                        <button className="playbar-previous" onClick={this.prevSong}>
                             <i className="fas fa-step-backward"></i>
                         </button>
 
@@ -105,7 +151,7 @@ class AudioPlayer extends React.Component{
                             <i className={`far fa-${this.icon}-circle`}></i>
                         </button>
 
-                        <button className="playbar-next">
+                        <button className="playbar-next" onClick={this.nextSong}>
                             <i className="fas fa-step-forward"></i>
                         </button>
 
@@ -134,7 +180,7 @@ class AudioPlayer extends React.Component{
 
                     <p className="music-bar-time-right">{this.props.song.length}</p>
 
-                    <audio src={this.props.song.mp3} ref={this.audioRef} id={this.props.song.id}></audio>
+                    <audio src={this.props.song.mp3} ref={this.audioRef} id={this.props.song.id} onEnded={this.nextSong}></audio>
 
                 </div>
                 </div>

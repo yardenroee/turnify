@@ -5,6 +5,8 @@ export const RECEIVE_ALBUM = "RECEIVE_ALBUM";
 export const RECEIVE_ALL_ALBUMS = "RECEIVE_ALL_ALBUMS";
 export const CLEAR_ALBUM_SONGS = "CLEAR_ALBUM_SONGS";
 export const TOGGLE_PLAY = "TOGGLE_PLAY";
+export const FETCH_NEXT_SONG = "FETCH_NEXT_SONG";
+export const FETCH_PREV_SONG = "FETCH_PREV_SONG";
 const receiveAllSongs = (songs) => {
     return {
         type: RECEIVE_ALL_SONGS,
@@ -45,6 +47,20 @@ export const togglePlay = (boolean) => {
     }
 }
 
+export const receiveNextSong = song => {
+    return {
+        type: FETCH_NEXT_SONG,
+        song
+    }
+}
+
+export const receivePrevSong = song => {
+    return {
+        type: FETCH_PREV_SONG,
+        song
+    }
+}
+
 export const fetchSong = (songId) => dispatch => (
  SongApiUtil.fetchSong(songId).then(song => dispatch(receiveSong(song)))
 )
@@ -64,3 +80,10 @@ export const fetchAlbum = (albumId) => dispatch => {
         return dispatch(receiveAlbum(album))})
 }
 
+export const fetchNextSong = (songId) => dispatch => {
+    return SongApiUtil.fetchSong(songId).then( (song)=> dispatch(receiveNextSong(song)))
+}
+
+export const fetchPrevSong = (songId) => dispatch => {
+    return SongApiUtil.fetchSong(songId).then((song) => dispatch(receivePrevSong(song)))
+}

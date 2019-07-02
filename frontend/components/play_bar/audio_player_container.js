@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 import AudioPlayer from './audio_player';
-import { togglePlay} from '../../actions/song_actions';
+import { fetchSong, fetchNextSong, fetchPrevSong, togglePlay} from '../../actions/song_actions';
 
 const msp = state => {
-    const songs = state.entities.songs;
+    const songs = Object.values(state.entities.songs);
     if (state.ui.currentPlayingSong) {
         const playing = state.ui.currentPlayingSong.playing || null;
         return {
@@ -20,6 +20,9 @@ const msp = state => {
 const mdp = dispatch => {
     return {
         togglePlay: (boolean) => dispatch(togglePlay(boolean)),
+        fetchNextSong: (songId) => dispatch(fetchNextSong(songId)),
+        fetchPrevSong: (songId) => dispatch(fetchPrevSong(songId)),
+        fetchSong: (songId) => dispatch(fetchSong(songId)),
     };
 };
 
