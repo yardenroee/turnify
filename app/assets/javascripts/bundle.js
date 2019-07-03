@@ -1082,10 +1082,16 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(AudioPlayer).call(this, props));
     _this.state = {
+      //playback
       currentTime: 0,
       shuffled: false,
       replay: false,
-      currentVolume: 1
+      //playback
+      //volume
+      volumeBeforeMute: 0.65,
+      currentVolume: 0.65,
+      muted: false //volumr
+
     }; //song reference
 
     _this.audioRef = react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef(); //playback controls
@@ -1270,13 +1276,28 @@ function (_React$Component) {
       this.setState({
         currentVolume: e.target.value
       });
+      this.setState({
+        volumeBeforeMute: e.target.value
+      });
     }
   }, {
     key: "toggleMute",
     value: function toggleMute() {
-      this.setState({
-        currentVolume: 0
-      });
+      if (this.state.muted === false) {
+        this.setState({
+          currentVolume: 0
+        });
+        this.setState({
+          muted: true
+        });
+      } else {
+        this.setState({
+          currentVolume: this.state.volumeBeforeMute
+        });
+        this.setState({
+          muted: false
+        });
+      }
     } //volume controls
 
   }, {
@@ -1289,7 +1310,18 @@ function (_React$Component) {
           currentVolume = _this$state.currentVolume;
       this.props.playing === true ? this.icon = "pause" : this.icon = "play";
       var replay = this.state.replay === false ? this.nextSong : this.prevSong;
-      var volumeIcon = currentVolume === 0 ? "mute" : "up";
+      var volumeIcon;
+
+      if (currentVolume === 0) {
+        volumeIcon = "mute";
+      } else if (currentVolume >= 0.65) {
+        volumeIcon = "up";
+      } else if (currentVolume >= 0.05 && currentVolume < 0.65) {
+        volumeIcon = "down";
+      } else if (currentVolume < 0.05) {
+        volumeIcon = "off";
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("audio", {
         src: this.props.song.mp3,
         ref: this.audioRef,

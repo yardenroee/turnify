@@ -4,10 +4,17 @@ class AudioPlayer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            //playback
             currentTime: 0,
             shuffled: false,
             replay: false,
-            currentVolume: 1,
+            //playback
+
+            //volume
+            volumeBeforeMute: 0.65,
+            currentVolume: 0.65,
+            muted:false
+            //volumr
         };
 
         //song reference
@@ -152,10 +159,18 @@ class AudioPlayer extends React.Component {
     setVolume(e) {
         this.audioRef.current.volume = e.target.value;
         this.setState({ currentVolume: e.target.value })
+        this.setState({ volumeBeforeMute: e.target.value })
+
     }
 
     toggleMute(){
-        this.setState({currentVolume : 0});
+        if(this.state.muted === false) {
+            this.setState({currentVolume : 0});
+            this.setState({muted : true});
+        } else {
+            this.setState({ currentVolume: this.state.volumeBeforeMute });
+            this.setState({ muted: false });
+        }
     }
     //volume controls
     render() {
@@ -164,7 +179,16 @@ class AudioPlayer extends React.Component {
         let { currentTime, currentVolume } = this.state;
         (this.props.playing === true) ? this.icon = "pause" : this.icon = "play";
         const replay = (this.state.replay === false) ? this.nextSong : this.prevSong;
-        let volumeIcon = (currentVolume === 0) ? "mute" : "up";
+        let volumeIcon;
+        if(currentVolume === 0) {
+            volumeIcon = "mute";
+        } else if (currentVolume >= 0.65) {
+            volumeIcon = "up";
+        } else if (currentVolume >= 0.05 && currentVolume < 0.65){
+            volumeIcon = "down";
+        } else if(currentVolume < 0.05){
+            volumeIcon = "off";
+        }
         return (
             <>
                 <audio src={this.props.song.mp3} ref={this.audioRef} id={this.props.song.id} onEnded={replay}></audio>
