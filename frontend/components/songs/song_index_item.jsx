@@ -35,7 +35,6 @@ class SongIndexItem extends React.Component{
     mouseEnter() {
             const { song } = this.props;
             if(this.props.currentPlayingSong.id === song.id && this.props.playing === true) {
-                debugger
                 let unit = document.getElementById(`unit-${song.id}`);
                 let pauseIcon = document.getElementById(`pause-${song.id}`);
                 let playingIcon = document.getElementById(`playing-${song.id}`);
@@ -87,11 +86,8 @@ class SongIndexItem extends React.Component{
     }
     render() {
         const {song} = this.props;
-        debugger
         if(this.props.currentPlayingSong !== null) {
-            debugger
             if(this.props.currentPlayingSong.id === song.id && this.props.playing === true) {
-                debugger
                 return (
                     <div onMouseEnter={this.mouseEnter} onMouseLeave={this.mouseLeave} id={`unit-${song.id}`} className="song-unit" onClick={this.onClick}>
 

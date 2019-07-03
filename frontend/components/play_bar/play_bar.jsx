@@ -27,12 +27,7 @@ class PlayBar extends React.Component {
                             <Link className="artist-link" to={`/artists/${artist.id}`}>{artist.name}</Link>
                         </div>
                     </div>
-                        <div>
-                            <AudioPlayer song={this.props.currentPlayingSong} />
-                        </div>
-                    <div className="volume-control">
-                    </div>
-
+                        <AudioPlayer song={this.props.currentPlayingSong} />
                 </div>
             </>
         )

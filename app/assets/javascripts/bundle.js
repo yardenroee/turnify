@@ -1084,9 +1084,12 @@ function (_React$Component) {
     _this.state = {
       currentTime: 0,
       shuffled: false,
-      replay: false
-    };
-    _this.audioRef = react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
+      replay: false,
+      currentVolume: 1
+    }; //song reference
+
+    _this.audioRef = react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef(); //playback controls
+
     _this.handleMusicBarUpdate = _this.handleMusicBarUpdate.bind(_assertThisInitialized(_this));
     _this.calculateTimeInSeconds = _this.calculateTimeInSeconds.bind(_assertThisInitialized(_this));
     _this.convertSecondsToMinutes = _this.convertSecondsToMinutes.bind(_assertThisInitialized(_this));
@@ -1097,10 +1100,14 @@ function (_React$Component) {
     _this.shuffle = _this.shuffle.bind(_assertThisInitialized(_this));
     _this.handlePlay = _this.handlePlay.bind(_assertThisInitialized(_this));
     _this.toggleShuffle = _this.toggleShuffle.bind(_assertThisInitialized(_this));
-    _this.toggleReplay = _this.toggleReplay.bind(_assertThisInitialized(_this));
+    _this.toggleReplay = _this.toggleReplay.bind(_assertThisInitialized(_this)); // volume controls
+
+    _this.setVolume = _this.setVolume.bind(_assertThisInitialized(_this));
+    _this.toggleMute = _this.toggleMute.bind(_assertThisInitialized(_this));
     _this.songs = _this.props.songs;
     return _this;
-  }
+  } //life cycle
+
 
   _createClass(AudioPlayer, [{
     key: "componentDidMount",
@@ -1126,7 +1133,9 @@ function (_React$Component) {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
       clearInterval(this.timeInterval);
-    }
+    } //life cycle
+    //playback controls
+
   }, {
     key: "handleMusicBarUpdate",
     value: function handleMusicBarUpdate() {
@@ -1226,7 +1235,6 @@ function (_React$Component) {
     value: function prevSong() {
       var songs = this.songs;
       var song = this.props.song;
-      debugger;
 
       if (this.state.currentTime > 3 && this.props.song.playing) {
         this.props.fetchPrevSong(song.id).then(this.audioRef.current.currentTime = 0);
@@ -1252,22 +1260,42 @@ function (_React$Component) {
           this.props.fetchNextSong(nextSongId);
         }
       }
+    } //playback controls
+    //volume controls
+
+  }, {
+    key: "setVolume",
+    value: function setVolume(e) {
+      this.audioRef.current.volume = e.target.value;
+      this.setState({
+        currentVolume: e.target.value
+      });
     }
+  }, {
+    key: "toggleMute",
+    value: function toggleMute() {
+      this.setState({
+        currentVolume: 0
+      });
+    } //volume controls
+
   }, {
     key: "render",
     value: function render() {
       this.songs = this.state.shuffled === true ? this.shuffle(this.props.songs) : this.props.songs;
       var length = this.calculateTimeInSeconds();
-      var currentTime = this.state.currentTime;
-
-      if (this.props.playing === true) {
-        this.icon = "pause";
-      } else {
-        this.icon = "play";
-      }
-
+      var _this$state = this.state,
+          currentTime = _this$state.currentTime,
+          currentVolume = _this$state.currentVolume;
+      this.props.playing === true ? this.icon = "pause" : this.icon = "play";
       var replay = this.state.replay === false ? this.nextSong : this.prevSong;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      var volumeIcon = currentVolume === 0 ? "mute" : "up";
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("audio", {
+        src: this.props.song.mp3,
+        ref: this.audioRef,
+        id: this.props.song.id,
+        onEnded: replay
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "playbar-controls"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "playbar-buttons"
@@ -1326,12 +1354,36 @@ function (_React$Component) {
         }
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "music-bar-time-right"
-      }, this.props.song.length), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("audio", {
-        src: this.props.song.mp3,
-        ref: this.audioRef,
-        id: this.props.song.id,
-        onEnded: replay
-      }))));
+      }, this.props.song.length))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "volume-bar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        id: "volume-button",
+        onClick: this.toggleMute
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-volume-".concat(volumeIcon)
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "volume-bar-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "range",
+        className: "volume-progress-bar",
+        min: "0",
+        max: "1",
+        step: "0.01",
+        onChange: this.setVolume,
+        id: ""
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "outer-volume-bar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "inner-volume-bar",
+        style: {
+          width: "".concat(100 * (currentVolume / 1), "%")
+        }
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "progress-ball-volume",
+        style: {
+          marginLeft: "".concat(100 * (currentVolume / 1), "%")
+        }
+      })))));
     }
   }]);
 
@@ -1466,10 +1518,8 @@ function (_React$Component) {
       }, currentPlayingSong.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "artist-link",
         to: "/artists/".concat(artist.id)
-      }, artist.name))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_audio_player_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }, artist.name))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_audio_player_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
         song: this.props.currentPlayingSong
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "volume-control"
       })));
     }
   }]);
@@ -2063,7 +2113,6 @@ function (_React$Component) {
       var song = this.props.song;
 
       if (this.props.currentPlayingSong.id === song.id && this.props.playing === true) {
-        debugger;
         var unit = document.getElementById("unit-".concat(song.id));
         var pauseIcon = document.getElementById("pause-".concat(song.id));
         var playingIcon = document.getElementById("playing-".concat(song.id));
@@ -2126,13 +2175,9 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var song = this.props.song;
-      debugger;
 
       if (this.props.currentPlayingSong !== null) {
-        debugger;
-
         if (this.props.currentPlayingSong.id === song.id && this.props.playing === true) {
-          debugger;
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             onMouseEnter: this.mouseEnter,
             onMouseLeave: this.mouseLeave,

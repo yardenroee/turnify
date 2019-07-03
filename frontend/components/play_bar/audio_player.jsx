@@ -1,14 +1,19 @@
 import React from 'react';
 
-class AudioPlayer extends React.Component{
+class AudioPlayer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             currentTime: 0,
             shuffled: false,
             replay: false,
+            currentVolume: 1,
         };
+
+        //song reference
         this.audioRef = React.createRef();
+
+        //playback controls
         this.handleMusicBarUpdate = this.handleMusicBarUpdate.bind(this);
         this.calculateTimeInSeconds = this.calculateTimeInSeconds.bind(this);
         this.convertSecondsToMinutes = this.convertSecondsToMinutes.bind(this);
@@ -18,28 +23,34 @@ class AudioPlayer extends React.Component{
         this.icon = "play";
         this.shuffle = this.shuffle.bind(this)
         this.handlePlay = this.handlePlay.bind(this);
-        this.toggleShuffle= this.toggleShuffle.bind(this);
+        this.toggleShuffle = this.toggleShuffle.bind(this);
         this.toggleReplay = this.toggleReplay.bind(this);
+
+        // volume controls
+        this.setVolume = this.setVolume.bind(this);
+        this.toggleMute = this.toggleMute.bind(this);
         this.songs = this.props.songs;
     }
-
+    //life cycle
     componentDidMount() {
-        if (this.props.song.playing) {this.audioRef.current.play();}
-        else {this.audioRef.current.pause();}
+        if (this.props.song.playing) { this.audioRef.current.play(); }
+        else { this.audioRef.current.pause(); }
         this.timeInterval = setInterval(this.handleMusicBarUpdate, 400);
     }
 
     componentDidUpdate() {
-        if (this.props.song.playing) {this.audioRef.current.play();}
-        else {this.audioRef.current.pause();}
+        if (this.props.song.playing) { this.audioRef.current.play(); }
+        else { this.audioRef.current.pause(); }
     }
 
     componentWillUnmount() {
         clearInterval(this.timeInterval);
     }
+    //life cycle
 
+    //playback controls
     handleMusicBarUpdate() {
-        this.setState({currentTime: this.audioRef.current.currentTime});
+        this.setState({ currentTime: this.audioRef.current.currentTime });
     }
 
     calculateTimeInSeconds() {
@@ -52,11 +63,11 @@ class AudioPlayer extends React.Component{
 
     toggleShuffle() {
         let shuffleButton = document.getElementById("shuffle-button");
-        if(this.state.shuffled === true) {
-            this.setState({shuffled : false});
+        if (this.state.shuffled === true) {
+            this.setState({ shuffled: false });
             shuffleButton.style.color = "#b3b3b3";
         } else {
-            this.setState({shuffled : true});
+            this.setState({ shuffled: true });
             shuffleButton.style.color = '#1db954';
 
         }
@@ -73,7 +84,7 @@ class AudioPlayer extends React.Component{
 
         }
     }
-    convertSecondsToMinutes(sec){
+    convertSecondsToMinutes(sec) {
         let minutes = Math.floor(sec / 60);
         let finalMinutes = minutes < 60 ? minutes : 0;
         const seconds = Math.floor(sec) % 60;
@@ -87,8 +98,8 @@ class AudioPlayer extends React.Component{
     }
 
     setPlaybackTime(e) {
-            this.audioRef.current.currentTime = e.target.value;
-            this.setState({ currentTime: e.target.value });
+        this.audioRef.current.currentTime = e.target.value;
+        this.setState({ currentTime: e.target.value });
     }
 
     handlePlay() {
@@ -102,7 +113,7 @@ class AudioPlayer extends React.Component{
         }
     }
 
-    shuffle(array){
+    shuffle(array) {
         for (let i = array.length - 1; i > 0; i--) {
             let j = Math.floor(Math.random() * (i + 1));
             [array[i], array[j]] = [array[j], array[i]];
@@ -112,14 +123,13 @@ class AudioPlayer extends React.Component{
     prevSong() {
         let songs = this.songs
         const { song } = this.props;
-        debugger
-        if(this.state.currentTime > 3 && this.props.song.playing) {
+        if (this.state.currentTime > 3 && this.props.song.playing) {
             this.props.fetchPrevSong(song.id).then(this.audioRef.current.currentTime = 0);
-            return
+            return;
         }
-        for (let i = songs.length-1; i >= 0; i--) {
-            if(songs[i].id === song.id) {
-                const prevSongId = (i === 0) ? songs[songs.length-1].id : songs[i-1].id;
+        for (let i = songs.length - 1; i >= 0; i--) {
+            if (songs[i].id === song.id) {
+                const prevSongId = (i === 0) ? songs[songs.length - 1].id : songs[i - 1].id;
                 this.props.fetchPrevSong(prevSongId);
             }
         }
@@ -127,29 +137,37 @@ class AudioPlayer extends React.Component{
 
     nextSong() {
         let songs = this.songs;
-        const {song} = this.props;
+        const { song } = this.props;
         for (let i = 0; i < songs.length; i++) {
-            if(songs[i].id === song.id) {
-                const nextSongId = (i === songs.length -1) ? songs[0].id : songs[i+1].id;
+            if (songs[i].id === song.id) {
+                const nextSongId = (i === songs.length - 1) ? songs[0].id : songs[i + 1].id;
                 this.props.fetchNextSong(nextSongId);
             }
         }
     }
+    //playback controls
 
-    render(){
+
+    //volume controls
+    setVolume(e) {
+        this.audioRef.current.volume = e.target.value;
+        this.setState({ currentVolume: e.target.value })
+    }
+
+    toggleMute(){
+        this.setState({currentVolume : 0});
+    }
+    //volume controls
+    render() {
         this.songs = (this.state.shuffled === true) ? this.shuffle(this.props.songs) : this.props.songs;
         const length = this.calculateTimeInSeconds();
-        let { currentTime } = this.state;
-      
-        if (this.props.playing === true) {
-            this.icon = "pause";
-        } else {
-            this.icon = "play";
-        }
-        
+        let { currentTime, currentVolume } = this.state;
+        (this.props.playing === true) ? this.icon = "pause" : this.icon = "play";
         const replay = (this.state.replay === false) ? this.nextSong : this.prevSong;
-        return(
+        let volumeIcon = (currentVolume === 0) ? "mute" : "up";
+        return (
             <>
+                <audio src={this.props.song.mp3} ref={this.audioRef} id={this.props.song.id} onEnded={replay}></audio>
                 <div className="playbar-controls">
                     <div className="playbar-buttons">
                         <button id="shuffle-button" className="playbar-shuffle" onClick={this.toggleShuffle}>
@@ -173,32 +191,48 @@ class AudioPlayer extends React.Component{
                         </button>
                     </div>
 
-                <div className="music-time">
-                    <p className="music-bar-time-left">{this.convertSecondsToMinutes(this.state.currentTime)}</p>
+                    <div className="music-time">
+                        <p className="music-bar-time-left">{this.convertSecondsToMinutes(this.state.currentTime)}</p>
 
-                    <div className="progress-bar">
-                        <input
-                            type="range"
-                            className="music-progress-bar"
-                            min="0"
-                            max={length}
-                            step="1"
-                            onChange={this.setPlaybackTime} />
+                        <div className="progress-bar">
+                            <input
+                                type="range"
+                                className="music-progress-bar"
+                                min="0"
+                                max={length}
+                                step="1"
+                                onChange={this.setPlaybackTime} />
 
-                        <div className="outer-music-bar">
-                            <div className="inner-music-bar" style={{ width: `${100 * (currentTime / length) || 0}%` }}></div> 
-                            <div className="progress-ball" style={{ marginLeft: `${100 * (currentTime / length) || 0}%` }}></div>
+                            <div className="outer-music-bar">
+                                <div className="inner-music-bar" style={{ width: `${100 * (currentTime / length) || 0}%` }}></div>
+                                <div className="progress-ball" style={{ marginLeft: `${100 * (currentTime / length) || 0}%` }}></div>
+                            </div>
                         </div>
+                        <p className="music-bar-time-right">{this.props.song.length}</p>
                     </div>
 
-                    <p className="music-bar-time-right">{this.props.song.length}</p>
-
-                    <audio src={this.props.song.mp3} ref={this.audioRef} id={this.props.song.id} onEnded={replay}></audio>
-
                 </div>
+                <div className="volume-bar">
+                    <button id="volume-button" onClick={this.toggleMute}>
+                        <i className={`fas fa-volume-${volumeIcon}`}></i>
+                    </button>
+                        <div className="volume-bar-wrapper">
+                        <input type="range"
+                            className="volume-progress-bar"
+                            min="0"
+                            max="1"
+                            step="0.01"
+                            onChange={this.setVolume}
+                            id="" />
+                    <div className="outer-volume-bar">
+                            <div className="inner-volume-bar" style={{ width: `${100 * (currentVolume / 1)}%` }}></div>
+                            <div className="progress-ball-volume" style={{ marginLeft: `${100 * (currentVolume / 1)}%` }}></div>
+                    </div>
+                        </div>
                 </div>
             </>
-        )}
+        )
+    }
 }
 
 export default AudioPlayer;

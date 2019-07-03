@@ -6,12 +6,14 @@
     align-items: center;
     position: sticky;
     top: 100vh;
+    width: -webkit-fill-available;
+    justify-content: space-between;
 }
 
 .now-playing {
     align-items: center;
     display: flex;
-    width: 450px;
+    width: 250px;
 }
 
 .playbar-cover {
@@ -105,7 +107,7 @@
         outline:  none;
     }
         &:hover{
-        transform: scale(1.1);
+        // transform: scale(1.1);
         transition-duration: 66ms;
         color: #fff;
     }
@@ -119,10 +121,11 @@
     margin-top: 4px;
     display: flex;
     flex-wrap: wrap-reverse;
+    width: 400px;
 
 }
 .music-progress-bar {
-  width: 400px;
+  width: 100%;
   cursor: pointer;
   background-color: transparent;
   color: transparent; 
@@ -138,7 +141,7 @@
 .outer-music-bar {
     width: 100%;
     background-color: rgb(204, 204, 204);
-    height: 2px;
+    height: 3px;
     border-radius: 55px;
 }
 
@@ -149,7 +152,7 @@
 
 .inner-music-bar {
   background-color: rgb(22, 246, 2);
-  height: 2px;
+  height: 3px;
     border-radius: 55px;
 }
 
@@ -200,4 +203,84 @@ justify-content: center;
   color: rgb(22, 246, 2);
   cursor: pointer;
 
+}
+
+// Volume range and button
+
+.volume-bar {
+float: right;
+min-width: 250px;
+    display: flex;
+    align-items: center;
+        justify-content: flex-end;
+
+}
+
+#volume-button {
+    background-color: Transparent;
+    font-size: 15px;
+    color: hsl(0, 0%, 70%);
+    border-color: transparent;
+    transition-duration: 50ms;
+        &:focus{
+        outline:  none;
+    }
+        &:hover{
+        // transform: scale(1.1);
+        transition-duration: 66ms;
+        color: #fff;
+    }
+}
+
+.volume-progress-bar{
+    width: 120px;
+    cursor: pointer;
+    background-color: transparent;
+    color: transparent;
+    -webkit-appearance: none;
+    height: 3px;
+    outline: 0;
+}
+
+.volume-progress-bar::-webkit-slider-thumb {
+  visibility: hidden;
+}
+
+.outer-volume-bar{
+    position: relative;
+    width: 120px;
+    background-color: rgb(204, 204, 204);
+    height: 3px;
+    border-radius: 55px;
+    z-index: -2;
+}
+
+.volume-bar-wrapper {
+    display: flex;
+        flex-flow: column-reverse;
+    margin-top: 3px;
+
+}
+
+.inner-volume-bar{
+    background-color: rgb(22, 246, 2);
+  height: 3px;
+    border-radius: 55px;
+}
+
+.progress-ball-volume{
+        position: relative;
+    bottom: 5px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgb(238, 238, 238);
+  margin: 0;
+  opacity: 0;
+  transition: opacity .2s;
+}
+
+.volume-bar:hover .progress-ball-volume {
+    opacity: 1;
+    border-radius: 55px;
 }
