@@ -6,7 +6,7 @@ class SearchBar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            searchVal : ""
+            searchVal: ""
         };
         this.handleSearch = this.handleSearch.bind(this);
         this.inputRef = React.createRef();
@@ -15,11 +15,11 @@ class SearchBar extends React.Component {
 
 
     handleSearch(e) {
-        if(this.state.searchVal === "") {
+        if (this.state.searchVal === "") {
             this.props.history.push("/search");
         }
-        this.setState({searchVal : e.target.value});
-        if(e.target.value === "") {
+        this.setState({ searchVal: e.target.value });
+        if (e.target.value === "") {
             this.props.clearSearch();
         }
         this.props.searchArtists(e.target.value);
@@ -28,8 +28,8 @@ class SearchBar extends React.Component {
     render() {
         let artistList;
         const artists = this.props.search;
-        if(artists.length > 0) {
-            artistList = artists.map((artist,index) => {
+        if (artists.length > 0) {
+            artistList = artists.map((artist, index) => {
                 return (
                     <li className="individual-artist" key={`${index}`}>
                         <ArtistIndexItem artist={artist} />
@@ -37,27 +37,28 @@ class SearchBar extends React.Component {
                 )
             })
         }
-        if(this.props.search[0] === undefined) {
+        if (this.props.search[0] === undefined) {
             var searchRender = <></>;
         } else {
-            var searchRender = <div className="search-res">
-                <h1 className="artists-header">
-                    Artists
+            var searchRender =
+                <div className="search-res">
+                    <h1 className="artists-header">
+                        Artists
                 </h1>
-                <div className="all-artists">
-                    {artistList}
+                    <div className="all-artists">
+                        {artistList}
+                    </div>
                 </div>
-            </div>
         }
-        return( 
+        return (
             <>
-            <SidebarContainer />
-            <div className="search-master">
-                <div className="search-bar">
-                        <input className="search-bar-text" type="text" placeholder="Start typing..." value={this.state.searchVal} onChange={this.handleSearch}/>
+                <SidebarContainer />
+                <div className="search-master">
+                    <div className="search-bar">
+                        <input className="search-bar-text" type="text" placeholder="Start typing..." value={this.state.searchVal} onChange={this.handleSearch} />
+                    </div>
+                    {searchRender}
                 </div>
-                   {searchRender}
-            </div>
             </>
         )
     }
