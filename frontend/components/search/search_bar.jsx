@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import SidebarContainer from '../sidebar/sidebar_container';
 import ArtistIndexItem from '../artist/artist_index_item';
 class SearchBar extends React.Component {
@@ -12,7 +11,6 @@ class SearchBar extends React.Component {
         this.inputRef = React.createRef();
 
     }
-
 
     handleSearch(e) {
         if (this.state.searchVal === "") {
@@ -37,8 +35,17 @@ class SearchBar extends React.Component {
                 )
             })
         }
-        if (this.props.search[0] === undefined) {
-            var searchRender = <></>;
+        if (this.props.search[0] === undefined && this.state.searchVal === "") {
+            var searchRender = <div className="search-before">
+                <h1 className="search-turnify">Search Turnify</h1>
+                <p className="search-line">Find your favorite playlists, artists, and albums.</p>
+            </div>;
+        } else if (this.props.search[0] === undefined && this.state.searchVal !== "") {
+            var searchRender = 
+            <div className="search-before">
+                <h1>{`No results found for "${this.state.searchVal}"`}</h1>
+                    <p>Please make sure your words are spelled correctly or use less or different keywords.</p>
+            </div>
         } else {
             var searchRender =
                 <div className="search-res">

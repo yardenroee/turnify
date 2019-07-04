@@ -38,3 +38,29 @@
     color: #fff;
     border-bottom: 1px solid transparent;
 }
+
+.search-before {
+    left: 230px;
+        display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 250px;
+    // margin: 0 auto;
+    color: #fff;
+    text-align: center;
+}
+
+.search-before h1 {
+    font-size: 33px;
+        line-height: 36px;
+    width: 85%;
+}
+
+.search-before p {
+    padding-top: 10px;
+    color: #B3B3B3;
+    letter-spacing: 0.05em;
+    width: 85%;
+    font-size: 14px;
+
+}

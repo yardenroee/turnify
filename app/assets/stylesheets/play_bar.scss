@@ -154,7 +154,7 @@
 
 .progress-ball {
   position: relative;
-    bottom: 7px;
+  bottom: 7px;
   width: 12px;
   height: 12px;
   border-radius: 50%;
@@ -239,12 +239,11 @@
   visibility: hidden;
 }
 
-
 .volume-bar-wrapper {
-    display: flex;
-    flex-flow: column-reverse;
-    margin-top: 3px;
-    width: 120px;
+  display: flex;
+  flex-flow: column-reverse;
+  margin-top: 3px;
+  width: 120px;
 }
 
 .outer-volume-bar {
@@ -263,8 +262,7 @@
 
 .progress-ball-volume {
   position: relative;
-    bottom: 7px;
-    // right: 10px;
+  bottom: 7px;
   width: 12px;
   height: 12px;
   border-radius: 50%;

@@ -1687,9 +1687,8 @@ var Root = function Root(_ref) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _sidebar_sidebar_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../sidebar/sidebar_container */ "./frontend/components/sidebar/sidebar_container.js");
-/* harmony import */ var _artist_artist_index_item__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../artist/artist_index_item */ "./frontend/components/artist/artist_index_item.jsx");
+/* harmony import */ var _sidebar_sidebar_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../sidebar/sidebar_container */ "./frontend/components/sidebar/sidebar_container.js");
+/* harmony import */ var _artist_artist_index_item__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../artist/artist_index_item */ "./frontend/components/artist/artist_index_item.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1707,7 +1706,6 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 
 
 
@@ -1760,14 +1758,24 @@ function (_React$Component) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
             className: "individual-artist",
             key: "".concat(index)
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_artist_artist_index_item__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_artist_artist_index_item__WEBPACK_IMPORTED_MODULE_2__["default"], {
             artist: artist
           }));
         });
       }
 
-      if (this.props.search[0] === undefined) {
-        var searchRender = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null);
+      if (this.props.search[0] === undefined && this.state.searchVal === "") {
+        var searchRender = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "search-before"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+          className: "search-turnify"
+        }, "Search Turnify"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "search-line"
+        }, "Find your favorite playlists, artists, and albums."));
+      } else if (this.props.search[0] === undefined && this.state.searchVal !== "") {
+        var searchRender = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "search-before"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "No results found for \"".concat(this.state.searchVal, "\"")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Please make sure your words are spelled correctly or use less or different keywords."));
       } else {
         var searchRender = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "search-res"
@@ -1778,7 +1786,7 @@ function (_React$Component) {
         }, artistList));
       }
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_sidebar_sidebar_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_sidebar_sidebar_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-master"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-bar"
