@@ -8,6 +8,7 @@ import AlbumContainer from './album/album_container';
 import AlbumShowContainer from './album/album_show_container';
 import ArtistShowContainer from './artist/artist_show_container';
 import ArtistIndexContainer from './artist/artist_index_container'
+import SearchBarContainer from './search/search_bar_container';
 const App = () => (
     <div>
         <Switch>
@@ -15,6 +16,7 @@ const App = () => (
         <ProtectedRoute path='/albums' component={AlbumContainer} />
         <ProtectedRoute path='/artists/:artistId' component={ArtistShowContainer} />
         <ProtectedRoute path='/artists' component={ArtistIndexContainer} />
+        <ProtectedRoute path='/search' component={SearchBarContainer} />
         </Switch>
 
         <Route exact path='/' component={SplashPageContainer} />

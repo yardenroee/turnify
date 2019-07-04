@@ -1,0 +1,39 @@
+.search-master{
+    background-color: rgb(8,8,8);
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.search-bar {
+    left: 230px;
+    right: 0;
+    position: fixed;
+    background-color: #282828;
+    padding: 26px;
+    top: 0;
+}
+
+.search-bar-text {
+    background-color: #282828;
+    padding-left: 30px;
+    width: 100%;
+    font-size: 36px;
+    line-height: 44px;
+    letter-spacing: -.005em;
+    font-weight: bold;
+    color: #fff;
+    text-transform: none;
+    caret-color: #1db954;
+}
+
+.artists-header {
+    top: 250px;
+    position: relative;
+    margin-left:250px;
+    font-size: 36px;
+    color: #fff;
+    border-bottom: 1px solid transparent;
+}
