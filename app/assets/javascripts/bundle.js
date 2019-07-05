@@ -1001,8 +1001,8 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var artist = {
-        id: '_',
-        name: '_'
+        id: '',
+        name: ''
       };
       var artistHeader;
 

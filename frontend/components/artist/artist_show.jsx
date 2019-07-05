@@ -18,12 +18,12 @@ class ArtistShow extends React.Component{
     }
 
     render() {
-        let artist = {id:'_', name:'_'};
+        let artist = {id:'', name:''};
         let artistHeader;
         if (this.props.artist) {
             artist = this.props.artist;
             artistHeader = {
-                backgroundImage: `url(${artist.header})`
+                backgroundImage: `url(${artist.header})`,
             }
         }
 

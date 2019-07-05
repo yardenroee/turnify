@@ -2,8 +2,12 @@
     // display: flex;
     background-color: #1e1c1c;
     height: 100vh;
+    overflow-y: scroll;
 }
 
+.artist-show-parent {
+    position: sticky;
+}
 .artist-show-header{
     height: 450px;
     background-size: cover;

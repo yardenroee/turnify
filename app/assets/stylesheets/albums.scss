@@ -4,8 +4,9 @@
 
 .album-index-master{
      background-image: linear-gradient(to bottom, #130835, #1c1b1a);
-     height: 100vh;
-     
+    height: 100vh;
+        overflow-y: scroll;
+
 }
 .all-albums {
      display: flex;
