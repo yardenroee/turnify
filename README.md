@@ -1,24 +1,5 @@
-# README
+# Turnify
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Turnify was inspired by Spotify, a music streaming service allowing users stream music, search for artists and albums, create playlists, and follow other users.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+![alt text](https://yardenroee.github.io/images/pic01.jpg)
