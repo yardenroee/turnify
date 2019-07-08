@@ -9,7 +9,7 @@ require 'open-uri'
 
 ####### ALBUM 1 #######
 demo_user = User.create(username:"demo", password:"123456")
-
+playlist1 = Playlist.create(title: "trashy gorlz holla", user_id:1)
 artist1 = Artist.create(name:"Garbagiana")
 
 album1= Album.create(title:"Trashy", release_year: 2015, artist_id: artist1.id)
@@ -27,7 +27,7 @@ song5 = Song.create(album_id: album1.id, artist_id: artist1.id, title: "Dumpster
 artist1.photo.attach(io: open("https://turnifyappprod.s3.amazonaws.com/garbagiana.jpg"), filename:"garbagiana.jpg")
 album1.photo.attach(io: open("https://turnifyappprod.s3.amazonaws.com/garbagiana-cover.jpg"), filename:"trashy-cover.jpg")
 artist1.header.attach(io: open("https://turnifyappprod.s3.amazonaws.com/garbagiana.jpg"), filename:"garbagiana-hover.jpg")
-
+playlist1.photo.attach(io: open("https://turnifyappprod.s3.amazonaws.com/garbagiana.jpg"), filename:"garbagiana.jpg")
 song1.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/01.+Lady+Vengeance.mp3"), filename:"song1.mp3")
 song2.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/02.+Death+Grip+Ft.+Bbymutha.mp3"), filename:"song2.mp3")
 song3.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/03.+Sugarfalls.mp3"), filename:"song3.mp3")

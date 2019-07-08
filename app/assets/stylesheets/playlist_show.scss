@@ -1,0 +1,230 @@
+.playlist-show-page {
+  height: 100vh;
+  display: flex;
+  font-family: Circular, Helvetica, Arial, sans-serif;
+  background-image: linear-gradient(rgb(32, 2, 32), rgb(4, 17, 53));
+}
+
+.playlist-show-left {
+  text-align: center;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+}
+
+.playlist-show-images {
+  height: 270px;
+  width: 270px;
+  margin-left: 280px;
+  margin-top: 40px;
+  box-shadow: 0px 0px 9px 3px #00000066;
+}
+
+.play-button {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  background-color: #1db954;
+  padding: 11px 44px;
+  border-radius: 500px;
+  cursor: pointer;
+  color: white;
+  border: none;
+  transition: all 0.3s ease-in-out;
+  outline: 0;
+}
+
+.play-button:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.playlist-show-info {
+  margin-left: 280px;
+  list-style-type: none;
+  color: white;
+}
+
+.playlist-show-title {
+  font-size: 25px;
+  font-weight: bold;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.playlist-show-username {
+  font-size: 13px;
+  padding-bottom: 25px;
+}
+
+.playlist-show-length {
+    font-size: 11px;
+    line-height: 16px;
+    letter-spacing: .015em;
+    font-weight: var(--glue-font-weight-normal);
+    color: #b3b3b3;
+    text-transform: uppercase;
+    letter-spacing: .16em;
+    color: #fff;
+    opacity: .6;
+    padding-top:25px;
+    padding-bottom: 70px;
+}
+
+.playlist-show-songs {
+  margin-top: 60px;
+  margin-left: 100px;
+  /* border: 1px solid red; */
+  list-style-type: none;
+  color: white;
+  width: 67%;
+  padding-right: 100px;
+}
+
+.delete-button {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  background-color: #1db954;
+  padding: 11px 44px;
+  border-radius: 500px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease-in-out;
+  outline: 0;
+  color: rgb(230, 224, 224);
+}
+
+.delete-button:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.playlist-show-each-song {
+  /* border: 1px solid blue; */
+  /* width: 100%; */
+  margin-bottom: 25px;
+  display: flex;
+  width: 100%;
+}
+
+.playlist-show-song-title {
+  font-size: 18px;
+  margin-bottom: 5px;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.playlist-show-song-title:hover {
+  color: rgb(12, 196, 12);
+}
+
+.playlist-show-song-artist-album {
+  display: flex;
+  align-items: center;
+}
+
+.playlist-show-song-artist {
+  color: rgb(172, 172, 172);
+  padding-right: 5px;
+  font-size: 14px;
+  letter-spacing: 0.03em;
+}
+
+.playlist-show-song-separator {
+  color: white;
+  font-size: 18px;
+  padding: 5px;
+}
+
+.playlist-show-song-album {
+  color: rgb(172, 172, 172);
+  /* padding-left: 5px; */
+  font-size: 14px;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.playlist-show-song-album:hover {
+  color: rgb(12, 196, 12);
+}
+
+.playlist-music-note {
+  padding-right: 15px;
+}
+
+.hamburger-icon-flex {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.hamburger-menu {
+  position: relative;
+}
+
+.drop-down-menuu {
+  margin: 0px;
+  padding: 0px;
+  /* background-color: rgb(41, 214, 18); */
+  /* width: 100%; */
+  /* width: 185px; */
+  height: 100px;
+  /* position: fixed; */
+  visibility: hidden;
+  height: 35px;
+  /* margin-left: 400px; */
+}
+
+.active-dropdownn {
+  visibility: visible;
+  /* width: 100%; */
+  /* width: 200px; */
+}
+
+.drop-down-actionss {
+  width: 120px;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  /* margin-right: 50px; */
+  cursor: pointer;
+  /* background-color: rgb(143, 148, 143); */
+  /* color: black; */
+  font-family: Circular, Helvetica, Arial, sans-serif;
+  text-align: center;
+  border: 1px solid white;
+  color: rgb(196, 189, 189);
+}
+
+.drop-down-actionss:hover {
+  color: rgb(255, 249, 249);
+}
+
+.delete-song-text {
+  padding: 2px;
+}
+
+.box {
+  margin: 1rem auto 1rem auto;
+  max-width: 300px;
+  border: 1px solid #555;
+  border-radius: 4px;
+  padding: 1rem 1.5rem;
+  font-size: 1.5rem;
+}
+
+.js-is-hidden {
+  display: none;
+}
+
+.playlist-show-song-artistt {
+  text-decoration: none;
+}
+
+.playlist-show-song-artistt:hover {
+  color: rgb(12, 196, 12);
+}

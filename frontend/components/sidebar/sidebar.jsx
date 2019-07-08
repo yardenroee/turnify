@@ -29,7 +29,7 @@ class Sidebar extends React.Component{
                 <div className="sidebar-playlists">
                     <Link to='/'><i className="fas fa-grip-lines-vertical"></i></Link>
                     &nbsp;
-                    <Link className="library-link" to='/'>Your Library</Link>
+                    <Link className="library-link" to='/playlists'>Your Library</Link>
                 </div>
             </div>
         )

@@ -23,6 +23,7 @@ class Api::PlaylistsController < ApplicationController
 
         else
             render json: @playlist.errors.full_messages, status: 422
+        end
     end
 
     def destroy

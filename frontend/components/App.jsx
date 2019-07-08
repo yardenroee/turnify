@@ -9,6 +9,10 @@ import AlbumShowContainer from './album/album_show_container';
 import ArtistShowContainer from './artist/artist_show_container';
 import ArtistIndexContainer from './artist/artist_index_container'
 import SearchBarContainer from './search/search_bar_container';
+import PlaylistIndexContainer from './playlists/playlist_index_container';
+import PlaylistShowContainer from './playlists/playlist_show_containers';
+import Modal from './modal/modal';
+
 const App = () => (
     <div>
         <Switch>
@@ -17,7 +21,12 @@ const App = () => (
         <ProtectedRoute path='/artists/:artistId' component={ArtistShowContainer} />
         <ProtectedRoute path='/artists' component={ArtistIndexContainer} />
         <ProtectedRoute path='/search' component={SearchBarContainer} />
+        <ProtectedRoute path="/playlists/:playlistId" component={PlaylistShowContainer} />
+        <ProtectedRoute path="/playlists" component={PlaylistIndexContainer} />
+
         </Switch>
+        <Route path="/" component={Modal} />
+
 
         <Route exact path='/' component={SplashPageContainer} />
         
