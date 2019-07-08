@@ -1,4 +1,19 @@
 class Api::PlaylistsController < ApplicationController
+    def index
+        @playlists = Playlist
+        .includes(:songs)
+        .includes(:user)
+        .with_attached_photo
+    end
+
+    def show
+        @playlist = Playlist.find_by(id: params[:id])
+         if @playlist
+          render "api/playlists/show"
+         else
+         render json: ['Playlist cannot be found']
+        end
+    end
 
     def create
         @playlist = Playlist.new(playlist_params)
@@ -10,15 +25,14 @@ class Api::PlaylistsController < ApplicationController
             render json: @playlist.errors.full_messages, status: 422
     end
 
-  def destroy
-    @playlist = Playlist.find(params[:id])
-
-    if @playlist 
-      @playlist.destroy 
-    else
-      render json: ['Playlist cannot be found']
+    def destroy
+      @playlist = Playlist.find(params[:id])
+        if @playlist 
+            @playlist.destroy 
+        else
+            render json: ['Playlist cannot be found']
+        end
     end
-  end
 
     private
 
