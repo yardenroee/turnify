@@ -1,22 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SidebarContainer from '../sidebar/sidebar_container';
+import TopNav from '../top_nav/top_nav'
+
 class PlaylistIndex extends React.Component {
     constructor(props) {
-        debugger
         super(props);
         this.currentUser = this.props.currentUser;
-        debugger
         this.state = {
             loading: true,
         }
-        debugger
     }
 
     componentDidMount() {
-        debugger
         this.props.fetchPlaylists();
-        debugger
     }
 
     render() {
@@ -55,7 +52,8 @@ class PlaylistIndex extends React.Component {
             <>
             <div className="playlist-page">
             <SidebarContainer />
-                <button onClick={this.props.openModal} className="new-playlist-button">NEW PLAYLISTNEW PLAYLISTNEW PLAYLISTNEW PLAYLIST</button>
+                    <TopNav />\
+                <button onClick={this.props.openModal} className="new-playlist-button">NEW PLAYLIST</button>
                 <ul className="all-playlist-boxes">
                     {playlists}
                 </ul>

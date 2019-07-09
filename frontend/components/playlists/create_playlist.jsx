@@ -44,7 +44,7 @@ class CreatePlaylist extends React.Component {
                     <form onSubmit={this.handleCreate}>
                         <input
                             className="playlist-name-bar"
-                            placeholder="Start typing..."
+                            placeholder="New Playlist"
                             value={this.state.title}
                             onChange={this.update('title')} />
                     </form>

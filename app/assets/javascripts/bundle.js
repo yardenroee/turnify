@@ -2084,7 +2084,7 @@ function (_React$Component) {
         onSubmit: this.handleCreate
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "playlist-name-bar",
-        placeholder: "Start typing...",
+        placeholder: "New Playlist",
         value: this.state.title,
         onChange: this.update('title')
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2137,6 +2137,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _sidebar_sidebar_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../sidebar/sidebar_container */ "./frontend/components/sidebar/sidebar_container.js");
+/* harmony import */ var _top_nav_top_nav__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../top_nav/top_nav */ "./frontend/components/top_nav/top_nav.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2159,6 +2160,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var PlaylistIndex =
 /*#__PURE__*/
 function (_React$Component) {
@@ -2169,23 +2171,18 @@ function (_React$Component) {
 
     _classCallCheck(this, PlaylistIndex);
 
-    debugger;
     _this = _possibleConstructorReturn(this, _getPrototypeOf(PlaylistIndex).call(this, props));
     _this.currentUser = _this.props.currentUser;
-    debugger;
     _this.state = {
       loading: true
     };
-    debugger;
     return _this;
   }
 
   _createClass(PlaylistIndex, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      debugger;
       this.props.fetchPlaylists();
-      debugger;
     }
   }, {
     key: "render",
@@ -2226,10 +2223,10 @@ function (_React$Component) {
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "playlist-page"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_sidebar_sidebar_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_sidebar_sidebar_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_top_nav_top_nav__WEBPACK_IMPORTED_MODULE_3__["default"], null), "\\", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.props.openModal,
         className: "new-playlist-button"
-      }, "NEW PLAYLISTNEW PLAYLISTNEW PLAYLISTNEW PLAYLIST"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }, "NEW PLAYLIST"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "all-playlist-boxes"
       }, playlists)));
     }
@@ -3785,7 +3782,10 @@ var TopNav = function TopNav() {
   }, "ALBUMS"), "\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "top-nav-artists",
     to: "/artists"
-  }, "ARTISTS")), "\xA0")));
+  }, "ARTISTS"), "\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    className: "top-nav-playlists",
+    to: "/playlists"
+  }, "PLAYLISTS"), "\xA0"), "\xA0")));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (TopNav);

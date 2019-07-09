@@ -3,6 +3,27 @@
   background-image: linear-gradient(rgb(22, 7, 55), rgb(8, 8, 9));
 }
 
+.new-playlist-button{
+      color: #fff;
+    background-color: #1db954;
+    padding: 8px 27px;
+    border-radius: 500px;
+    min-width: 130px;
+    outline: 0;
+    border: none;
+        transition-duration: 50ms;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    letter-spacing: .16em;
+}
+
+.new-playlist-button:hover{
+    transform: scale(1.1);
+    background-color: #1ed760;
+    color: #fff;
+}
+
 .all-playlist-boxes {
   display: flex;
   flex-wrap: wrap;
