@@ -1,4 +1,5 @@
 .playlist-page {
+  margin-left: 230px;
   min-height: 100vh;
   background-image: linear-gradient(rgb(22, 7, 55), rgb(8, 8, 9));
 }
@@ -16,6 +17,8 @@
     display: block;
     margin: 0 auto;
     letter-spacing: .16em;
+        margin-top: 20px;
+
 }
 
 .new-playlist-button:hover{

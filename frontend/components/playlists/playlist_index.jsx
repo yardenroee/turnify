@@ -50,9 +50,9 @@ class PlaylistIndex extends React.Component {
 
         return (
             <>
-            <div className="playlist-page">
             <SidebarContainer />
-                    <TopNav />\
+            <div className="playlist-page">
+                    <TopNav />
                 <button onClick={this.props.openModal} className="new-playlist-button">NEW PLAYLIST</button>
                 <ul className="all-playlist-boxes">
                     {playlists}

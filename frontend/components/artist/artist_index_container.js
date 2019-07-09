@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import ArtistIndex from './artist_index';
-import {fetchAllArtists} from '../../actions/artist_actions'
+import {fetchAllArtists} from '../../actions/artist_actions';
+import { openModal, closeModal } from '../../actions/modal_actions'
 const msp = state => {
     const artists = Object.values(state.entities.artists);
     return {
@@ -11,7 +12,9 @@ const msp = state => {
 
 const mdp = dispatch => {
     return {
-        fetchAllArtists : ()=> dispatch(fetchAllArtists())
+        fetchAllArtists : ()=> dispatch(fetchAllArtists()),
+        closeModal: () => dispatch(closeModal()),
+        openModal: () => dispatch(openModal('createplaylist')),
     }
 }
 

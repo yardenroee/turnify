@@ -32,6 +32,7 @@ class Album extends React.Component{
                  <SidebarContainer />
                 <div className="album-index-master">
                     <TopNav />
+                        <button onClick={this.props.openModal} className="new-playlist-button">NEW PLAYLIST</button>
                     <div>
                         <ul className='all-albums'>
                             {albumList}

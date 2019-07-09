@@ -6,14 +6,14 @@
      background-image: linear-gradient(to bottom, #130835, #1c1b1a);
     height: 100vh;
         overflow-y: scroll;
-
+     margin-left:230px;
 }
 .all-albums {
      display: flex;
      flex-direction: row;
      justify-content: flex-start;
      flex-wrap: wrap;
-     margin-left: 260px;
+     margin-left: 25px;
 }
 
 .individual-album {

@@ -29,6 +29,7 @@ class ArtistIndex extends React.Component{
                     <SidebarContainer />
                     <div className="artist-index-master">
                         <TopNav />
+                        <button onClick={this.props.openModal} className="new-playlist-button">NEW PLAYLIST</button>
                         <div className="all-artists">
                             {artistList}
                         </div>
