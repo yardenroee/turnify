@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class Api::PlaylistsController < ApplicationController
     def index
         @playlists = Playlist
@@ -18,6 +20,8 @@ class Api::PlaylistsController < ApplicationController
     def create
         @playlist = Playlist.new(playlist_params)
         @playlist.user_id = current_user.id
+        @playlist.photo.attach(io: open("https://turnifyappprod.s3.amazonaws.com/GUS-Wrm2.png"), filename:"GUS-Wrm2.png")
+
         if @playlist.save
             render "api/playlists/show"
 

@@ -12,7 +12,6 @@
     background-image: linear-gradient(to bottom, #4d1c02, #1c1b1a);
     height: 100vh;
     overflow-y: scroll;
-
 }
 
 .album-title-show {
@@ -32,9 +31,22 @@
     margin-top: 10px;
 }
 
+.block1 {
+    display: flex;
+    justify-content: space-between;
+        align-items: baseline;
+
+}
+
+
+.block2 {
+    display: flex;
+    justify-content: space-between;
+}
+
 .all-songs{
-    position: absolute;
-    display: block;
+    display: flex;
+    justify-content: space-between;
     height: 450px;
     width: -webkit-fill-available;
     margin-left: 580px;
@@ -44,33 +56,35 @@
 
 .song-unit{
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: space-between;
     height: 45px;
     padding: 10px 10px;
     transition: background-color 0.5s ease-out;
     &:hover {
         background-color: rgba(0,0,0,.3);
     }
+    width: calc(98vw - 600px)
 }
 
 
 .song-title{
+    // min-width:200px;
     font-family: Circular, Helvetica, Arial, sans-serif;
     color: #f2f1f1;
-    font-size: 16px;
+    font-size: 14px;
     letter-spacing: 0.5px;
     height: 100%;
     width: 100%;
-    margin-top: 25px;
 }
 
 .song-length {
     font-family: Circular, Helvetica, Arial, sans-serif;
     color: #8d8d8d;
-    font-size: 16px;
+    font-size: 14px;
     letter-spacing: 1px;
     font-weight: 200;
+    float: left;
 }
 
 .music-note{ 
@@ -98,17 +112,18 @@
 .green-song-title{
     font-family: Circular, Helvetica, Arial, sans-serif;
     color: #1ed760;
-    font-size: 16px;
+    font-size: 14px;
     letter-spacing: 0.5px;
     height: 100%;
     width: 100%;
     margin-top: 25px;
+    min-width: 192px;
 }
 
 .green-song-length {
     font-family: Circular, Helvetica, Arial, sans-serif;
     color: #1ed760;
-    font-size: 16px;
+    font-size: 14px;
     letter-spacing: 1px;
     font-weight: 200;
 }

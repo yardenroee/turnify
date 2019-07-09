@@ -34,3 +34,13 @@ export const deletePlaylistSong = playlistSong => {
         res => dispatch(removePlaylistSong(res))
     );
 };
+
+export const addPlaylistSong = (playlistId, songId) => {
+    return dispatch => {
+
+        return APIUtil.addPlaylistSong(playlistId, songId).then(payload => {
+
+            return dispatch(receivePlaylistSong(payload));
+        });
+    };
+};

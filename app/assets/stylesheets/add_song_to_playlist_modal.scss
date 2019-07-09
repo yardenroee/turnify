@@ -1,0 +1,58 @@
+.playlist-song-modal-images {
+  width: 200px;
+  height: 200px;
+  margin: 15px;
+  padding: 15px;
+}
+.drop-down-button {
+    background-color:transparent;
+    border-color: transparent;
+  right: 48px;
+  z-index: 100;
+  font-size: 15px;
+  color: #fff;
+  letter-spacing: 0.016em;
+}
+.drop-down-menu {
+  background-color: rgb(60, 60, 60);
+    position: absolute;
+    visibility: hidden;
+    height: 50px;
+    width: 70px;
+    margin-left: 525px;
+    border: 1px solid white;
+  right: 48px;
+  top: 25px;
+  z-index: 100;
+}
+
+.all-playlists-for-song {
+  width: 250px;
+}
+
+.playlist-modal {
+  text-align: center;
+}
+
+.modal-child > div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.playlist-modal-image-title {
+  cursor: pointer;
+}
+
+.playlist-song-modal-title {
+  color: rgb(3, 210, 3);
+
+}
+
+.playlist-song-image-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+}

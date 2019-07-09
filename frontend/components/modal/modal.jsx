@@ -3,10 +3,7 @@ import { connect } from 'react-redux';
 import { closeModal } from '../../actions/modal_actions';
 
 import CreatePlaylist from '../playlists/create_playlist';
-
-// import AddPlaylistSong from '../songs/add_playlist_song';
-
-
+import AddPlaylistSong from '../playlists/add_playlist_song';
 
 function Modal({ modal, optional_props, closeModal }) {
 

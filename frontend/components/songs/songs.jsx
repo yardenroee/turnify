@@ -4,27 +4,7 @@ import PlayBarContainer from '../../components/play_bar/play_bar_container';
 class Songs extends React.Component {
     constructor(props) {
         super(props);
-        this.playStatus = "play";
-        this.togglePlay = this.togglePlay.bind(this);
         this.fetchCurrentPlayingSong = this.fetchCurrentPlayingSong.bind(this);
-        this.onClick = this.onClick.bind(this);
-    }
-
-    onClick() {
-        setTimeout(this.togglePlay, 100);
-    }
-
-    togglePlay() {
-        let status = this.playStatus;
-        let mp3 = document.getElementById(this.props.currentPlayingSong.id);
-        if (status === "play" && mp3) {
-            status = "pause";
-            this.props.togglePlay(true);
-        } else if (status === "pause") {
-            status = "play";
-            this.props.togglePlay(false);
-        }
-        this.playStatus = status;
     }
 
     componentDidMount() {
@@ -46,7 +26,7 @@ class Songs extends React.Component {
         if (songs.length > 0) {
             const songList = songs.map((song, index) => {
                 return (
-                    <li className="individual-song" key={index} onClick={this.onClick}>
+                    <li className="individual-song">
                         <SongIndexItem song={song} />
                     </li>
                 )
