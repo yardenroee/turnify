@@ -160,17 +160,20 @@ class AudioPlayer extends React.Component {
         this.audioRef.current.volume = e.target.value;
         this.setState({ currentVolume: e.target.value })
         this.setState({ volumeBeforeMute: e.target.value })
-
     }
 
     toggleMute(){
+        debugger
         if(this.state.muted === false) {
             this.setState({currentVolume : 0});
             this.setState({muted : true});
+            this.audioRef.current.volume = 0;
         } else {
             this.setState({ currentVolume: this.state.volumeBeforeMute });
             this.setState({ muted: false });
+            this.audioRef.current.volume = this.state.volumeBeforeMute;
         }
+        debugger
     }
     //volume controls
     render() {

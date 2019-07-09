@@ -1663,6 +1663,8 @@ function (_React$Component) {
   }, {
     key: "toggleMute",
     value: function toggleMute() {
+      debugger;
+
       if (this.state.muted === false) {
         this.setState({
           currentVolume: 0
@@ -1670,6 +1672,7 @@ function (_React$Component) {
         this.setState({
           muted: true
         });
+        this.audioRef.current.volume = 0;
       } else {
         this.setState({
           currentVolume: this.state.volumeBeforeMute
@@ -1677,7 +1680,10 @@ function (_React$Component) {
         this.setState({
           muted: false
         });
+        this.audioRef.current.volume = this.state.volumeBeforeMute;
       }
+
+      debugger;
     } //volume controls
 
   }, {
