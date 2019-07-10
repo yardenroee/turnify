@@ -27,7 +27,7 @@ class Songs extends React.Component {
             const songList = songs.map((song, index) => {
                 return (
                     <li className="individual-song">
-                        <SongIndexItem song={song} />
+                        <SongIndexItem key={song.id} song={song} />
                     </li>
                 )
             })
@@ -38,7 +38,7 @@ class Songs extends React.Component {
                             {songList}
                         </ul>
                     </div>
-                    <PlayBarContainer playStatus={this.playStatus} currentPlayingSong={this.props.currentPlayingSong} album={this.props.album} />
+                    <PlayBarContainer currentPlayingSong={this.props.currentPlayingSong} album={this.props.album} />
                 </>
             )
         } else {

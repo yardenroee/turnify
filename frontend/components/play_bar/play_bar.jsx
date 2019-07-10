@@ -11,9 +11,7 @@ class PlayBar extends React.Component {
     }
 
     render() {
-        const { currentPlayingSong } = this.props;
-        const { album } = this.props;
-        const { artist } = this.props;
+        const { currentPlayingSong, album, artist } = this.props;
         return (
             <>
                 <div className="now-playing-bar">

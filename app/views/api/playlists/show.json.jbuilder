@@ -8,10 +8,10 @@ end
 json.songs do 
   @playlist.songs.each do |song|
     json.set! song.id do 
-      json.extract! song, :id, :title, :album_id, :artist
+      json.extract! song, :id, :title, :album_id, :artist, :length
       json.artist song.artist.name
       json.artist_id song.artist.id
       json.album song.album.title
     end
   end
-end 
+end  

@@ -13,7 +13,7 @@ export const receiveAllPlaylists = (playlists) => {
 }
 
 export const receivePlaylist = (data) => {
-
+    debugger
     return {
         type: RECEIVE_PLAYLIST,
         data,

@@ -7,7 +7,7 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import AlbumContainer from './album/album_container';
 import AlbumShowContainer from './album/album_show_container';
 import ArtistShowContainer from './artist/artist_show_container';
-import ArtistIndexContainer from './artist/artist_index_container'
+import ArtistIndexContainer from './artist/artist_index_container';
 import SearchBarContainer from './search/search_bar_container';
 import PlaylistIndexContainer from './playlists/playlist_index_container';
 import PlaylistShowContainer from './playlists/playlist_show_containers';

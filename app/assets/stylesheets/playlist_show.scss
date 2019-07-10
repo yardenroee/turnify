@@ -1,11 +1,11 @@
 .playlist-show-page {
   height: 100vh;
-  display: flex;
   font-family: Circular, Helvetica, Arial, sans-serif;
   background-image: linear-gradient(rgb(32, 2, 32), rgb(4, 17, 53));
 }
 
 .playlist-show-left {
+  float: left;
   text-align: center;
   flex-direction: column;
   display: flex;
@@ -68,7 +68,7 @@
     color: #fff;
     opacity: .6;
     padding-top:25px;
-    padding-bottom: 70px;
+    padding-bottom: 35px;
 }
 
 .playlist-show-songs {
@@ -227,4 +227,17 @@
 
 .playlist-show-song-artistt:hover {
   color: rgb(12, 196, 12);
+}
+
+
+.playlist-all-songs{
+    display: flex;
+    align-items: flex-start;
+    width: auto;
+    // width: -webkit-fill-available;
+flex-direction: column;
+    justify-content: flex-end;
+        margin-left: 580px;
+    padding-top: 40px;
+    margin-right: 50px;
 }

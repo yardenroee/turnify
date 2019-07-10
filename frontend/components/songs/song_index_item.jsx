@@ -14,7 +14,7 @@ const mdp = dispatch => {
 };
 
 const msp = (state) => {
-    const currentPlayingSong = state.ui.currentPlayingSong;
+    const currentPlayingSong = state.ui.currentPlayingSong || Object.values(state.entities.songs)[0];
     if (currentPlayingSong !== null) {
         const playing = currentPlayingSong.playing || null;
         return {
@@ -72,27 +72,39 @@ class SongIndexItem extends React.Component {
     }
 
     mouseEnterSong() {
+        debugger
         const { song } = this.props;
+        debugger
         this.setState({mouseOnSong:true});
+        debugger
         if (this.props.currentPlayingSong.id === song.id && this.props.playing === true) {
+            debugger
             let unit = document.getElementById(`unit-${song.id}`);
+            debugger
             let pauseIcon = document.getElementById(`pause-${song.id}`);
+            debugger
             let playingIcon = document.getElementById(`playing-${song.id}`);
+            debugger
             unit.addEventListener("mouseenter", () => {
                 playingIcon.style.display = "none";
                 pauseIcon.style.display = "inline";
                 return;
             });
         } else {
+            debugger
             let unit = document.getElementById(`unit-${song.id}`);
+            debugger
             let playIcon = document.getElementById(`play-${song.id}`);
+            debugger
             let noteIcon = document.getElementById(`note-${song.id}`);
+            debugger
             unit.addEventListener("mouseenter", () => {
                 noteIcon.style.display = "none";
                 playIcon.style.display = "inline";
                 return;
             });
         }
+        debugger
     }
 
     mouseLeaveSong() {
@@ -151,14 +163,16 @@ class SongIndexItem extends React.Component {
         this.currentSong = song;
     }
     render() {
+        debugger
         const { song } = this.props;
         const options = this.state.optionsClicked === true ? "active-dropdown" : "";
-
+        debugger
         if (this.props.currentPlayingSong !== null) {
+            debugger
             if (this.props.currentPlayingSong.id === song.id && this.props.playing === true) {
                 return (
                     <div onMouseEnter={this.mouseEnterSong} onMouseLeave={this.mouseLeaveSong} id={`unit-${song.id}`} className="song-unit" onClick={this.onClick}>
-
+                        <div className="block1">
                         <div id={`pause-${song.id}`} className="green-pause-icon">
                             <i className="far fa-pause-circle"></i>
                         </div>
@@ -169,18 +183,19 @@ class SongIndexItem extends React.Component {
 
                         <p id={song.title} className="green-song-title">{song.title}</p>
                         &nbsp;
+                        </div>
 
+
+                        <div className="block2">
                         <button onMouseEnter={this.mouseEnterDots} onMouseLeave={this.mouseLeaveDots} className="drop-down-button" style={{ position: "relative" }}>
-                            <i
-                                onClick={this.handleDropdown}
+                            <i onClick={this.handleDropdown}
                                 id={`dots-${song.id}`}
                                 className="fas fa-ellipsis-h">
                             </i>
 
                             <div className={`drop-down-menu ${options} artist-box-position`}>
                                 <ul className="drop-down-actions">
-                                    <li
-                                        className={`add-song-text${this.props.song.id}`}
+                                    <div className={`add-song-text`}
                                         onClick={
                                             () => {
                                                 this.props.openModal("addplaylistsong",
@@ -189,17 +204,18 @@ class SongIndexItem extends React.Component {
                                                     });
                                                 this.setState({ optionsClicked: !this.state.optionsClicked });
                                             }}
-                                    >Add to Playlist</li>
+                                    >Add to Playlist</div>
                                 </ul>
                             </div>
                         </button>
 
                 <p className="green-song-length">{song.length}</p>
+                        </div>
                     </div>
                 )
             }
         }
-
+        debugger
         return (
             <div onMouseEnter={this.mouseEnterSong} onMouseLeave={this.mouseLeaveSong} id={`unit-${song.id}`} className="song-unit" onClick={this.onClick}>
                 <div className="block1">
@@ -224,8 +240,7 @@ class SongIndexItem extends React.Component {
 
                     <div className={`drop-down-menu ${options} artist-box-position`}>
                         <ul className="drop-down-actions">
-                            <li
-                                className={`add-song-text${this.props.song.id}`}
+                            <div className={`add-song-text`}
                                 onClick={
                                     () => {
                                         this.props.openModal("addplaylistsong",
@@ -234,7 +249,7 @@ class SongIndexItem extends React.Component {
                                             });
                                         this.setState({ optionsClicked: !this.state.optionsClicked });
                                     }}
-                            >Add to Playlist</li>
+                            >Add to Playlist</div>
                         </ul>
                     </div>
                 </button>
