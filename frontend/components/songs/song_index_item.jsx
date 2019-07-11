@@ -72,39 +72,27 @@ class SongIndexItem extends React.Component {
     }
 
     mouseEnterSong() {
-        debugger
         const { song } = this.props;
-        debugger
         this.setState({mouseOnSong:true});
-        debugger
         if (this.props.currentPlayingSong.id === song.id && this.props.playing === true) {
-            debugger
             let unit = document.getElementById(`unit-${song.id}`);
-            debugger
             let pauseIcon = document.getElementById(`pause-${song.id}`);
-            debugger
             let playingIcon = document.getElementById(`playing-${song.id}`);
-            debugger
             unit.addEventListener("mouseenter", () => {
                 playingIcon.style.display = "none";
                 pauseIcon.style.display = "inline";
                 return;
             });
         } else {
-            debugger
             let unit = document.getElementById(`unit-${song.id}`);
-            debugger
             let playIcon = document.getElementById(`play-${song.id}`);
-            debugger
             let noteIcon = document.getElementById(`note-${song.id}`);
-            debugger
             unit.addEventListener("mouseenter", () => {
                 noteIcon.style.display = "none";
                 playIcon.style.display = "inline";
                 return;
             });
         }
-        debugger
     }
 
     mouseLeaveSong() {
@@ -163,12 +151,9 @@ class SongIndexItem extends React.Component {
         this.currentSong = song;
     }
     render() {
-        debugger
         const { song } = this.props;
         const options = this.state.optionsClicked === true ? "active-dropdown" : "";
-        debugger
         if (this.props.currentPlayingSong !== null) {
-            debugger
             if (this.props.currentPlayingSong.id === song.id && this.props.playing === true) {
                 return (
                     <div onMouseEnter={this.mouseEnterSong} onMouseLeave={this.mouseLeaveSong} id={`unit-${song.id}`} className="song-unit" onClick={this.onClick}>
@@ -215,7 +200,6 @@ class SongIndexItem extends React.Component {
                 )
             }
         }
-        debugger
         return (
             <div onMouseEnter={this.mouseEnterSong} onMouseLeave={this.mouseLeaveSong} id={`unit-${song.id}`} className="song-unit" onClick={this.onClick}>
                 <div className="block1">

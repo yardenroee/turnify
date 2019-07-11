@@ -274,7 +274,6 @@ var receiveAllPlaylists = function receiveAllPlaylists(playlists) {
   };
 };
 var receivePlaylist = function receivePlaylist(data) {
-  debugger;
   return {
     type: RECEIVE_PLAYLIST,
     data: data
@@ -1696,8 +1695,6 @@ function (_React$Component) {
   }, {
     key: "toggleMute",
     value: function toggleMute() {
-      debugger;
-
       if (this.state.muted === false) {
         this.setState({
           currentVolume: 0
@@ -1715,8 +1712,6 @@ function (_React$Component) {
         });
         this.audioRef.current.volume = this.state.volumeBeforeMute;
       }
-
-      debugger;
     } //volume controls
 
   }, {
@@ -1947,13 +1942,11 @@ function (_React$Component) {
   _createClass(PlayBar, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      debugger;
       this.props.fetchSong(this.props.currentPlayingSong.id);
     }
   }, {
     key: "render",
     value: function render() {
-      debugger;
       var _this$props = this.props,
           currentPlayingSong = _this$props.currentPlayingSong,
           album = _this$props.album,
@@ -2296,7 +2289,6 @@ function (_React$Component) {
 
     _classCallCheck(this, CreatePlaylist);
 
-    debugger;
     _this = _possibleConstructorReturn(this, _getPrototypeOf(CreatePlaylist).call(this, props));
     _this.state = {
       title: ''
@@ -2611,12 +2603,6 @@ function (_React$Component) {
   _createClass(PlaylistShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      debugger;
-      this.props.fetchPlaylist(this.props.match.params.playlistId);
-    }
-  }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate() {
       this.props.fetchPlaylist(this.props.match.params.playlistId);
     }
   }, {
@@ -2638,7 +2624,6 @@ function (_React$Component) {
         return null;
       }
 
-      debugger;
       return this.props.songs.map(function (song) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_songs_song_index_item__WEBPACK_IMPORTED_MODULE_2__["default"], {
           key: song.id,
@@ -2747,14 +2732,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var msp = function msp(state, ownProps) {
-  debugger;
   var playlist = state.entities.playlists[ownProps.match.params.playlistId];
   var songs = playlist ? Object.values(state.entities.songs).filter(function (song) {
     return playlist.song_ids.includes(song.id);
   }) : [];
   var currentPlayingSong = state.ui.currentPlayingSong || songs[0]; // TODO CHANGE TO FIRST PLAYLIST SONG
 
-  debugger;
   return {
     playlist: playlist,
     currentUser: state.entities.users[state.session.currentUserId],
@@ -3564,37 +3547,25 @@ function (_React$Component) {
   }, {
     key: "mouseEnterSong",
     value: function mouseEnterSong() {
-      debugger;
       var song = this.props.song;
-      debugger;
       this.setState({
         mouseOnSong: true
       });
-      debugger;
 
       if (this.props.currentPlayingSong.id === song.id && this.props.playing === true) {
-        debugger;
         var unit = document.getElementById("unit-".concat(song.id));
-        debugger;
         var pauseIcon = document.getElementById("pause-".concat(song.id));
-        debugger;
         var playingIcon = document.getElementById("playing-".concat(song.id));
-        debugger;
         unit.addEventListener("mouseenter", function () {
           playingIcon.style.display = "none";
           pauseIcon.style.display = "inline";
           return;
         });
       } else {
-        debugger;
-
         var _unit = document.getElementById("unit-".concat(song.id));
 
-        debugger;
         var playIcon = document.getElementById("play-".concat(song.id));
-        debugger;
         var noteIcon = document.getElementById("note-".concat(song.id));
-        debugger;
 
         _unit.addEventListener("mouseenter", function () {
           noteIcon.style.display = "none";
@@ -3602,8 +3573,6 @@ function (_React$Component) {
           return;
         });
       }
-
-      debugger;
     }
   }, {
     key: "mouseLeaveSong",
@@ -3691,14 +3660,10 @@ function (_React$Component) {
     value: function render() {
       var _this5 = this;
 
-      debugger;
       var song = this.props.song;
       var options = this.state.optionsClicked === true ? "active-dropdown" : "";
-      debugger;
 
       if (this.props.currentPlayingSong !== null) {
-        debugger;
-
         if (this.props.currentPlayingSong.id === song.id && this.props.playing === true) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             onMouseEnter: this.mouseEnterSong,
@@ -3755,7 +3720,6 @@ function (_React$Component) {
         }
       }
 
-      debugger;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         onMouseEnter: this.mouseEnterSong,
         onMouseLeave: this.mouseLeaveSong,
@@ -4338,7 +4302,6 @@ var playlistReducer = function playlistReducer() {
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(state);
   var newState;
-  debugger;
 
   switch (action.type) {
     case _actions_playlist_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_ALL_PLAYLISTS"]:
@@ -4404,7 +4367,6 @@ __webpack_require__.r(__webpack_exports__);
   var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(oldState);
-  debugger;
 
   switch (action.type) {
     case _actions_search_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_SEARCHES"]:

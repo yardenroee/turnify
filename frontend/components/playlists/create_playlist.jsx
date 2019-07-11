@@ -6,7 +6,6 @@ import { withRouter } from 'react-router';
 
 class CreatePlaylist extends React.Component {
     constructor(props) {
-        debugger
         super(props);
         this.state = {
             title: ''

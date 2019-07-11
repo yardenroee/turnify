@@ -4,7 +4,7 @@ import { RECEIVE_ALL_PLAYLISTS, RECEIVE_PLAYLIST, REMOVE_PLAYLIST } from '../act
 const playlistReducer = (state = {}, action) => {
     Object.freeze(state);
     let newState;
-    debugger
+    
     switch (action.type) {
         case RECEIVE_ALL_PLAYLISTS:
             return merge({}, state, action.playlists);

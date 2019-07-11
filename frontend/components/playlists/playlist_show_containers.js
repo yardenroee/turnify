@@ -6,11 +6,9 @@ import { fetchPlayingSong } from '../../actions/current_song_actions';
 import { deletePlaylistSong } from '../../actions/playlist_song_actions';
 
 const msp = (state, ownProps) => {
-    debugger
     const playlist = state.entities.playlists[ownProps.match.params.playlistId];
     const songs = playlist ? Object.values(state.entities.songs).filter(song => playlist.song_ids.includes(song.id)) : []
     const currentPlayingSong = state.ui.currentPlayingSong || songs[0]; // TODO CHANGE TO FIRST PLAYLIST SONG
-    debugger
     return {
         playlist: playlist,
         currentUser: state.entities.users[state.session.currentUserId],

@@ -163,7 +163,6 @@ class AudioPlayer extends React.Component {
     }
 
     toggleMute(){
-        debugger
         if(this.state.muted === false) {
             this.setState({currentVolume : 0});
             this.setState({muted : true});
@@ -173,7 +172,6 @@ class AudioPlayer extends React.Component {
             this.setState({ muted: false });
             this.audioRef.current.volume = this.state.volumeBeforeMute;
         }
-        debugger
     }
     //volume controls
     render() {

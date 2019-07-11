@@ -14,11 +14,6 @@ class PlaylistShow extends React.Component {
     }
 
     componentDidMount() {
-        debugger
-        this.props.fetchPlaylist(this.props.match.params.playlistId);
-    }
-
-    componentDidUpdate(){
         this.props.fetchPlaylist(this.props.match.params.playlistId);
     }
 
@@ -32,7 +27,6 @@ class PlaylistShow extends React.Component {
     playlistSongs() {
 
         if (this.props.songs.length < 1 || !this.props.playlist.song_ids) { return null; }
-        debugger
         return this.props.songs.map((song) => {
             return <SongIndexItem key={song.id} song={song} playlistId={this.props.playlist.id} />
         })
