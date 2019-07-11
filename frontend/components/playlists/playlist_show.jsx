@@ -18,6 +18,10 @@ class PlaylistShow extends React.Component {
         this.props.fetchPlaylist(this.props.match.params.playlistId);
     }
 
+    componentDidUpdate(){
+        this.props.fetchPlaylist(this.props.match.params.playlistId);
+    }
+
     handleSubmit(e) {
         e.preventDefault();
 
@@ -36,7 +40,39 @@ class PlaylistShow extends React.Component {
 
     render() {
         if (!this.props.playlist) return null;
+        if(this.props.songs.length === 0){
+            return (
+                <>
+                    <SideBarContainer />
+                    <div>
+                        <div className="playlist-show-page">
+                            <div className="playlist-show-left">
+                                <img className="playlist-show-images" src={this.props.playlist.photo} />
+                                <ul className="playlist-show-info">
+                                    <li className="playlist-show-title">{this.props.playlist.title}</li>
+                                    <li className="playlist-show-username">{this.props.currentUser.username}</li>
+                                    <button
+                                        onClick={() => {
+                                            this.props.fetchPlayingSong(this.props.songs[0].id)
+                                        }}
+                                        className="play-button">Play</button>
+                                    <li className="playlist-show-length">{this.props.songs.length} Songs</li>
 
+                                    <form onSubmit={this.handleSubmit}>
+                                        < button
+                                            className="delete-button">
+                                            Delete Playlist</button >
+                                    </form>
+                                </ul>
+                            </div>
+                            <div className="playlist-all-songs">
+                                {this.playlistSongs()}
+                            </div>
+                        </div>
+                    </div>
+                </>
+            )
+        }
 
         return (
             <>

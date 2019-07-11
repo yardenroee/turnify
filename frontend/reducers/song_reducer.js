@@ -7,8 +7,11 @@ export default (oldState = {}, action) => {
         case RECEIVE_ALL_SONGS: 
         return action.songs;
         case RECEIVE_PLAYLIST:
-            debugger
-            return merge({}, oldState, action.data.songs);
+            if(action.data.songs !== undefined){
+                return action.data.songs;
+            } else {
+                return oldState;
+            }
         default:
             return oldState;
     }

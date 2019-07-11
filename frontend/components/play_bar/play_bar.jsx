@@ -7,10 +7,12 @@ class PlayBar extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchSong(this.props.currentPlayingSong.id);
+            debugger
+            this.props.fetchSong(this.props.currentPlayingSong.id);
     }
 
     render() {
+        debugger
         const { currentPlayingSong, album, artist } = this.props;
         return (
             <>

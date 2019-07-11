@@ -1947,11 +1947,13 @@ function (_React$Component) {
   _createClass(PlayBar, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      debugger;
       this.props.fetchSong(this.props.currentPlayingSong.id);
     }
   }, {
     key: "render",
     value: function render() {
+      debugger;
       var _this$props = this.props,
           currentPlayingSong = _this$props.currentPlayingSong,
           album = _this$props.album,
@@ -2613,6 +2615,11 @@ function (_React$Component) {
       this.props.fetchPlaylist(this.props.match.params.playlistId);
     }
   }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      this.props.fetchPlaylist(this.props.match.params.playlistId);
+    }
+  }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       var _this2 = this;
@@ -2646,6 +2653,37 @@ function (_React$Component) {
       var _this4 = this;
 
       if (!this.props.playlist) return null;
+
+      if (this.props.songs.length === 0) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_sidebar_sidebar_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "playlist-show-page"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "playlist-show-left"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "playlist-show-images",
+          src: this.props.playlist.photo
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+          className: "playlist-show-info"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "playlist-show-title"
+        }, this.props.playlist.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "playlist-show-username"
+        }, this.props.currentUser.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          onClick: function onClick() {
+            _this4.props.fetchPlayingSong(_this4.props.songs[0].id);
+          },
+          className: "play-button"
+        }, "Play"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "playlist-show-length"
+        }, this.props.songs.length, " Songs"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+          onSubmit: this.handleSubmit
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "delete-button"
+        }, "Delete Playlist")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "playlist-all-songs"
+        }, this.playlistSongs()))));
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_sidebar_sidebar_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "playlist-show-page"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -4488,8 +4526,11 @@ __webpack_require__.r(__webpack_exports__);
       return action.songs;
 
     case _actions_playlist_actions__WEBPACK_IMPORTED_MODULE_2__["RECEIVE_PLAYLIST"]:
-      debugger;
-      return Object(lodash__WEBPACK_IMPORTED_MODULE_1__["merge"])({}, oldState, action.data.songs);
+      if (action.data.songs !== undefined) {
+        return action.data.songs;
+      } else {
+        return oldState;
+      }
 
     default:
       return oldState;
