@@ -7,7 +7,7 @@ const msp = (state) => {
     debugger
     if(state.ui.currentPlayingSong) {
         debugger
-        const currentPlayingSong = state.ui.currentPlayingSong
+        const currentPlayingSong = state.ui.currentPlayingSong;
         const album = state.entities.albums[state.ui.currentPlayingSong.album_id];
         const artist = state.entities.artists[state.ui.currentPlayingSong.artist_id];
         return {

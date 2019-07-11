@@ -13,7 +13,6 @@ class AlbumShow extends React.Component{
     }
 
     componentWillMount(){
-        
         this.props.fetchAlbum(this.props.match.params.albumId);
     }
     componentDidUpdate(prevProps){
@@ -21,10 +20,6 @@ class AlbumShow extends React.Component{
             this.props.fetchAlbum(this.props.match.params.albumId);
         }
     }
-
-    // componentWillUnmount() {
-    //     this.props.clearAlbumSongs();
-    // }
 
     render(){
         let album = {id:'_', photo:'_', title:'_'};

@@ -983,10 +983,7 @@ function (_React$Component) {
       if (prevProps.match.params.albumId != this.props.match.params.albumId) {
         this.props.fetchAlbum(this.props.match.params.albumId);
       }
-    } // componentWillUnmount() {
-    //     this.props.clearAlbumSongs();
-    // }
-
+    }
   }, {
     key: "render",
     value: function render() {
@@ -4137,7 +4134,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_artist_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/artist_actions */ "./frontend/actions/artist_actions.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _actions_playlist_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../actions/playlist_actions */ "./frontend/actions/playlist_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -4145,6 +4144,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
+  debugger;
 
   switch (action.type) {
     case _actions_song_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALBUM"]:
@@ -4156,6 +4156,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     case _actions_artist_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_ARTIST"]:
       debugger;
       return Object(lodash__WEBPACK_IMPORTED_MODULE_2__["merge"])({}, oldState, action.albums);
+
+    case _actions_playlist_actions__WEBPACK_IMPORTED_MODULE_3__["RECEIVE_PLAYLIST"]:
+      return Object(lodash__WEBPACK_IMPORTED_MODULE_2__["merge"])({}, oldState, action.data.albums);
 
     default:
       return oldState;
@@ -4177,7 +4180,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_song_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/song_actions */ "./frontend/actions/song_actions.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _actions_playlist_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../actions/playlist_actions */ "./frontend/actions/playlist_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -4186,18 +4191,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(oldState);
+  debugger;
 
   switch (action.type) {
     case _actions_song_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_ALBUM"]:
-      debugger;
       return Object(lodash__WEBPACK_IMPORTED_MODULE_2__["merge"])({}, oldState, _defineProperty({}, action.artist.id, action.artist));
 
     case _actions_artist_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_ARTISTS"]:
       return action.artists;
 
     case _actions_artist_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ARTIST"]:
-      debugger;
       return Object(lodash__WEBPACK_IMPORTED_MODULE_2__["merge"])({}, oldState, _defineProperty({}, action.artist.id, action.artist));
+
+    case _actions_playlist_actions__WEBPACK_IMPORTED_MODULE_3__["RECEIVE_PLAYLIST"]:
+      return Object(lodash__WEBPACK_IMPORTED_MODULE_2__["merge"])({}, oldState, action.data.artists);
 
     default:
       return oldState;
@@ -4555,10 +4562,7 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_song_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/song_actions */ "./frontend/actions/song_actions.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _actions_playlist_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/playlist_actions */ "./frontend/actions/playlist_actions.js");
-
+/* harmony import */ var _actions_playlist_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/playlist_actions */ "./frontend/actions/playlist_actions.js");
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
@@ -4569,7 +4573,7 @@ __webpack_require__.r(__webpack_exports__);
     case _actions_song_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_SONGS"]:
       return action.songs;
 
-    case _actions_playlist_actions__WEBPACK_IMPORTED_MODULE_2__["RECEIVE_PLAYLIST"]:
+    case _actions_playlist_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_PLAYLIST"]:
       if (action.data.songs !== undefined) {
         return action.data.songs;
       } else {

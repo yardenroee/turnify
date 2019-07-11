@@ -10,6 +10,8 @@ class Api::PlaylistsController < ApplicationController
 
     def show
         @playlist = Playlist.find_by(id: params[:id])
+        @albums = @playlist.albums.uniq
+        @artists = @playlist.artists.uniq
          if @playlist
           render "api/playlists/show"
          else

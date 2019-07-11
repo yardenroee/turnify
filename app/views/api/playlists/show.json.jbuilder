@@ -15,3 +15,20 @@ json.songs do
     end
   end
 end  
+
+json.albums do
+  @albums.each do |album|
+    json.set! album.id do 
+      json.extract! album, :id, :title, :artist_id
+      json.photo url_for(album.photo)
+      end
+    end
+end
+
+json.artists do 
+  @artists.each do |artist|
+    json.set! artist.id do
+      json.extract! artist, :id, :name
+    end
+  end
+end

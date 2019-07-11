@@ -1,5 +1,4 @@
 import { RECEIVE_ALL_SONGS, CLEAR_ALBUM_SONGS } from "../actions/song_actions";
-import { merge } from 'lodash';
 import { RECEIVE_PLAYLIST } from "../actions/playlist_actions";
 
 export default (oldState = {}, action) => {

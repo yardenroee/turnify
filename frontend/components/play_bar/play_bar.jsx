@@ -16,7 +16,7 @@ class PlayBar extends React.Component {
         debugger
         const { currentPlayingSong, album, artist } = this.props;
         debugger
-        if(currentPlayingSong !== undefined){
+        if(currentPlayingSong !== undefined ){
             debugger
             return (
                 <>
