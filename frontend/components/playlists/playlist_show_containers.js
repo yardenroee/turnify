@@ -1,8 +1,7 @@
 import { connect } from 'react-redux';
 import PlaylistShow from './playlist_show';
 import { fetchPlaylist, createPlaylist, deletePlaylist } from '../../actions/playlist_actions';
-import { fetchSongs, fetchSong } from '../../actions/song_actions';
-import { fetchPlayingSong } from '../../actions/current_song_actions';
+import { fetchSongs, fetchSong, togglePlay } from '../../actions/song_actions';
 import { deletePlaylistSong } from '../../actions/playlist_song_actions';
 
 const msp = (state, ownProps) => {
@@ -23,8 +22,8 @@ const mdp = (dispatch) => {
         createPlaylist: (playlist) => dispatch(createPlaylist(playlist)),
         deletePlaylist: (id) => dispatch(deletePlaylist(id)),
         fetchSong: (songId) => dispatch(fetchSong(songId)),
+        togglePlay: (boolean) => dispatch(togglePlay(boolean)),
         fetchAllSongs: () => dispatch(fetchSongs()),
-        fetchPlayingSong: (id) => dispatch(fetchPlayingSong(id)),
         deletePlaylistSong: (playlistId, songId) => dispatch(deletePlaylistSong(playlistId, songId)),
     };
 };

@@ -32,6 +32,7 @@ class PlaylistShow extends React.Component {
     };
 
     render() {
+        debugger
         if (!this.props.playlist) return null;
         return (
             <>
@@ -44,9 +45,12 @@ class PlaylistShow extends React.Component {
                                     <li className="playlist-show-title">{this.props.playlist.title}</li>
                                     <li className="playlist-show-username">{this.props.currentUser.username}</li>
                                     <button
-                                        onClick={() => {
-                                            this.props.fetchPlayingSong(this.props.songs[0].id)
-                                        }}
+                                        onClick={(() => {
+                                            debugger
+                                            this.props.fetchSong(this.props.songs[0].id).then(()=> {
+                                                setTimeout(this.props.togglePlay(true), 100);
+                                            })
+                                        }).bind(this)}
                                         className="play-button">Play</button>
                                     <li className="playlist-show-length">{this.props.songs.length} Songs</li>
 
