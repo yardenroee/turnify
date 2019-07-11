@@ -983,12 +983,10 @@ function (_React$Component) {
       if (prevProps.match.params.albumId != this.props.match.params.albumId) {
         this.props.fetchAlbum(this.props.match.params.albumId);
       }
-    }
-  }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
-      this.props.clearAlbumSongs();
-    }
+    } // componentWillUnmount() {
+    //     this.props.clearAlbumSongs();
+    // }
+
   }, {
     key: "render",
     value: function render() {
