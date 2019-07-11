@@ -4,7 +4,7 @@ import SidebarContainer from '../sidebar/sidebar_container';
 import AlbumIndexItem from '../album/album_index_item';
 class ArtistShow extends React.Component{
     constructor(props){
-        super(props)
+        super(props);
     }
 
     componentDidMount(){

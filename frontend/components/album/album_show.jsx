@@ -21,6 +21,10 @@ class AlbumShow extends React.Component{
         }
     }
 
+    componentWillUnmount() {
+        this.props.clearAlbumSongs();
+    }
+
     render(){
         let album = {id:'_', photo:'_', title:'_'};
         let artist = {id:'_', name:'_'};

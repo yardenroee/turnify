@@ -1,16 +1,18 @@
 .search-master{
     background-color: rgb(8,8,8);
-    height: 100vh;
+    height: 120vh;
     width: 100vw;
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
+    overflow-x: hidden;
+    
 }
 
 .search-bar {
     left: 230px;
     right: 0;
-    position: fixed;
+    position: absolute;
     background-color: #282828;
     padding: 26px;
     top: 0;

@@ -1,6 +1,6 @@
 .playlist-page {
   margin-left: 230px;
-  min-height: 100vh;
+  min-height: 120vh;
   background-image: linear-gradient(rgb(22, 7, 55), rgb(8, 8, 9));
 }
 
@@ -36,20 +36,6 @@
   margin-left: 25px;
 }
 
-.all-playlist-boxes:last-child {
-}
-
-// .playlist-index-box {
-//   display: block;
-//   margin-left: 20px;
-//   margin-top: 50px;
-//   padding-top: 25px;
-
-// }
-
-// .playlist-index-box:last-child {
-//   padding-bottom: 110px;
-// }
 
 .playlist-index-box {
     display: flex;

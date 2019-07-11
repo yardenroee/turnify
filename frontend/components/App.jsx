@@ -12,9 +12,12 @@ import SearchBarContainer from './search/search_bar_container';
 import PlaylistIndexContainer from './playlists/playlist_index_container';
 import PlaylistShowContainer from './playlists/playlist_show_containers';
 import Modal from './modal/modal';
+import PlayBarContainer from './play_bar/play_bar_container';
 
 const App = () => (
     <div>
+        <Route path="/#" component={PlayBarContainer} />
+
         <Switch>
         <ProtectedRoute path='/albums/:albumId' component={AlbumShowContainer} />
         <ProtectedRoute path='/albums' component={AlbumContainer} />
@@ -23,10 +26,10 @@ const App = () => (
         <ProtectedRoute path='/search' component={SearchBarContainer} />
         <ProtectedRoute path="/playlists/:playlistId" component={PlaylistShowContainer} />
         <ProtectedRoute path="/playlists" component={PlaylistIndexContainer} />
-
         </Switch>
-        <Route path="/" component={Modal} />
 
+        <ProtectedRoute path={['/albums/:albumId', '/albums', '/artists/:artistId', '/artists', '/search', "/playlists/:playlistId", "/playlists"]} component={PlayBarContainer}/>
+        <Route path="/" component={Modal} />
 
         <Route exact path='/' component={SplashPageContainer} />
         

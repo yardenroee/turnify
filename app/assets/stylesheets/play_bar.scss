@@ -4,8 +4,8 @@
   background-color: #272727;
   display: flex;
   align-items: center;
-  position: sticky;
-  top: 100vh;
+  position: fixed;
+  top: 85vh;
   width: -webkit-fill-available;
   justify-content: space-between;
   z-index: 10000;
@@ -276,4 +276,54 @@
 .volume-bar-wrapper:hover .progress-ball-volume {
   opacity: 1;
   border-radius: 55px;
+}
+
+
+
+// NULL RENDER
+
+.now-playing-bar-null{
+      position: fixed;
+    top: 85vh;
+    width: 100%;
+  height: 65px;
+  padding: 25px;
+  background-color: #272727;
+  display: flex;
+  align-items: center;
+  width: -webkit-fill-available;
+  justify-content: space-between;
+  z-index: 999;
+      flex-wrap: wrap;
+
+}
+
+
+.playbar-controls-null{
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  width: 550px;
+      flex-direction: column;
+  align-items: center;
+}
+
+.music-bar-time-left-null{
+  margin-right: 20px;
+}
+
+.music-bar-time-right-null{
+  margin-left: 20px;
+}
+
+.volume-bar-null{
+    float: right;
+  min-width: 153px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+      position: relative;
+      left: 80vw;
+    bottom: 50px;
+
 }

@@ -61,6 +61,12 @@ export const receivePrevSong = song => {
     }
 }
 
+export const clearAlbumSongs = () => {
+    return {
+        type: CLEAR_ALBUM_SONGS,
+    }
+}
+
 export const fetchSong = (songId) => dispatch => (
  SongApiUtil.fetchSong(songId).then(song => dispatch(receiveSong(song)))
 )

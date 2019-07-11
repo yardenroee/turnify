@@ -1,6 +1,5 @@
 import React from 'react';
 import SongIndexItem from './song_index_item';
-import PlayBarContainer from '../../components/play_bar/play_bar_container';
 class Songs extends React.Component {
     constructor(props) {
         super(props);
@@ -38,7 +37,6 @@ class Songs extends React.Component {
                             {songList}
                         </ul>
                     </div>
-                    <PlayBarContainer currentPlayingSong={this.props.currentPlayingSong} album={this.props.album} />
                 </>
             )
         } else {
