@@ -13,8 +13,8 @@ class SearchBar extends React.Component {
         this.inputRef = React.createRef();
 
     }
-
-    componentDidMount() {
+    
+    componentWillUnmount() {
         this.props.clearSearch();
         // if(this.props.currentPlayingSong) {
         //     // this.props.fetchSong(this.props.currentPlayingSong.id);
@@ -33,7 +33,6 @@ class SearchBar extends React.Component {
     }
 
     render() {
-        debugger
         let artistList;
         let albumList;
         let playlistList;

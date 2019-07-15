@@ -2857,8 +2857,8 @@ function (_React$Component) {
   }
 
   _createClass(SearchBar, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
       this.props.clearSearch(); // if(this.props.currentPlayingSong) {
       //     // this.props.fetchSong(this.props.currentPlayingSong.id);
       // }
@@ -2883,7 +2883,6 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      debugger;
       var artistList;
       var albumList;
       var playlistList;
@@ -4203,7 +4202,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(oldState);
-  debugger;
 
   switch (action.type) {
     case _actions_song_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_ALBUM"]:
@@ -4490,7 +4488,6 @@ __webpack_require__.r(__webpack_exports__);
   var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(oldState);
-  debugger;
 
   switch (action.type) {
     case _actions_search_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_SEARCHES"]:

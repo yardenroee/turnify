@@ -5,7 +5,6 @@ import { RECEIVE_PLAYLIST } from "../actions/playlist_actions";
 import { RECEIVE_ALL_SEARCHES, CLEAR_SEARCH } from "../actions/search_actions";
 export default (oldState = {}, action ) => {
     Object.freeze(oldState);
-    debugger
     switch (action.type) {
         case RECEIVE_ALBUM:
             return merge({}, oldState, {[action.artist.id]: action.artist});
