@@ -12,6 +12,9 @@ class Api::SearchesController < ApplicationController
 
             @albums = Album.where("UPPER(albums.title) LIKE UPPER(:query)", query: str)
             @albums = @albums.uniq
+
+            @playlists = Playlist.where("UPPER(playlists.title) LIKE UPPER(:query)", query: str)
+            @playlists.uniq
         end
         render :show
     end

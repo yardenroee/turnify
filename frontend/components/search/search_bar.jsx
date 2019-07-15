@@ -14,8 +14,11 @@ class SearchBar extends React.Component {
 
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.props.clearSearch();
+        // if(this.props.currentPlayingSong) {
+        //     // this.props.fetchSong(this.props.currentPlayingSong.id);
+        // }
     }
 
     handleSearch(e) {
@@ -33,8 +36,13 @@ class SearchBar extends React.Component {
         debugger
         let artistList;
         let albumList;
+        let playlistList;
         const artists = this.props.artists;
         const albums = this.props.albums;
+        const playlists = this.props.playlists;
+        let artistsHeader = artists.length > 0 ? "Artists" : "";
+        let albumsHeader = albums.length > 0 ? "Albums" : ""
+        let playlistsHeader = playlists.length > 0 ? "Playlists" : "";
         if (artists.length > 0) {
             artistList = artists.map((artist, index) => {
                 return (
@@ -60,6 +68,23 @@ class SearchBar extends React.Component {
                 )
             })
         }
+
+        if(playlists.length > 0){
+            playlistList = playlists.map((playlist,index) => {
+                return (
+                        <li className="playlist-index-box-search" key={playlist.id}>
+                            <Link to={`/playlists/${playlist.id}`}>
+                                <img className="playlist-index-images" src={playlist.photo} />
+                            </Link>
+
+                            <Link
+                                to={`/playlists/${playlist.id}`}>
+                                <p className="playlist-title">{playlist.title}</p>
+                            </Link>
+                        </li>
+                )
+            })
+        }
         if (this.props.artists[0] === undefined && this.state.searchVal === "") {
             var searchRender = <div className="artists-before">
                 <h1 className="search-turnify">Search Turnify</h1>
@@ -75,17 +100,24 @@ class SearchBar extends React.Component {
             var searchRender =
                 <div className="search-res">
                     <h1 className="artists-header">
-                        Artists
+                        {artistsHeader}
                     </h1>
                     <div className="all-artists-search">
                         {artistList}
                     </div>
 
                     <h1 className="albums-header">
-                        Albums
+                        {albumsHeader}
                     </h1>
                     <div className="all-albums-search">
                         {albumList}
+                    </div>
+
+                    <h1 className="playlists-header">
+                        {playlistsHeader}
+                    </h1>
+                    <div className="all-playlists-search">
+                        {playlistList}
                     </div>
                 </div>
         }

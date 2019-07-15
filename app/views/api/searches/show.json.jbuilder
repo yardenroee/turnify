@@ -19,6 +19,19 @@ json.albums do
     end
 end
 
+playlist_ids = []
+
+json.playlists do
+    @playlists.each do |playlist|
+        playlist_ids.push(playlist.id)
+        json.set! playlist.id do
+            json.extract! playlist, :id, :title
+            json.photo url_for(playlist.photo)
+        end
+    end
+end
+
+
 json.search_ids do 
     json.artist_ids = artist_ids
     json.album_ids = album_ids
