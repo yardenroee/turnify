@@ -2931,7 +2931,7 @@ function (_React$Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
           className: "artists-header"
         }, "Artists"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "all-artists"
+          className: "all-artists-search"
         }, artistList), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
           className: "albums-header"
         }, "Albums"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

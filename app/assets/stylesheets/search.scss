@@ -23,8 +23,16 @@
      flex-direction: row;
      justify-content: flex-start;
      flex-wrap: wrap;
-     margin-left: 250px;
-     margin-top: -40px;
+     margin-left: 240px;
+     margin-top: -35px;
+}
+
+.all-artists-search {
+        display: flex;
+    justify-content: flex-start;
+    list-style-type: none;
+    margin-left: 250px;
+    margin-top: 60px;
 }
 
 .search-bar-text {
@@ -41,8 +49,7 @@
 }
 
 .artists-header {
-    top: 200px;
-    height: 175px;
+    top: 120px;
     position: relative;
     margin-left:250px;
     font-size: 36px;

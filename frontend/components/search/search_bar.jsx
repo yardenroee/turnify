@@ -77,7 +77,7 @@ class SearchBar extends React.Component {
                     <h1 className="artists-header">
                         Artists
                     </h1>
-                    <div className="all-artists">
+                    <div className="all-artists-search">
                         {artistList}
                     </div>
 
