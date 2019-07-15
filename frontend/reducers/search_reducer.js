@@ -1,14 +1,16 @@
 import {RECEIVE_ALL_SEARCHES, CLEAR_SEARCH} from '../actions/search_actions';
+import { merge } from 'lodash';
 
 export default (oldState = {}, action) => {
     Object.freeze(oldState);
+    debugger
     switch(action.type){
         case RECEIVE_ALL_SEARCHES:
-            if(action.artists === undefined){
-                return {};
-            } else {
-                return action.search_ids;
-            }
+                return merge({}, oldState, 
+                    {"artist_ids": action.search_ids.artist_ids},
+                    {"album_ids": action.search_ids.album_ids},
+                    {"playlist_ids": action.search_ids.playlist_ids}
+                    );
             case CLEAR_SEARCH:
             return {};
         default:

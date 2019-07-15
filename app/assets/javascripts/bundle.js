@@ -2857,8 +2857,8 @@ function (_React$Component) {
   }
 
   _createClass(SearchBar, [{
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
+    key: "componentDidMount",
+    value: function componentDidMount() {
       this.props.clearSearch(); // if(this.props.currentPlayingSong) {
       //     // this.props.fetchSong(this.props.currentPlayingSong.id);
       // }
@@ -3009,25 +3009,33 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var msp = function msp(state) {
-  var artists = Object.values(state.entities.artists);
-  var albums = Object.values(state.entities.albums);
-  var playlists = Object.values(state.entities.playlists);
+  var artists = [];
+  var albums = [];
+  var playlists = [];
 
-  if (state.ui.currentPlayingSong) {
-    var currentPlayingSong = state.ui.currentPlayingSong;
-    return {
-      artists: artists,
-      albums: albums,
-      playlists: playlists,
-      currentPlayingSong: currentPlayingSong
-    };
-  } else {
-    return {
-      artists: artists,
-      albums: albums,
-      playlists: playlists
-    };
+  if (state.ui.search.artist_ids) {
+    artists = state.ui.search.artist_ids.map(function (artist_id) {
+      return state.entities.artists[artist_id];
+    });
   }
+
+  if (state.ui.search.album_ids) {
+    albums = state.ui.search.album_ids.map(function (album_id) {
+      return state.entities.albums[album_id];
+    });
+  }
+
+  if (state.ui.search.playlist_ids) {
+    playlists = state.ui.search.playlist_ids.map(function (playlist_id) {
+      return state.entities.playlists[playlist_id];
+    });
+  }
+
+  return {
+    artists: artists,
+    albums: albums,
+    playlists: playlists
+  };
 };
 
 var mdp = function mdp(dispatch) {
@@ -4166,9 +4174,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       return action.albums;
 
-    case _actions_search_actions__WEBPACK_IMPORTED_MODULE_4__["CLEAR_SEARCH"]:
-      return {};
-
     default:
       return oldState;
   }
@@ -4222,9 +4227,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
 
       return action.artists;
-
-    case _actions_search_actions__WEBPACK_IMPORTED_MODULE_4__["CLEAR_SEARCH"]:
-      return {};
 
     default:
       return oldState;
@@ -4433,9 +4435,6 @@ var playlistReducer = function playlistReducer() {
 
       return action.playlists;
 
-    case _actions_search_actions__WEBPACK_IMPORTED_MODULE_2__["CLEAR_SEARCH"]:
-      return {};
-
     default:
       return state;
   }
@@ -4483,19 +4482,25 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_search_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/search_actions */ "./frontend/actions/search_actions.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_1__);
+
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(oldState);
+  debugger;
 
   switch (action.type) {
     case _actions_search_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_SEARCHES"]:
-      if (action.artists === undefined) {
-        return {};
-      } else {
-        return action.search_ids;
-      }
+      return Object(lodash__WEBPACK_IMPORTED_MODULE_1__["merge"])({}, oldState, {
+        "artist_ids": action.search_ids.artist_ids
+      }, {
+        "album_ids": action.search_ids.album_ids
+      }, {
+        "playlist_ids": action.search_ids.playlist_ids
+      });
 
     case _actions_search_actions__WEBPACK_IMPORTED_MODULE_0__["CLEAR_SEARCH"]:
       return {};

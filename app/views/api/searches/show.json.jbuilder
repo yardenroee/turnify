@@ -33,6 +33,7 @@ end
 
 
 json.search_ids do 
-    json.artist_ids = artist_ids
-    json.album_ids = album_ids
+    json.artist_ids artist_ids
+    json.album_ids album_ids
+    json.playlist_ids playlist_ids
 end

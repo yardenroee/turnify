@@ -19,8 +19,6 @@ export default (oldState = {}, action ) => {
                 return oldState;
             }
             return action.artists;
-        case CLEAR_SEARCH:
-            return {};
         default:
             return oldState;
     }

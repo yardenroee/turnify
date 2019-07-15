@@ -18,8 +18,6 @@ export default (oldState= {}, action) => {
                 return oldState; 
             }
             return action.albums;
-        case CLEAR_SEARCH:
-            return {};
         default:
             return oldState;
     }

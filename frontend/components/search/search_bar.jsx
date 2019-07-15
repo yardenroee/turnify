@@ -13,8 +13,8 @@ class SearchBar extends React.Component {
         this.inputRef = React.createRef();
 
     }
-    
-    componentWillUnmount() {
+
+    componentDidMount() {
         this.props.clearSearch();
         // if(this.props.currentPlayingSong) {
         //     // this.props.fetchSong(this.props.currentPlayingSong.id);

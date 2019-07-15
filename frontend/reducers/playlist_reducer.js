@@ -19,8 +19,6 @@ const playlistReducer = (state = {}, action) => {
                 return state;
             }
             return action.playlists;
-        case CLEAR_SEARCH:
-            return {};
         default:
             return state;
     }
