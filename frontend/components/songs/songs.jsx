@@ -25,8 +25,8 @@ class Songs extends React.Component {
         if (songs.length > 0) {
             const songList = songs.map((song, index) => {
                 return (
-                    <li className="individual-song">
-                        <SongIndexItem key={song.id} song={song} />
+                    <li key={song.id} className="individual-song">
+                        <SongIndexItem  song={song} />
                     </li>
                 )
             })

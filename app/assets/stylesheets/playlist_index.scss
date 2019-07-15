@@ -1,10 +1,10 @@
 .playlist-page {
-  margin-left: 230px;
   min-height: 120vh;
   background-image: linear-gradient(rgb(22, 7, 55), rgb(8, 8, 9));
 }
 
 .new-playlist-button{
+  margin-left: 52.5vw;
       color: #fff;
     background-color: #1db954;
     padding: 8px 27px;
@@ -15,7 +15,6 @@
         transition-duration: 50ms;
     cursor: pointer;
     display: block;
-    margin: 0 auto;
     letter-spacing: .16em;
         margin-top: 20px;
 
@@ -33,7 +32,7 @@
   justify-content: flex-start;
   height: 100%;
   overflow-x: visible;
-  margin-left: 25px;
+  margin-left: 250px;
 }
 
 

@@ -1,6 +1,8 @@
 import React from 'react';
 import SidebarContainer from '../sidebar/sidebar_container';
 import ArtistIndexItem from '../artist/artist_index_item';
+import { Link } from 'react-router-dom';
+
 class SearchBar extends React.Component {
     constructor(props) {
         super(props);
@@ -10,6 +12,10 @@ class SearchBar extends React.Component {
         this.handleSearch = this.handleSearch.bind(this);
         this.inputRef = React.createRef();
 
+    }
+
+    componentWillMount() {
+        this.props.clearSearch();
     }
 
     handleSearch(e) {
@@ -24,8 +30,11 @@ class SearchBar extends React.Component {
     }
 
     render() {
+        debugger
         let artistList;
-        const artists = this.props.search;
+        let albumList;
+        const artists = this.props.artists;
+        const albums = this.props.albums;
         if (artists.length > 0) {
             artistList = artists.map((artist, index) => {
                 return (
@@ -35,12 +44,28 @@ class SearchBar extends React.Component {
                 )
             })
         }
-        if (this.props.search[0] === undefined && this.state.searchVal === "") {
-            var searchRender = <div className="search-before">
+
+        if(albums.length > 0) {
+            albumList = albums.map((album,index) => {
+                return (
+                    <li className="individual-album" key={`${index}`} >
+                        <Link to={`/albums/${album.id}`}>
+                            <img src={album.photo} />
+                        </Link>
+
+                        <div className="album-title">
+                            <Link to={`/albums/${album.id}`}>{album.title}</Link>
+                        </div>
+                    </li>
+                )
+            })
+        }
+        if (this.props.artists[0] === undefined && this.state.searchVal === "") {
+            var searchRender = <div className="artists-before">
                 <h1 className="search-turnify">Search Turnify</h1>
                 <p className="search-line">Find your favorite playlists, artists, and albums.</p>
             </div>;
-        } else if (this.props.search[0] === undefined && this.state.searchVal !== "") {
+        } else if (this.props.artists[0] === undefined && this.state.searchVal !== "") {
             var searchRender = 
             <div className="search-before">
                 <h1>{`No results found for "${this.state.searchVal}"`}</h1>
@@ -51,9 +76,16 @@ class SearchBar extends React.Component {
                 <div className="search-res">
                     <h1 className="artists-header">
                         Artists
-                </h1>
+                    </h1>
                     <div className="all-artists">
                         {artistList}
+                    </div>
+
+                    <h1 className="albums-header">
+                        Albums
+                    </h1>
+                    <div className="all-albums-search">
+                        {albumList}
                     </div>
                 </div>
         }

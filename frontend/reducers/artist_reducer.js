@@ -2,7 +2,7 @@ import { RECEIVE_ALL_ARTISTS, RECEIVE_ARTIST } from "../actions/artist_actions";
 import { RECEIVE_ALBUM } from "../actions/song_actions";
 import { merge } from 'lodash';
 import { RECEIVE_PLAYLIST } from "../actions/playlist_actions";
-
+import { RECEIVE_ALL_SEARCHES, CLEAR_SEARCH } from "../actions/search_actions";
 export default (oldState = {}, action ) => {
     Object.freeze(oldState);
     debugger
@@ -14,7 +14,14 @@ export default (oldState = {}, action ) => {
         case RECEIVE_ARTIST:    
             return merge({}, oldState,{[action.artist.id] : action.artist});
         case RECEIVE_PLAYLIST:
-            return merge({}, oldState, action.data.artists)
+            return merge({}, oldState, action.data.artists);
+        case RECEIVE_ALL_SEARCHES:
+            if(action.artists === undefined) {
+                return oldState;
+            }
+            return action.artists;
+        case CLEAR_SEARCH:
+            return {};
         default:
             return oldState;
     }

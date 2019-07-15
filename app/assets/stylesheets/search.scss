@@ -5,7 +5,7 @@
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
-    overflow-x: hidden;
+    overflow-y: scroll;
     
 }
 
@@ -16,6 +16,15 @@
     background-color: #282828;
     padding: 26px;
     top: 0;
+}
+
+.all-albums-search {
+         display: flex;
+     flex-direction: row;
+     justify-content: flex-start;
+     flex-wrap: wrap;
+     margin-left: 250px;
+     margin-top: -40px;
 }
 
 .search-bar-text {
@@ -41,6 +50,14 @@
     border-bottom: 1px solid transparent;
 }
 
+.albums-header {
+        top: 20px;
+    position: relative;
+    margin-left:250px;
+    font-size: 36px;
+    color: #fff;
+    border-bottom: 1px solid transparent;
+}
 .search-before {
     left: 230px;
         display: flex;

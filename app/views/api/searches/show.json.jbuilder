@@ -8,6 +8,18 @@ json.artists do
         end
     end
 end
+album_ids = []
+json.albums do
+    @albums.each do |album|
+        album_ids.push(album.id)
+        json.set! album.id do
+            json.extract! album, :id, :title
+            json.photo url_for(album.photo)
+        end
+    end
+end
 
-
-json.search_ids artist_ids
+json.search_ids do 
+    json.artist_ids = artist_ids
+    json.album_ids = album_ids
+end

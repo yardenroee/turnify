@@ -2,9 +2,11 @@ import { connect } from 'react-redux';
 import SearchBar from './search_bar';
 import { searchArtists, clearSearch } from '../../actions/search_actions';
 const msp = state => {
-    const search = Object.values(state.ui.search);
+    const artists = Object.values(state.entities.artists);
+    const albums = Object.values(state.entities.albums);
     return {
-        search
+        artists,
+        albums
     }
 }
 
