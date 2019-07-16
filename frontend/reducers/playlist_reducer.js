@@ -16,7 +16,7 @@ const playlistReducer = (state = {}, action) => {
             return newState;
         case RECEIVE_ALL_SEARCHES:
             if(action.playlists === undefined){
-                return state;
+                return {};
             }
             return action.playlists;
         default:

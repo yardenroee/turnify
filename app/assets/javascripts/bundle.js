@@ -2904,8 +2904,11 @@ function (_React$Component) {
         });
       }
 
+      debugger;
+
       if (albums.length > 0) {
         albumList = albums.map(function (album, index) {
+          debugger;
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
             className: "individual-album",
             key: "".concat(index)
@@ -2920,6 +2923,8 @@ function (_React$Component) {
           }, album.title)));
         });
       }
+
+      debugger;
 
       if (playlists.length > 0) {
         playlistList = playlists.map(function (playlist, index) {
@@ -2938,6 +2943,8 @@ function (_React$Component) {
           }, playlist.title)));
         });
       }
+
+      debugger;
 
       if (this.props.artists[0] === undefined && this.state.searchVal === "") {
         var searchRender = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -4169,7 +4176,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
     case _actions_search_actions__WEBPACK_IMPORTED_MODULE_4__["RECEIVE_ALL_SEARCHES"]:
       if (action.albums === undefined) {
-        return oldState;
+        return {};
       }
 
       return action.albums;
@@ -4223,7 +4230,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
     case _actions_search_actions__WEBPACK_IMPORTED_MODULE_4__["RECEIVE_ALL_SEARCHES"]:
       if (action.artists === undefined) {
-        return oldState;
+        return {};
       }
 
       return action.artists;
@@ -4430,7 +4437,7 @@ var playlistReducer = function playlistReducer() {
 
     case _actions_search_actions__WEBPACK_IMPORTED_MODULE_2__["RECEIVE_ALL_SEARCHES"]:
       if (action.playlists === undefined) {
-        return state;
+        return {};
       }
 
       return action.playlists;
@@ -4494,7 +4501,7 @@ __webpack_require__.r(__webpack_exports__);
 
   switch (action.type) {
     case _actions_search_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_SEARCHES"]:
-      return Object(lodash__WEBPACK_IMPORTED_MODULE_1__["merge"])({}, oldState, {
+      return Object(lodash__WEBPACK_IMPORTED_MODULE_1__["merge"])({}, {
         "artist_ids": action.search_ids.artist_ids
       }, {
         "album_ids": action.search_ids.album_ids

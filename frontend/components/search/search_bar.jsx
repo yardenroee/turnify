@@ -51,9 +51,10 @@ class SearchBar extends React.Component {
                 )
             })
         }
-
+        debugger
         if(albums.length > 0) {
             albumList = albums.map((album,index) => {
+                debugger
                 return (
                     <li className="individual-album" key={`${index}`} >
                         <Link to={`/albums/${album.id}`}>
@@ -67,7 +68,7 @@ class SearchBar extends React.Component {
                 )
             })
         }
-
+debugger
         if(playlists.length > 0){
             playlistList = playlists.map((playlist,index) => {
                 return (
@@ -84,6 +85,7 @@ class SearchBar extends React.Component {
                 )
             })
         }
+        debugger
         if (this.props.artists[0] === undefined && this.state.searchVal === "") {
             var searchRender = <div className="artists-before">
                 <h1 className="search-turnify">Search Turnify</h1>

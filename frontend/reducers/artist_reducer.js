@@ -16,7 +16,7 @@ export default (oldState = {}, action ) => {
             return merge({}, oldState, action.data.artists);
         case RECEIVE_ALL_SEARCHES:
             if(action.artists === undefined) {
-                return oldState;
+                return {};
             }
             return action.artists;
         default:
