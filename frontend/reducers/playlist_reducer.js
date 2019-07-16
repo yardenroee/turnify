@@ -4,7 +4,6 @@ import { RECEIVE_ALL_SEARCHES, CLEAR_SEARCH } from '../actions/search_actions';
 const playlistReducer = (state = {}, action) => {
     Object.freeze(state);
     let newState;
-    
     switch (action.type) {
         case RECEIVE_ALL_PLAYLISTS:
             return merge({}, state, action.playlists);

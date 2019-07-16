@@ -37,10 +37,7 @@ export const fetchPlaylist = (id) => dispatch => {
 }
 
 export const createPlaylist = (playlist, user_id) => dispatch => {
-    return APIUtil.createPlaylist(playlist, user_id).then(playlist => dispatch(receivePlaylist(playlist)),
-        err => (
-            dispatch(receiveErrors(err.responseJSON))
-        ));
+    return APIUtil.createPlaylist(playlist, user_id).then(playlist => dispatch(receivePlaylist(playlist)));
 };
 
 

@@ -10,9 +10,7 @@ class ArtistIndex extends React.Component{
     componentDidMount() {
         this.props.fetchAllArtists();
     }
-    componentWillUnmount(){
-        
-    }
+
     render() {
         let artistList;
         const { artists } = this.props

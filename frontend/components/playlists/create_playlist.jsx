@@ -22,7 +22,6 @@ class CreatePlaylist extends React.Component {
     handleCreate(e) {
         e.preventDefault();
         this.props.createPlaylist(this.state, this.props.user).then((playlist) => {
-
             this.props.closeModal();
             this.props.history.push(`/playlists/${playlist.data.playlist.id}`);
         });

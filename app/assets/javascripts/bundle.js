@@ -229,8 +229,6 @@ var createPlaylist = function createPlaylist(playlist, user_id) {
   return function (dispatch) {
     return _util_playlist_api_util__WEBPACK_IMPORTED_MODULE_0__["createPlaylist"](playlist, user_id).then(function (playlist) {
       return dispatch(receivePlaylist(playlist));
-    }, function (err) {
-      return dispatch(receiveErrors(err.responseJSON));
     });
   };
 };
@@ -1050,9 +1048,6 @@ function (_React$Component) {
     value: function componentDidMount() {
       this.props.fetchAllArtists();
     }
-  }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {}
   }, {
     key: "render",
     value: function render() {

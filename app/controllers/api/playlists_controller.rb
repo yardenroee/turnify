@@ -25,8 +25,7 @@ class Api::PlaylistsController < ApplicationController
         @playlist.photo.attach(io: open("https://turnifyappprod.s3.amazonaws.com/GUS-Wrm2.png"), filename:"GUS-Wrm2.png")
 
         if @playlist.save
-            render "api/playlists/show"
-
+            render "api/playlists/new"
         else
             render json: @playlist.errors.full_messages, status: 422
         end
