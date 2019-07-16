@@ -3,7 +3,6 @@ import { merge } from 'lodash';
 
 export default (oldState = {}, action) => {
     Object.freeze(oldState);
-    debugger
     switch(action.type){
         case RECEIVE_ALL_SEARCHES:
                 return merge({}, 

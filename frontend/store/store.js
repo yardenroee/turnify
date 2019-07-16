@@ -3,11 +3,17 @@ import rootReducer from "../reducers/root_reducer";
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 
+
+let middleware = [thunk];
+if (process.env.NODE_ENV !== 'production') {
+    const c = logger;
+    middleware = [...middleware, c];
+}
 const configureStore = (preloadedState = {}) =>{
     return createStore(
         rootReducer,
         preloadedState,
-        applyMiddleware(thunk,logger)
+        applyMiddleware(...middleware)
     );
 };
 

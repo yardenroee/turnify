@@ -39,7 +39,6 @@ class SearchBar extends React.Component {
         let artistsHeader = artists.length > 0 ? "Artists" : "";
         let albumsHeader = albums.length > 0 ? "Albums" : "";
         let playlistsHeader = playlists.length > 0 ? "Playlists" : "";
-        debugger
         if (artists.length > 0) {
             artistList = artists.map((artist, index) => {
                 return (
@@ -49,7 +48,6 @@ class SearchBar extends React.Component {
                 )
             })
         }
-        debugger
         if(albums.length > 0) {
             albumList = albums.map((album,index) => {
                 return (
@@ -65,7 +63,6 @@ class SearchBar extends React.Component {
                 )
             })
         }
-        debugger
         if(playlists.length > 0){
             playlistList = playlists.map((playlist,index) => {
                 return (
@@ -85,7 +82,6 @@ class SearchBar extends React.Component {
         if (artists[0] === undefined && this.state.searchVal === "" ||
             albums[0] === undefined && this.state.searchVal === "" ||
             playlists[0] === undefined && this.state.searchVal === "") {
-            debugger
             var searchRender = <div className="search-before">
                 <h1 className="search-turnify">Search Turnify</h1>
                 <p className="search-line">Find your favorite playlists, artists, and albums.</p>

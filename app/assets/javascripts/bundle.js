@@ -1900,15 +1900,12 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      debugger;
       var _this$props = this.props,
           currentPlayingSong = _this$props.currentPlayingSong,
           album = _this$props.album,
           artist = _this$props.artist;
-      debugger;
 
       if (currentPlayingSong !== undefined) {
-        debugger;
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "now-playing-bar"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1927,7 +1924,6 @@ function (_React$Component) {
           song: this.props.currentPlayingSong
         })));
       } else if (currentPlayingSong === null || currentPlayingSong === undefined) {
-        debugger;
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "now-playing-bar-null"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2894,7 +2890,6 @@ function (_React$Component) {
       var artistsHeader = artists.length > 0 ? "Artists" : "";
       var albumsHeader = albums.length > 0 ? "Albums" : "";
       var playlistsHeader = playlists.length > 0 ? "Playlists" : "";
-      debugger;
 
       if (artists.length > 0) {
         artistList = artists.map(function (artist, index) {
@@ -2906,8 +2901,6 @@ function (_React$Component) {
           }));
         });
       }
-
-      debugger;
 
       if (albums.length > 0) {
         albumList = albums.map(function (album, index) {
@@ -2925,8 +2918,6 @@ function (_React$Component) {
           }, album.title)));
         });
       }
-
-      debugger;
 
       if (playlists.length > 0) {
         playlistList = playlists.map(function (playlist, index) {
@@ -2947,7 +2938,6 @@ function (_React$Component) {
       }
 
       if (artists[0] === undefined && this.state.searchVal === "" || albums[0] === undefined && this.state.searchVal === "" || playlists[0] === undefined && this.state.searchVal === "") {
-        debugger;
         var searchRender = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "search-before"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
@@ -4498,7 +4488,6 @@ __webpack_require__.r(__webpack_exports__);
   var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(oldState);
-  debugger;
 
   switch (action.type) {
     case _actions_search_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_SEARCHES"]:
@@ -4712,14 +4701,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux_logger__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! redux-logger */ "./node_modules/redux-logger/dist/redux-logger.js");
 /* harmony import */ var redux_logger__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(redux_logger__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var redux_thunk__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! redux-thunk */ "./node_modules/redux-thunk/es/index.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
 
 
 
+
+var middleware = [redux_thunk__WEBPACK_IMPORTED_MODULE_3__["default"]];
+
+if (true) {
+  var c = redux_logger__WEBPACK_IMPORTED_MODULE_2___default.a;
+  middleware = [].concat(_toConsumableArray(middleware), [c]);
+}
 
 var configureStore = function configureStore() {
   var preloadedState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_1__["default"], preloadedState, Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_3__["default"], redux_logger__WEBPACK_IMPORTED_MODULE_2___default.a));
+  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_1__["default"], preloadedState, redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"].apply(void 0, _toConsumableArray(middleware)));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (configureStore);
