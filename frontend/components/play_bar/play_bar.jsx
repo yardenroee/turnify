@@ -13,8 +13,11 @@ class PlayBar extends React.Component {
     }
 
     render() {
+        debugger
         const { currentPlayingSong, album, artist } = this.props;
+        debugger
         if(currentPlayingSong !== undefined ){
+            debugger
             return (
                 <>
                     <div className="now-playing-bar">
@@ -33,6 +36,7 @@ class PlayBar extends React.Component {
                 </>
             )
         } else if(currentPlayingSong === null || currentPlayingSong === undefined) {
+            debugger
             return (
                 <>
                     <div className="now-playing-bar-null">

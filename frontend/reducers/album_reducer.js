@@ -8,16 +8,16 @@ export default (oldState= {}, action) => {
         case RECEIVE_ALBUM:
             return merge({}, oldState, {[action.album.id] : action.album});
         case RECEIVE_ALL_ALBUMS:
-            return action.albums
+            return merge({}, oldState, action.albums);
         case RECEIVE_ARTIST:
             return merge({}, oldState, action.albums);
         case RECEIVE_PLAYLIST:
             return merge({}, oldState, action.data.albums);
         case RECEIVE_ALL_SEARCHES:
             if(action.albums === undefined) {
-                return {}; 
+                return oldState; 
             }
-            return action.albums;
+            return merge({}, oldState, action.albums);
         default:
             return oldState;
     }

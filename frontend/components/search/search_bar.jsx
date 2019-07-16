@@ -16,9 +16,6 @@ class SearchBar extends React.Component {
 
     componentDidMount() {
         this.props.clearSearch();
-        // if(this.props.currentPlayingSong) {
-        //     // this.props.fetchSong(this.props.currentPlayingSong.id);
-        // }
     }
 
     handleSearch(e) {
@@ -40,8 +37,9 @@ class SearchBar extends React.Component {
         const albums = this.props.albums;
         const playlists = this.props.playlists;
         let artistsHeader = artists.length > 0 ? "Artists" : "";
-        let albumsHeader = albums.length > 0 ? "Albums" : ""
+        let albumsHeader = albums.length > 0 ? "Albums" : "";
         let playlistsHeader = playlists.length > 0 ? "Playlists" : "";
+        debugger
         if (artists.length > 0) {
             artistList = artists.map((artist, index) => {
                 return (
@@ -54,7 +52,6 @@ class SearchBar extends React.Component {
         debugger
         if(albums.length > 0) {
             albumList = albums.map((album,index) => {
-                debugger
                 return (
                     <li className="individual-album" key={`${index}`} >
                         <Link to={`/albums/${album.id}`}>
@@ -68,11 +65,11 @@ class SearchBar extends React.Component {
                 )
             })
         }
-debugger
+        debugger
         if(playlists.length > 0){
             playlistList = playlists.map((playlist,index) => {
                 return (
-                        <li className="playlist-index-box-search" key={playlist.id}>
+                        <li className="playlist-index-box-search" key={index}>
                             <Link to={`/playlists/${playlist.id}`}>
                                 <img className="playlist-index-images" src={playlist.photo} />
                             </Link>
@@ -85,13 +82,18 @@ debugger
                 )
             })
         }
-        debugger
-        if (this.props.artists[0] === undefined && this.state.searchVal === "") {
-            var searchRender = <div className="artists-before">
+        if (artists[0] === undefined && this.state.searchVal === "" ||
+            albums[0] === undefined && this.state.searchVal === "" ||
+            playlists[0] === undefined && this.state.searchVal === "") {
+            debugger
+            var searchRender = <div className="search-before">
                 <h1 className="search-turnify">Search Turnify</h1>
                 <p className="search-line">Find your favorite playlists, artists, and albums.</p>
             </div>;
-        } else if (this.props.artists[0] === undefined && this.state.searchVal !== "") {
+        } else if (artists[0] === undefined && this.state.searchVal !== "" &&
+            albums[0] === undefined && this.state.searchVal !== "" &&
+            playlists[0] === undefined && this.state.searchVal !== ""
+        ) {
             var searchRender = 
             <div className="search-before">
                 <h1>{`No results found for "${this.state.searchVal}"`}</h1>

@@ -1900,12 +1900,15 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      debugger;
       var _this$props = this.props,
           currentPlayingSong = _this$props.currentPlayingSong,
           album = _this$props.album,
           artist = _this$props.artist;
+      debugger;
 
       if (currentPlayingSong !== undefined) {
+        debugger;
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "now-playing-bar"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1924,6 +1927,7 @@ function (_React$Component) {
           song: this.props.currentPlayingSong
         })));
       } else if (currentPlayingSong === null || currentPlayingSong === undefined) {
+        debugger;
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "now-playing-bar-null"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2018,9 +2022,11 @@ __webpack_require__.r(__webpack_exports__);
 
 var msp = function msp(state) {
   if (state.ui.currentPlayingSong) {
+    debugger;
     var currentPlayingSong = state.ui.currentPlayingSong;
     var album = state.entities.albums[state.ui.currentPlayingSong.album_id];
     var artist = state.entities.artists[state.ui.currentPlayingSong.artist_id];
+    debugger;
     return {
       album: album,
       artist: artist,
@@ -2859,9 +2865,7 @@ function (_React$Component) {
   _createClass(SearchBar, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.clearSearch(); // if(this.props.currentPlayingSong) {
-      //     // this.props.fetchSong(this.props.currentPlayingSong.id);
-      // }
+      this.props.clearSearch();
     }
   }, {
     key: "handleSearch",
@@ -2892,6 +2896,7 @@ function (_React$Component) {
       var artistsHeader = artists.length > 0 ? "Artists" : "";
       var albumsHeader = albums.length > 0 ? "Albums" : "";
       var playlistsHeader = playlists.length > 0 ? "Playlists" : "";
+      debugger;
 
       if (artists.length > 0) {
         artistList = artists.map(function (artist, index) {
@@ -2908,7 +2913,6 @@ function (_React$Component) {
 
       if (albums.length > 0) {
         albumList = albums.map(function (album, index) {
-          debugger;
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
             className: "individual-album",
             key: "".concat(index)
@@ -2930,7 +2934,7 @@ function (_React$Component) {
         playlistList = playlists.map(function (playlist, index) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
             className: "playlist-index-box-search",
-            key: playlist.id
+            key: index
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
             to: "/playlists/".concat(playlist.id)
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -2944,17 +2948,16 @@ function (_React$Component) {
         });
       }
 
-      debugger;
-
-      if (this.props.artists[0] === undefined && this.state.searchVal === "") {
+      if (artists[0] === undefined && this.state.searchVal === "" || albums[0] === undefined && this.state.searchVal === "" || playlists[0] === undefined && this.state.searchVal === "") {
+        debugger;
         var searchRender = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "artists-before"
+          className: "search-before"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
           className: "search-turnify"
         }, "Search Turnify"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "search-line"
         }, "Find your favorite playlists, artists, and albums."));
-      } else if (this.props.artists[0] === undefined && this.state.searchVal !== "") {
+      } else if (artists[0] === undefined && this.state.searchVal !== "" && albums[0] === undefined && this.state.searchVal !== "" && playlists[0] === undefined && this.state.searchVal !== "") {
         var searchRender = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "search-before"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "No results found for \"".concat(this.state.searchVal, "\"")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Please make sure your words are spelled correctly or use less or different keywords."));
@@ -4166,7 +4169,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return Object(lodash__WEBPACK_IMPORTED_MODULE_2__["merge"])({}, oldState, _defineProperty({}, action.album.id, action.album));
 
     case _actions_song_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_ALBUMS"]:
-      return action.albums;
+      return Object(lodash__WEBPACK_IMPORTED_MODULE_2__["merge"])({}, oldState, action.albums);
 
     case _actions_artist_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_ARTIST"]:
       return Object(lodash__WEBPACK_IMPORTED_MODULE_2__["merge"])({}, oldState, action.albums);
@@ -4176,10 +4179,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
     case _actions_search_actions__WEBPACK_IMPORTED_MODULE_4__["RECEIVE_ALL_SEARCHES"]:
       if (action.albums === undefined) {
-        return {};
+        return oldState;
       }
 
-      return action.albums;
+      return Object(lodash__WEBPACK_IMPORTED_MODULE_2__["merge"])({}, oldState, action.albums);
 
     default:
       return oldState;
@@ -4230,10 +4233,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
     case _actions_search_actions__WEBPACK_IMPORTED_MODULE_4__["RECEIVE_ALL_SEARCHES"]:
       if (action.artists === undefined) {
-        return {};
+        return oldState;
       }
 
-      return action.artists;
+      return Object(lodash__WEBPACK_IMPORTED_MODULE_2__["merge"])({}, oldState, action.artists);
 
     default:
       return oldState;
@@ -4437,10 +4440,10 @@ var playlistReducer = function playlistReducer() {
 
     case _actions_search_actions__WEBPACK_IMPORTED_MODULE_2__["RECEIVE_ALL_SEARCHES"]:
       if (action.playlists === undefined) {
-        return {};
+        return state;
       }
 
-      return action.playlists;
+      return Object(lodash__WEBPACK_IMPORTED_MODULE_0__["merge"])({}, state, action.playlists);
 
     default:
       return state;
