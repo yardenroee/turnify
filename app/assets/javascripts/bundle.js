@@ -2022,11 +2022,9 @@ __webpack_require__.r(__webpack_exports__);
 
 var msp = function msp(state) {
   if (state.ui.currentPlayingSong) {
-    debugger;
     var currentPlayingSong = state.ui.currentPlayingSong;
     var album = state.entities.albums[state.ui.currentPlayingSong.album_id];
     var artist = state.entities.artists[state.ui.currentPlayingSong.artist_id];
-    debugger;
     return {
       album: album,
       artist: artist,
