@@ -19,7 +19,7 @@ class Api::PlaylistsController < ApplicationController
     def create
         @playlist = Playlist.new(playlist_params)
         @playlist.user_id = current_user.id
-        @playlist.photo.attach(io: open("https://turnifyappprod.s3.amazonaws.com/playlist.png"), filename:"playlist.png")
+        @playlist.photo.attach(io: open("https://turnifyappprod.s3.amazonaws.com/playlists/playlist.png"), filename:"playlist.png")
 
         if @playlist.save
             render "api/playlists/new"
