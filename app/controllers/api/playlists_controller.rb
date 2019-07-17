@@ -2,10 +2,7 @@ require 'open-uri'
 
 class Api::PlaylistsController < ApplicationController
     def index
-        @playlists = Playlist
-        .includes(:songs)
-        .includes(:user)
-        .with_attached_photo
+        @playlists = Playlist.includes(:songs).includes(:user).with_attached_photo
     end
 
     def show

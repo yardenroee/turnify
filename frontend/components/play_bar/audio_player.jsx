@@ -13,7 +13,7 @@ class AudioPlayer extends React.Component {
             //volume
             volumeBeforeMute: 0.65,
             currentVolume: 0.65,
-            muted:false
+            muted: false
             //volumr
         };
 
@@ -120,6 +120,8 @@ class AudioPlayer extends React.Component {
         }
     }
 
+
+
     shuffle(array) {
         for (let i = array.length - 1; i > 0; i--) {
             let j = Math.floor(Math.random() * (i + 1));
@@ -128,7 +130,7 @@ class AudioPlayer extends React.Component {
         return array;
     }
     prevSong() {
-        let songs = this.songs
+        let songs = this.songs;
         const { song } = this.props;
         if (this.state.currentTime > 3 && this.props.song.playing) {
             this.props.fetchPrevSong(song.id).then(this.audioRef.current.currentTime = 0);
@@ -152,6 +154,8 @@ class AudioPlayer extends React.Component {
             }
         }
     }
+
+
     //playback controls
 
 
@@ -162,10 +166,10 @@ class AudioPlayer extends React.Component {
         this.setState({ volumeBeforeMute: e.target.value })
     }
 
-    toggleMute(){
-        if(this.state.muted === false) {
-            this.setState({currentVolume : 0});
-            this.setState({muted : true});
+    toggleMute() {
+        if (this.state.muted === false) {
+            this.setState({ currentVolume: 0 });
+            this.setState({ muted: true });
             this.audioRef.current.volume = 0;
         } else {
             this.setState({ currentVolume: this.state.volumeBeforeMute });
@@ -173,6 +177,8 @@ class AudioPlayer extends React.Component {
             this.audioRef.current.volume = this.state.volumeBeforeMute;
         }
     }
+
+
     //volume controls
     render() {
         this.songs = (this.state.shuffled === true) ? this.shuffle(this.props.songs) : this.props.songs;
@@ -181,15 +187,17 @@ class AudioPlayer extends React.Component {
         (this.props.playing === true) ? this.icon = "pause" : this.icon = "play";
         const replay = (this.state.replay === false) ? this.nextSong : this.prevSong;
         let volumeIcon;
-        if(currentVolume === 0) {
+        if (currentVolume === 0) {
             volumeIcon = "mute";
         } else if (currentVolume >= 0.65) {
             volumeIcon = "up";
-        } else if (currentVolume >= 0.05 && currentVolume < 0.65){
+        } else if (currentVolume >= 0.05 && currentVolume < 0.65) {
             volumeIcon = "down";
-        } else if(currentVolume < 0.05){
+        } else if (currentVolume < 0.05) {
             volumeIcon = "off";
         }
+
+
         return (
             <>
                 <audio src={this.props.song.mp3} ref={this.audioRef} id={this.props.song.id} onEnded={replay}></audio>
@@ -241,7 +249,7 @@ class AudioPlayer extends React.Component {
                     <button id="volume-button" onClick={this.toggleMute}>
                         <i className={`fas fa-volume-${volumeIcon}`}></i>
                     </button>
-                        <div className="volume-bar-wrapper">
+                    <div className="volume-bar-wrapper">
                         <input type="range"
                             className="volume-progress-bar"
                             min="0"
@@ -249,11 +257,11 @@ class AudioPlayer extends React.Component {
                             step="0.01"
                             onChange={this.setVolume}
                             id="" />
-                    <div className="outer-volume-bar">
+                        <div className="outer-volume-bar">
                             <div className="inner-volume-bar" style={{ width: `${100 * (currentVolume / 1)}%` }}></div>
                             <div className="progress-ball-volume" style={{ marginLeft: `${100 * (currentVolume / 1)}%` }}></div>
-                    </div>
                         </div>
+                    </div>
                 </div>
             </>
         )
