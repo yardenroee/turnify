@@ -13,12 +13,19 @@
     justify-content: flex-start;
     list-style-type: none;
     margin-left: 250px;
+    flex-wrap: wrap;
+    padding-bottom: 300px;
+
+}
+
+.individual-artist {
+        margin-top: 30px;
 
 }
 
 .artist-unit{
-    padding-top: 70px;
-    margin-right: 35px;
+    padding-top: 30px;
+    margin-right: 20px;
 }
 
 .artist-photo{
