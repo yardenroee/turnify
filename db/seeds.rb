@@ -10,6 +10,17 @@ require 'open-uri'
 demo_user = User.create(username:"demo", password:"123456")
 ## DEMO USER ##
 
+## PLAYLISTS ##
+playlist1 = Playlist.create(title:"Chill", user_id: demo_user.id)
+playlist2 = Playlist.create(title:"Shower Vibes", user_id: demo_user.id)
+playlist3 = Playlist.create(title:"Rock", user_id: demo_user.id)
+playlist1.photo.attach(io: open("https://turnifyappprod.s3.amazonaws.com/playlists/chillPlaylist.jpg"), filename:"chill-playlist-cover.jpg")
+playlist2.photo.attach(io: open("https://turnifyappprod.s3.amazonaws.com/playlists/showerPlaylist.jpg"), filename:"shower-playlist-cover.jpg")
+playlist3.photo.attach(io: open("https://turnifyappprod.s3.amazonaws.com/playlists/rockPlaylist.jpeg"), filename:"rock-playlist-cover.jpg")
+
+
+## PLAYLISTS ##
+
 ##Artist 1 ##
 artist1 = Artist.create(name:"Becays")
 artist1.photo.attach(io: open("https://turnifyappprod.s3.amazonaws.com/becays/becays-artist.jpg"), filename:"becays.jpg")
