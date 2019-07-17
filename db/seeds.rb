@@ -104,7 +104,7 @@ artist3.photo.attach(io: open("https://turnifyappprod.s3.amazonaws.com/filmico/f
 artist3.header.attach(io: open("https://turnifyappprod.s3.amazonaws.com/filmico/filmico-cover.jpg"), filename:"filmico-hover.jpg")
 
 ####### ALBUM 3 #######
-album4= Album.create(title:"Jazz Chill Music", release_year: 2017, artist_id: artist3.id)
+album4= Album.create(title:"In the Senses", release_year: 2017, artist_id: artist3.id)
 album4.photo.attach(io: open("https://turnifyappprod.s3.amazonaws.com/filmico/In+the+Senses.jpg"), filename:"inthesenses.jpg")
 
 song19 = Song.create(album_id: album4.id, artist_id: artist3.id, title: "Memory Trees", length: "2:29")
@@ -135,3 +135,172 @@ song26.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/filmico/08+-
 
 
 ## Artist 3 ##
+
+
+## Artist 4 ##
+artist4 = Artist.create(name:"JekK")
+artist4.photo.attach(io: open("https://turnifyappprod.s3.amazonaws.com/jekk/jekk-artist.jpg"), filename:"jekk-artist.jpg")
+artist4.header.attach(io: open("https://turnifyappprod.s3.amazonaws.com/jekk/jekk-cover.jpg"), filename:"jekk-hover.jpg")
+
+## Album 5 ##
+album5= Album.create(title:"Roses", release_year: 2017, artist_id: artist4.id)
+album5.photo.attach(io: open("https://turnifyappprod.s3.amazonaws.com/jekk/Roses.jpg"), filename:"roses.jpg")
+
+song27 = Song.create(album_id: album5.id, artist_id: artist4.id, title: "Delightful Life", length: "3:27")
+
+song28 = Song.create(album_id: album5.id, artist_id: artist4.id, title: "Hold You", length: "3:07")
+
+song29 = Song.create(album_id: album5.id, artist_id: artist4.id, title: "Roses", length: "3:50")
+
+song30 = Song.create(album_id: album5.id, artist_id: artist4.id, title: "Sorrow is Gone", length: "2:59")
+
+song31 = Song.create(album_id: album5.id, artist_id: artist4.id, title: "Survive", length: "2:44")
+
+song32 = Song.create(album_id: album5.id, artist_id: artist4.id, title: "Weakness", length: "3:14")
+
+song27.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/jekk/JekK-Delightful+Life.mp3"), filename:"song11.mp3")
+song28.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/jekk/JekK-Hold+you.mp3"), filename:"song12.mp3")
+song29.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/jekk/JekK-Roses.mp3"), filename:"song13.mp3")
+song30.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/jekk/JekK-Sorrow+is+Gone.mp3"), filename:"song14.mp3")
+song31.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/jekk/JekK-Survive.mp3"), filename:"song15.mp3")
+song32.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/jekk/JekK-Weakness.mp3"), filename:"song16.mp3")
+## Album 5 ##
+
+## Artist 4 ##
+
+
+## Artist 5 ##
+artist5 = Artist.create(name:"madelyniris")
+artist5.photo.attach(io: open("https://turnifyappprod.s3.amazonaws.com/madelyniris/madelyn-artist.jpg"), filename:"madelyn-artist.jpg")
+artist5.header.attach(io: open("https://turnifyappprod.s3.amazonaws.com/madelyniris/madelyn-cover.jpeg"), filename:"madelyn-hover.jpg")
+
+## Album 6 ##
+album6= Album.create(title:"Adventures", release_year: 2017, artist_id: artist5.id)
+album6.photo.attach(io: open("https://turnifyappprod.s3.amazonaws.com/madelyniris/Adventures.jpg"), filename:"adventures.jpg")
+
+song33 = Song.create(album_id: album6.id, artist_id: artist5.id, title: "Adventure", length: "3:59")
+
+song34 = Song.create(album_id: album6.id, artist_id: artist5.id, title: "Ghost", length: "4:34")
+
+song35 = Song.create(album_id: album6.id, artist_id: artist5.id, title: "Leave and Never Look Back", length: "4:09")
+
+song36 = Song.create(album_id: album6.id, artist_id: artist5.id, title: "Lets Restart", length: "4:57")
+
+song37 = Song.create(album_id: album6.id, artist_id: artist5.id, title: "Street Signs and White Lies", length: "3:49")
+
+song33.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/madelyniris/madelyniris-Adventure.mp3"), filename:"song11.mp3")
+song34.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/madelyniris/madelyniris-Ghost.mp3"), filename:"song12.mp3")
+song35.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/madelyniris/madelyniris-Leave+and+Never+Look+Back.mp3"), filename:"song13.mp3")
+song36.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/madelyniris/madelyniris-Lets+Restart.mp3"), filename:"song14.mp3")
+song37.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/madelyniris/madelyniris-Street+Signs+and+White+Lies.mp3"), filename:"song15.mp3")
+## Album 6 ##
+
+## Artist 5 ##
+
+
+## Artist 6 ##
+artist6 = Artist.create(name:"Matt Confusion")
+artist6.photo.attach(io: open("https://turnifyappprod.s3.amazonaws.com/mattconfusion/matt-artist.jpeg"), filename:"matt-artist.jpg")
+artist6.header.attach(io: open("https://turnifyappprod.s3.amazonaws.com/mattconfusion/Else.jpg"), filename:"matt-hover.jpg")
+## Album 7 ##
+album7= Album.create(title:"Else", release_year: 2017, artist_id: artist6.id)
+album7.photo.attach(io: open("https://turnifyappprod.s3.amazonaws.com/mattconfusion/Else.jpg"), filename:"Else.jpg")
+
+song38 = Song.create(album_id: album7.id, artist_id: artist6.id, title: "A Million Tunes", length: "3:39")
+
+song39 = Song.create(album_id: album7.id, artist_id: artist6.id, title: "Below", length: "5:15")
+
+song40 = Song.create(album_id: album7.id, artist_id: artist6.id, title: "Closed Down", length: "4:03")
+
+song41 = Song.create(album_id: album7.id, artist_id: artist6.id, title: "Happy that You Tried", length: "4:50")
+
+song42 = Song.create(album_id: album7.id, artist_id: artist6.id, title: "Pride", length: "3:27")
+
+song43 = Song.create(album_id: album7.id, artist_id: artist6.id, title: "Right or Wrong", length: "2:51")
+
+song44 = Song.create(album_id: album7.id, artist_id: artist6.id, title: "Things We Said", length: "4:20")
+
+song45 = Song.create(album_id: album7.id, artist_id: artist6.id, title: "Wildcat", length: "4:36")
+
+
+song38.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/mattconfusion/Matt+Confusion-A+million+tunes.mp3"), filename:"song11.mp3")
+song39.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/mattconfusion/Matt+Confusion-Below.mp3"), filename:"song12.mp3")
+song40.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/mattconfusion/Matt+Confusion-Closed+Down.mp3"), filename:"song13.mp3")
+song41.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/mattconfusion/Matt+Confusion-Happy+that+you+tried.mp3"), filename:"song14.mp3")
+song42.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/mattconfusion/Matt+Confusion-Pride.mp3"), filename:"song15.mp3")
+song43.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/mattconfusion/Matt+Confusion-Right+or+wrong.mp3"), filename:"song15.mp3")
+song44.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/mattconfusion/Matt+Confusion-Things+we+said.mp3"), filename:"song15.mp3")
+song45.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/mattconfusion/Matt+Confusion-Wildcat.mp3"), filename:"song15.mp3")
+
+## Album 7 ##
+
+## Artist 6 ##
+
+
+## Artist 7 ## 
+artist7 = Artist.create(name:"Paolo Pavan")
+artist7.photo.attach(io: open("https://turnifyappprod.s3.amazonaws.com/paolopavan/pavan-artist.jpg"), filename:"pavan-artist.jpg")
+artist7.header.attach(io: open("https://turnifyappprod.s3.amazonaws.com/paolopavan/cropped-Paolo-Pavan.jpg"), filename:"pavan-hover.jpg")
+
+## Album 8 ##
+album8= Album.create(title:"Hand", release_year: 2017, artist_id: artist7.id)
+album8.photo.attach(io: open("https://turnifyappprod.s3.amazonaws.com/paolopavan/Black+Hand.jpg"), filename:"hand.jpg")
+
+song46 = Song.create(album_id: album8.id, artist_id: artist7.id, title: "Hand", length: "4:29")
+
+song47 = Song.create(album_id: album8.id, artist_id: artist7.id, title: "Bon Voyage", length: "5:59")
+
+song48 = Song.create(album_id: album8.id, artist_id: artist7.id, title: "Footstep", length: "4:16")
+
+song49 = Song.create(album_id: album8.id, artist_id: artist7.id, title: "Goin On", length: "6:57")
+
+song50 = Song.create(album_id: album8.id, artist_id: artist7.id, title: "Gone With the Wind", length: "4:18")
+
+song51 = Song.create(album_id: album8.id, artist_id: artist7.id, title: "Gone With the Wind (Sara Jazz)", length: "4:19")
+
+song52 = Song.create(album_id: album8.id, artist_id: artist7.id, title: "I'll Never Get Over You", length: "6:15")
+
+song53 = Song.create(album_id: album8.id, artist_id: artist7.id, title: "Screw Up", length: "3:39")
+
+
+song46.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/paolopavan/Paolo+Pavan-Black+Hand.mp3"), filename:"song11.mp3")
+song47.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/paolopavan/Paolo+Pavan-Bon+Voyage.mp3"), filename:"song12.mp3")
+song48.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/paolopavan/Paolo+Pavan-Footstep.mp3"), filename:"song13.mp3")
+song49.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/paolopavan/Paolo+Pavan-Goin+On.mp3"), filename:"song14.mp3")
+song50.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/paolopavan/Paolo+Pavan-Gone+With+The+The+Wind.mp3"), filename:"song15.mp3")
+song51.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/paolopavan/Paolo+Pavan-Gone+With+The+Wind+_Sara+Jazz+Version_.mp3"), filename:"song15.mp3")
+song52.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/paolopavan/Paolo+Pavan-I+ll+Never+Get+Over+You.mp3"), filename:"song15.mp3")
+song53.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/paolopavan/Paolo+Pavan-Screw+Up.mp3"), filename:"song15.mp3")
+
+## Album 8 ##
+
+## Artist 7 ##
+
+
+## Artist 8 ##
+artist8 = Artist.create(name:"The Bourgeois")
+artist8.photo.attach(io: open("https://turnifyappprod.s3.amazonaws.com/thebourgeois/bourgeoislogo-artist.png"), filename:"thebourg-artist.jpg")
+artist8.header.attach(io: open("https://turnifyappprod.s3.amazonaws.com/thebourgeois/the-bourgeois-cover.jpg"), filename:"thebourg-hover.jpg")
+
+## Album 9 ##
+album9= Album.create(title:"Soldier On", release_year: 2017, artist_id: artist8.id)
+album9.photo.attach(io: open("https://turnifyappprod.s3.amazonaws.com/thebourgeois/Soldier+On.jpg"), filename:"soldierOn.jpg")
+
+song50 = Song.create(album_id: album9.id, artist_id: artist8.id, title: "Check My Pulse", length: "2:24")
+
+song51 = Song.create(album_id: album9.id, artist_id: artist8.id, title: "Even Worse than I Imagined", length: "2:50")
+
+song52 = Song.create(album_id: album9.id, artist_id: artist8.id, title: "My Old Friend Misery", length: "2:59")
+
+song53 = Song.create(album_id: album9.id, artist_id: artist8.id, title: "Soldier On", length: "2:29")
+
+
+
+song50.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/thebourgeois/The+Bourgeois-Check+My+Pulse.mp3"), filename:"song11.mp3")
+song51.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/thebourgeois/The+Bourgeois-Even+Worse+Than+I+Imagined.mp3"), filename:"song12.mp3")
+song52.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/thebourgeois/The+Bourgeois-My+Old+Friend+Misery.mp3"), filename:"song13.mp3")
+song53.mp3.attach(io: open("https://turnifyappprod.s3.amazonaws.com/thebourgeois/The+Bourgeois-Soldier+On.mp3"), filename:"song14.mp3")
+
+## Album 9 ##
+
+## Artist 8 ##
