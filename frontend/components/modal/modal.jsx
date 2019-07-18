@@ -5,6 +5,9 @@ import { closeModal } from '../../actions/modal_actions';
 import CreatePlaylist from '../playlists/create_playlist';
 import AddPlaylistSong from '../playlists/add_playlist_song';
 
+
+
+
 function Modal({ modal, optional_props, closeModal }) {
 
     if (!modal) {
@@ -36,6 +39,9 @@ function Modal({ modal, optional_props, closeModal }) {
     )
 
 }
+
+
+
 
 
 const msp = state => {
