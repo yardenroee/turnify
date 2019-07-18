@@ -8,6 +8,7 @@ json.artists do
         end
     end
 end
+
 album_ids = []
 json.albums do
     @albums.each do |album|
@@ -20,7 +21,6 @@ json.albums do
 end
 
 playlist_ids = []
-
 json.playlists do
     @playlists.each do |playlist|
         playlist_ids.push(playlist.id)
