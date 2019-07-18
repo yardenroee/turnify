@@ -20,6 +20,7 @@ Turnify was inspired by Spotify, a music streaming service allowing users stream
 
  * Search
       + Users are also able to search for playlists, artists, and albums. I implemented a dynamic search bar that immediatel          updates the possible artists, albums, and playlists as the user types on the keybaord.
+   
    ![alt text](https://i.imgur.com/V0tduyN.png)
 
    ![alt text](https://github.com/yardenroee/turnify/blob/master/SearchFunctionality.gif?raw=true)
