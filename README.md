@@ -1,6 +1,6 @@
 # Turnify
 
-Turnify was inspired by Spotify, a music streaming service allowing users stream music, search for artists and albums, create playlists, and follow other users.
+[Turnify](https://turnify-app.herokuapp.com/#/) was inspired by Spotify, a music streaming service allowing users stream music, search for artists and albums, create playlists, and follow other users.
 
    ![alt text](https://i.imgur.com/gQfxdXH.jpg)
 
