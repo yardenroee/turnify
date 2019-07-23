@@ -1,9 +1,11 @@
+
+# Turnify 
 ## Table of contents
 * [General Info](#general-info)
 * [Technologies](#technologies)
 * [Key Features](#key-features)
 
-# General Info
+## General Info
 [Turnify](https://turnify-app.herokuapp.com/#/) was inspired by Spotify, a music streaming service allowing users stream music, search for artists and albums, create playlists, while enjoying the sweet tunes of our lovely music library!
 
    ![alt text](https://i.imgur.com/gQfxdXH.jpg)
