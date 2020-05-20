@@ -1,14 +1,23 @@
-# Turnify
 
-Turnify was inspired by Spotify, a music streaming service allowing users stream music, search for artists and albums, create playlists, and follow other users.
+# Turnify 
+## Table of contents
+* [General Info](#general-info)
+* [Technologies](#technologies)
+* [Key Features](#key-features)
+
+## General Info
+[Turnify](https://turnify-app.herokuapp.com/#/) was inspired by Spotify, a music streaming service allowing users stream music, search for artists and albums, create playlists, while enjoying the sweet tunes of our lovely music library!
 
    ![alt text](https://i.imgur.com/gQfxdXH.jpg)
 
 
- ## Technologies Used
- * Turnify was created with Rails on the backend using a PostgreSQL database and React/Redux on the frontend.
- * Images and MP3 files were stored on AWS S3, increasing scalability
- * The loading time of the app was optimized through jBuilder and Rails' Active Storage. Fewer interactions with the database     helps increase user experience.
+ ## Technologies
+ * Ruby on Rails 
+ * PostgreSQL
+ * JavaScript
+ * React/Redux
+ * AWS S3
+ * SCSS
  
 ## Key Features
  * Play Bar
