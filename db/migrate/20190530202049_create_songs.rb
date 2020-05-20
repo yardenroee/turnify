@@ -8,7 +8,7 @@ class CreateSongs < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
-    add_index :songs, :album_id
+    add_index :songs, :album_id, unique: true
     add_index :songs, :artist_id
   end
 end

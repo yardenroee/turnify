@@ -1,0 +1,20 @@
+# == Schema Information
+#
+# Table name: tests
+#
+#  id          :bigint           not null, primary key
+#  string_id   :integer          not null
+#  string_text :text
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  string_id: 1
+  string_text: MyText
+
+two:
+  string_id: 1
+  string_text: MyText

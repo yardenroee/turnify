@@ -23,13 +23,13 @@ const receiveSong = (song) => {
 }
 
 const receiveAlbum = (payload) => {
-    const { album, artist} = payload
+    const { album, artist} = payload;
     return {
         type: RECEIVE_ALBUM,
         album,
         artist
-    }
-}
+    };
+};
 
 
 const receiveAllAlbums = (albums) => {
@@ -71,11 +71,6 @@ export const fetchSong = (songId) => dispatch => (
  SongApiUtil.fetchSong(songId).then(song => dispatch(receiveSong(song)))
 )
 
-export const fetchSongs = (albumId) => dispatch => {
-    return SongApiUtil.fetchSongs(albumId).then(songs => {
-        return dispatch(receiveAllSongs(songs))
-    })
-}
 
 export const fetchAlbums = () => (dispatch) => (
     SongApiUtil.fetchAlbums().then(albums=> dispatch(receiveAllAlbums(albums)))
